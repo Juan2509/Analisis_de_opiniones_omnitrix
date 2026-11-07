@@ -20,6 +20,10 @@ El código, Git y las pruebas determinan el estado real; no cerrar pendientes so
 
 ## Objetivo y decisiones del usuario
 
+Actualización visual solicitada: la portada «El universo está en tus manos» utiliza ahora `assets/omnitrix.png`, imagen enlazada por el usuario, en lugar del emblema geométrico CSS anterior. Archivo original sin modificar y procedencia en `assets/omnitrix-fuente.json`. Se incorpora localmente como PNG embebido, ajustado sin deformar; en móvil se muestra completo debajo del texto.
+
+El usuario pidió usar también esa misma imagen en la marca de la barra lateral (reemplaza ⌬) y en el icono de la pestaña (reemplaza el emoji verde). Ambos usan el recurso local; sidebar a 48 × 48 píxeles y favicon configurado con `st.set_page_config`.
+
 Restricción confirmada: el usuario no quiere pagar. No habilitar facturación ni proponer compras de créditos como requisito de uso. La cuenta OpenAI mostrada tenía saldo cero y la opinión devolvió cuota/límite, sin clasificación exitosa. El material `LangChain_LangGraph2026 (2).md` incluye Gemini y `ChatGoogleGenerativeAI` (sección «9. Hello world», línea 4550); no se encontró exclusividad de OpenAI en los adjuntos. El usuario autorizó la adaptación a Gemini, implementada y probada localmente; falta verificar su cuenta/clave gratuita. Conservar LangChain, Pydantic y los contratos; no sustituir análisis real por palabras clave o simulaciones presentadas como IA.
 
 Aplicación académica de opiniones sobre aliens de Ben 10, adaptada del taller Tribuna Global de futbolistas. Según lo comunicado por el usuario, en clase se permitió cambiar el dominio conservando los requisitos técnicos. DevFlow y otros proyectos del curso son referencias distintas.

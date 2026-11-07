@@ -31,11 +31,13 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     font-size: 0.7rem;
     letter-spacing: 0.24em;
 }
-.omnitrix-marca > span {
-    color: var(--omni-verde);
-    font-size: 3rem;
-    line-height: 1;
-    text-shadow: 0 0 25px rgba(140, 255, 56, 0.4);
+.omnitrix-marca > img {
+    display: block;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 12px rgba(140, 255, 56, 0.25));
 }
 .omnitrix-marca strong {
     display: block;
@@ -125,35 +127,13 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     line-height: 1.6;
 }
 .omnitrix-nucleo { position: relative; display: grid; place-items: center; flex: 0 0 230px; height: 230px; }
-.omnitrix-orbita {
-    position: absolute;
-    inset: 0;
-    border: 1px solid rgba(140, 255, 56, 0.24);
-    border-radius: 50%;
-    background: repeating-conic-gradient(from 5deg, rgba(140, 255, 56, 0.5) 0deg 1deg, transparent 1deg 15deg);
-    mask-image: radial-gradient(transparent 63%, #000 64%, #000 68%, transparent 69%);
-    animation: orbita-omnitrix 80s linear infinite;
-}
 .omnitrix-emblema {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 165px;
-    height: 165px;
-    border: 2px solid var(--omni-verde);
-    border-radius: 50%;
-    background: radial-gradient(circle, #172b0e, #070b06 70%);
-    box-shadow: 0 0 0 9px #090e09, 0 0 0 10px rgba(140, 255, 56, 0.25), 0 0 55px rgba(140, 255, 56, 0.18), inset 0 0 28px rgba(140, 255, 56, 0.12);
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 22px rgba(140, 255, 56, 0.18));
 }
-.omnitrix-emblema span {
-    width: 75px;
-    height: 88px;
-    background: linear-gradient(135deg, #c5ff8c, #8cff38 45%, #48d423);
-    clip-path: polygon(0 0, 100% 0, 65% 50%, 100% 100%, 0 100%, 35% 50%);
-}
-.omnitrix-cruz { position: absolute; color: var(--omni-verde); font-family: monospace; font-size: 1rem; }
-.omnitrix-cruz-superior { top: 12px; right: 12px; }
-.omnitrix-cruz-inferior { bottom: 12px; left: 12px; }
 .st-key-selector_alien [data-baseweb="select"] > div {
     min-height: 3.1rem;
     border-color: var(--omni-borde);
@@ -187,26 +167,22 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     background: rgba(140, 255, 56, 0.045);
     color: var(--omni-secundario);
 }
-@keyframes orbita-omnitrix { to { transform: rotate(360deg); } }
 @media (max-width: 900px) {
     .omnitrix-portada { gap: 1.2rem; padding: 2rem; }
     .omnitrix-nucleo { flex-basis: 170px; height: 170px; }
-    .omnitrix-emblema { width: 120px; height: 120px; }
-    .omnitrix-emblema span { width: 55px; height: 65px; }
 }
 @media (max-width: 600px) {
     [data-testid="stMainBlockContainer"] { padding-top: 2.5rem; }
-    .omnitrix-portada { min-height: 290px; padding: 1.5rem; align-items: flex-start; }
+    .omnitrix-portada { min-height: 290px; padding: 1.5rem; flex-direction: column; align-items: flex-start; }
     .omnitrix-portada-texto { max-width: 100%; }
     .omnitrix-portada .omnitrix-etiqueta { max-width: 220px; line-height: 1.7; }
     .omnitrix-portada .omnitrix-lema { font-size: 2.25rem; }
-    .omnitrix-portada .omnitrix-invitacion { max-width: 75%; font-size: 0.8rem; }
-    .omnitrix-nucleo { position: absolute; right: -45px; bottom: -60px; width: 165px; height: 165px; opacity: 0.3; }
+    .omnitrix-portada .omnitrix-invitacion { max-width: 100%; font-size: 0.8rem; }
+    .omnitrix-nucleo { flex: 0 0 auto; align-self: center; width: 150px; height: 150px; }
     .omnitrix-portada::after { left: 1.5rem; }
     .st-key-ficha_alien { padding: 0.5rem; }
     .st-key-imagen_alien img { max-height: 300px; }
 }
 @media (prefers-reduced-motion: reduce) {
-    .omnitrix-orbita { animation: none; }
     .st-key-seccion [role="radiogroup"] label { transition: none; }
 }

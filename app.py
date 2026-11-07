@@ -1,6 +1,7 @@
 """Interfaz de catálogo, análisis y consulta del Archivo Omnitrix."""
 
 import json
+from base64 import b64encode
 import streamlit as st
 from PIL import Image
 
@@ -225,13 +226,16 @@ def mostrar_archivo():
 
 
 def main():
-    st.set_page_config(page_title="Archivo Omnitrix", page_icon="🟢", layout="wide")
+    ruta_simbolo = RAIZ_PROYECTO / "assets/omnitrix.png"
+    st.set_page_config(page_title="Archivo Omnitrix", page_icon=str(ruta_simbolo), layout="wide")
+    simbolo_omnitrix = b64encode(ruta_simbolo.read_bytes()).decode("ascii")
     estilos = (RAIZ_PROYECTO / "assets" / "estilos.css").read_text(encoding="utf-8")
     st.markdown(f"<style>{estilos}</style>", unsafe_allow_html=True)
 
     with st.sidebar:
         st.markdown(
-            '<div class="omnitrix-marca"><span aria-hidden="true">⌬</span>'
+            '<div class="omnitrix-marca">'
+            f'<img src="data:image/png;base64,{simbolo_omnitrix}" alt="" aria-hidden="true">'
             '<div>ARCHIVO<strong>OMNITRIX</strong></div></div>',
             unsafe_allow_html=True,
         )
@@ -253,7 +257,7 @@ def main():
         return
 
     st.markdown(
-        """
+        f"""
         <div class="omnitrix-portada">
             <div class="omnitrix-portada-texto">
                 <p class="omnitrix-etiqueta">EL ARCHIVO DE LAS TRANSFORMACIONES</p>
@@ -261,10 +265,7 @@ def main():
                 <p class="omnitrix-invitacion">Descubre sus habilidades. Encuentra tu transformación.</p>
             </div>
             <div class="omnitrix-nucleo" aria-hidden="true">
-                <div class="omnitrix-orbita"></div>
-                <div class="omnitrix-emblema"><span></span></div>
-                <span class="omnitrix-cruz omnitrix-cruz-superior">+</span>
-                <span class="omnitrix-cruz omnitrix-cruz-inferior">+</span>
+                <img class="omnitrix-emblema" src="data:image/png;base64,{simbolo_omnitrix}" alt="">
             </div>
         </div>
         """,
