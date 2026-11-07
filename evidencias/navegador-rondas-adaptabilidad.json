@@ -1,0 +1,38 @@
+[
+  {
+    "pantalla": "escritorio",
+    "modo": "Control maestro",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  },
+  {
+    "pantalla": "escritorio",
+    "modo": "Héroe bajo presión",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  },
+  {
+    "pantalla": "escritorio",
+    "modo": "Adaptabilidad",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  },
+  {
+    "pantalla": "movil",
+    "modo": "Control maestro",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  },
+  {
+    "pantalla": "movil",
+    "modo": "Héroe bajo presión",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  },
+  {
+    "pantalla": "movil",
+    "modo": "Adaptabilidad",
+    "resultado": "correcto",
+    "evaluacion": "simulada-sin-api"
+  }
+]

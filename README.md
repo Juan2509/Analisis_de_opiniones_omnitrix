@@ -85,11 +85,13 @@ Elegir alien y/o sentimiento, o dejar «Todos». Los aliens disponibles son los 
 
 ### Desafíos del Omnitrix
 
-En el panel izquierdo, abrir **Desafíos del Omnitrix**. Se sortea una de 12 situaciones locales (incendio en un hangar, rescate submarino, robots descontrolados y otras). **Otra situación** elige una distinta de la anterior sin usar la API.
+El panel izquierdo muestra **Analizar opinión**, **Desafíos del Omnitrix** y **Consultar archivo**, en ese orden. Al abrir Desafíos aparece un menú: elegir **Control maestro** (las 63 transformaciones), **Héroe bajo presión** (tres aliens distintos elegidos al azar) o **Adaptabilidad** (un único alien asignado al azar) y pulsar **Iniciar**. No se presenta una misión antes de iniciar.
 
-Elegir una de las 63 transformaciones, revisar su ficha y escribir opcionalmente una estrategia de hasta 1000 caracteres. **Evaluar mi elección** consulta Gemini una vez y muestra un veredicto, ventajas, riesgos y una posible resolución. Puede haber varias elecciones válidas. La evaluación es una interpretación de IA de un juego de ficción, no una simulación física ni opiniones de otros jugadores.
+Se sortea una de 12 situaciones locales (incendio en un hangar, rescate submarino, robots descontrolados y otras). El sorteo se conserva al editar o navegar. No se permite saltar la situación durante la ronda. En los modos aleatorios los aliens no se eligen por sus poderes ni su adecuación a la misión.
 
-Se conserva la misión, elección, explicación y último resultado al navegar durante la sesión; modificar la respuesta retira la evaluación anterior y otra misión limpia la explicación. Si falla la API, los datos permanecen disponibles y solo se reintenta al pulsar el botón. Las partidas no se escriben en `datos/opiniones.json`. Utiliza la misma configuración Gemini y cuota del análisis de opiniones, sin proveedores alternativos ni facturación adicional habilitada por el programa.
+En Control maestro y Héroe bajo presión se elige un alien y la estrategia es opcional. En Adaptabilidad no hay selector: se muestra el alien asignado y se debe explicar cómo resolver la situación, con entre 5 y 1000 caracteres. La IA evalúa el uso de sus capacidades, sin penalizar al jugador por no poder elegir otro alien. El botón Evaluar consulta Gemini una vez y muestra un veredicto, ventajas, riesgos y una posible resolución. Puede haber varias soluciones válidas. La evaluación es una interpretación de IA de un juego de ficción, no una simulación física ni opiniones de otros jugadores.
+
+Al recibir una evaluación válida termina la ronda y la respuesta queda fija. Al final aparecen **Volver a jugar**, que sortea una situación diferente y renueva los aliens aleatorios, y **Volver al menú de modos**. La nueva ronda limpia la elección y la explicación. Si falla la API, no termina la ronda: conserva los datos para corregir o reintentar explícitamente. La partida y el resultado se conservan al navegar durante la sesión; no se escriben en `datos/opiniones.json`. Utiliza la misma configuración Gemini y cuota del análisis de opiniones.
 
 ## Datos, respaldo y alcance
 
@@ -140,7 +142,11 @@ La comprobación opcional de la entrada en navegador está en `tests/verificar_i
 - [Salida de las 71 pruebas con la pantalla de activación](evidencias/pruebas-inicio-windows.txt).
 - [Salida de las 72 pruebas con el catálogo ampliado a 63 fichas](evidencias/pruebas-catalogo-ampliado-windows.txt).
 - [Salida de las 82 pruebas con Desafíos del Omnitrix](evidencias/pruebas-desafios-windows.txt).
-- [Comprobación del modo Desafíos en escritorio y móvil](evidencias/navegador-desafios.json). Con los requisitos del navegador ya preparados, se reproduce mediante `node tests/verificar_desafios.cjs http://127.0.0.1:PUERTO`; revisa navegación, selección, plan y cambio de misión sin pulsar Evaluar ni consumir API.
+- [Salida de las 85 pruebas con menú y submodos de desafíos](evidencias/pruebas-submodos-windows.txt).
+- [Salida de las 87 pruebas con rondas cerradas y Adaptabilidad](evidencias/pruebas-rondas-adaptabilidad-windows.txt).
+- [Tres submodos, final de ronda, rejuego y retorno al menú en escritorio/móvil](evidencias/navegador-rondas-adaptabilidad.json). Evaluaciones simuladas, sin API. Para reproducir: iniciar un servidor separado con `streamlit run tests/app_desafios_visual.py --server.port 54167` y ejecutar `node tests/verificar_desafios.cjs http://127.0.0.1:54167 --simulado`. El servidor de prueba rotula sus resultados como simulados y no es la aplicación de entrega.
+- [Revisión de menú, Control maestro y Héroe bajo presión en escritorio y móvil](evidencias/navegador-submodos.json).
+- [Comprobación histórica del modo Desafíos en escritorio y móvil](evidencias/navegador-desafios.json). Corresponde a la versión anterior al cierre por rondas; el script vigente se ejecuta contra el servidor visual simulado indicado arriba.
 - [Comprobación en navegador: clic, Enter, móvil y movimiento reducido](evidencias/navegador-inicio.json).
 - [Comprobación de audio y transición continua, incluido bloqueo de autoplay](evidencias/navegador-inicio-audio.json).
 - [Registro histórico de 65 pruebas anterior a Gemini](evidencias/pruebas-windows.txt).

@@ -248,7 +248,7 @@ def main():
         st.divider()
         seccion = st.radio(
             "Secciones",
-            ("Analizar opinión", "Consultar archivo", "Desafíos del Omnitrix"),
+            ("Analizar opinión", "Desafíos del Omnitrix", "Consultar archivo"),
             key="seccion",
         )
         st.divider()
