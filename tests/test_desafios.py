@@ -124,7 +124,7 @@ class PruebasInterfazDesafios(unittest.TestCase):
 
     def test_menu_exige_elegir_modo_y_pulsar_iniciar(self):
         app = self.abrir(modo=None)
-        self.assertEqual(app.radio(key="seccion").options, ["Analizar opinión", "Desafíos del Omnitrix", "Conocimiento alienígena", "Consultar archivo"])
+        self.assertEqual(app.radio(key="seccion").options, ["Analizar opinión", "Desafíos del Omnitrix", "Conocimiento alienígena", "Interpretación alienígena", "Consultar archivo"])
         self.assertTrue(app.button(key="iniciar_desafio").disabled)
         self.assertFalse(app.selectbox)
         app.radio(key="modo_desafio").set_value("Héroe bajo presión").run()

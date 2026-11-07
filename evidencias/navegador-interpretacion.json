@@ -1,0 +1,34 @@
+[
+  {
+    "ancho": 1440,
+    "modo": "Mi alien favorito",
+    "resultado": "correcto",
+    "evaluacion": "simulada",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "ancho": 1440,
+    "modo": "Tu afinidad alienígena",
+    "resultado": "correcto",
+    "evaluacion": "simulada",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "ancho": 390,
+    "modo": "Mi alien favorito",
+    "resultado": "correcto",
+    "evaluacion": "simulada",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "ancho": 390,
+    "modo": "Tu afinidad alienígena",
+    "resultado": "correcto",
+    "evaluacion": "simulada",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  }
+]

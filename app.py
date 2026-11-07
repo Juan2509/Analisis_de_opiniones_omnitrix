@@ -13,6 +13,7 @@ from analisis import ErrorAnalisis, analizar_opinion
 from pantalla_inicio import mostrar_inicio
 from interfaz_desafios import mostrar_desafios
 from interfaz_conocimiento import mostrar_conocimiento
+from interfaz_interpretacion import mostrar_interpretacion
 
 
 def cargar_imagen_local(ruta: str | None) -> Image.Image | None:
@@ -257,7 +258,7 @@ def main():
         st.divider()
         seccion = st.radio(
             "Secciones",
-            ("Analizar opinión", "Desafíos del Omnitrix", "Conocimiento alienígena", "Consultar archivo"),
+            ("Analizar opinión", "Desafíos del Omnitrix", "Conocimiento alienígena", "Interpretación alienígena", "Consultar archivo"),
             key="seccion",
         )
         st.divider()
@@ -276,6 +277,10 @@ def main():
 
     if seccion == "Conocimiento alienígena":
         mostrar_conocimiento(cargar_imagen_local)
+        return
+
+    if seccion == "Interpretación alienígena":
+        mostrar_interpretacion(mostrar_ficha)
         return
 
     st.markdown(

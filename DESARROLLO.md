@@ -13,6 +13,8 @@ Estado documentado: 7 de noviembre de 2026. Instalación y arranque en [INSTALAC
 | `interfaz_desafios.py` | Menú de submodos, asignaciones, formulario, cierre de ronda y rejuego. |
 | `conocimiento.py` | Preguntas por categoría, alias, prompt/esquema de corrección y puntuación local. |
 | `interfaz_conocimiento.py` | Menú, ronda escrita de 60 segundos, reloj independiente y revisión final. |
+| `interpretacion.py` | Banco de 30 preguntas, sorteo de seis temas, prompt y contrato de afinidad simbólica. |
+| `interfaz_interpretacion.py` | Submodos favorito/afinidad, navegación editable, revisión y resultado de sesión. |
 | `audio_cuestionario.py` y `assets/aviso_tiempo.js` | Audio local de los últimos cuatro segundos; deduplicación por ronda en el documento. |
 | `pantalla_inicio.py` | Componente Streamlit v2 con imagen/audio embebidos y activación de sesión. |
 | `assets/inicio/` | HTML, CSS y JavaScript de las dos pulsaciones y la transición. |
@@ -90,6 +92,14 @@ Menú de cuatro categorías con selección e Iniciar. `generar_preguntas` sortea
 Al pulsar Evaluar respuestas con IA, `evaluar_respuestas` envía todas las respuestas de esa ronda en una solicitud a `ejecutar_estructurado`. `conocimiento-v2` distingue instrucciones de datos, acepta alias/traducciones y evalúa habilidades por significado. Cada entrada recibe ID, categoría, texto y ficha compacta con nombres, habilidades, especie, estado y alias. No se envían imágenes, credenciales, opiniones ni partidas anteriores.
 
 `EvaluacionConocimiento` valida entre 1 y 63 correcciones, con ID y veredicto (`correcta`, `parcial`, `incorrecta`, `no_evaluable`), explicación (1–400 caracteres) y referencia (1–300). Se exige correspondencia exacta de IDs, sin duplicados ni omisiones; se recompone el orden local. La app calcula 1/0,5/0 puntos y excluye los casos no evaluables. No se repite IA al mostrar/navegar resultados; un error conserva respuestas y permite un reintento explícito. Desde `conocimiento-v2` se usa `ESQUEMA_API` explícito y sencillo, mediante el parámetro opcional `esquema_api` de `ejecutar_estructurado`; las restricciones detalladas siguen en Pydantic local. `include_raw=True` permite comprobar finalización por tokens y errores de parseo sin mostrar ni persistir el contenido privado. Las llamadas anteriores de opiniones/desafíos conservan su ruta por defecto. Límites semánticos, alias y guía de pruebas visuales en [datos/CONOCIMIENTO.md](datos/CONOCIMIENTO.md).
+
+## Interpretación alienígena
+
+`datos/interpretacion.json` tiene versión 1 y exactamente 30 preguntas, cinco por cada uno de los seis temas definidos en `interpretacion.TEMAS`. Se valida el banco sin modificarlo. `sortear_preguntas` elige una por tema y al repetir excluye las seis anteriores. El modo favorito no necesita cargar el banco.
+
+`interpretacion_ronda` conserva modo, ID, etapa, índice, preguntas, respuestas, favorito/motivo y evaluación. Las etapas son favorito o preguntas → revisión (afinidad) → resultado. Callbacks conservan texto al navegar; el resultado usa una instantánea del envío. No hay temporizador ni escritura en el archivo de opiniones.
+
+`interpretar` envía una ficha en favorito, o el catálogo compacto de 63 en afinidad, con la explicación o seis respuestas. Usa `ejecutar_estructurado` con esquema API explícito sencillo, validación estricta `Interpretacion` y prompt `interpretacion-v1`. Se exige conservar el favorito, principal existente, alternativa diferente en afinidad y cobertura exacta de los IDs de respuestas. La IA explica analogías recreativas con capacidades, sin diagnosticar ni inferir rasgos sensibles; no se usa puntuación. Fallos conservan la edición/revisión y solo un clic explícito reintenta. [Guía y pruebas](datos/INTERPRETACION.md).
 
 ## Entrada audiovisual
 

@@ -1,6 +1,6 @@
 # Archivo Omnitrix
 
-Aplicación académica de Ben 10 para explorar **63 transformaciones**, analizar opiniones con Gemini, resolver **32 situaciones** en tres submodos de desafíos y jugar un cuestionario escrito de conocimiento alienígena. La interfaz funciona en el navegador y utiliza Python, Streamlit, LangChain, Pydantic y archivos JSON locales.
+Aplicación académica de Ben 10 para explorar **63 transformaciones**, analizar opiniones con Gemini, resolver **32 situaciones**, jugar un cuestionario de conocimiento e interpretar tu afinidad alienígena mediante respuestas escritas. La interfaz funciona en el navegador y utiliza Python, Streamlit, LangChain, Pydantic y archivos JSON locales.
 
 Actualizado el 7 de noviembre de 2026.
 
@@ -16,6 +16,7 @@ Actualizado el 7 de noviembre de 2026.
 | [Catálogo y situaciones](datos/README.md) | Lista de los 63 aliens y alcance de las 32 misiones. |
 | [Especies y fuentes](datos/ESPECIES.md) | Revisión de las 63 fichas, especies sin nombre confirmado y casos especiales. |
 | [Conocimiento alienígena](datos/CONOCIMIENTO.md) | Categorías, reloj, alias y corrección escrita por IA. |
+| [Interpretación alienígena](datos/INTERPRETACION.md) | Alien favorito, seis preguntas por temas y afinidad recreativa con IA. |
 | [Contexto](CONTEXTO_PROYECTO.md) y [plan](PLAN_DESARROLLO.md) | Estado vigente, decisiones y continuidad. |
 
 ## Qué incluye
@@ -28,6 +29,7 @@ Actualizado el 7 de noviembre de 2026.
 - Desafíos de combate, seguridad, rescate y resolución creativa; incluyen escenarios originales con Vilgax y otros villanos.
 - Tres submodos: **Control maestro**, **Héroe bajo presión** y **Adaptabilidad**.
 - Conocimiento alienígena: **Nombres**, **Habilidades**, **Especie** y **General**, con respuestas escritas, 60 segundos y revisión conjunta por Gemini.
+- Interpretación alienígena: **Mi alien favorito** y **Tu afinidad alienígena**, sin tiempo ni puntuaciones, con análisis recreativo basado en tus motivos.
 
 Se adapta el taller de opiniones sobre futbolistas a Ben 10; según lo comunicado por el estudiante, en clase se permitió cambiar el tema manteniendo los requisitos técnicos. Los desafíos y la presentación audiovisual son ampliaciones posteriores.
 
@@ -142,9 +144,15 @@ Selecciona **Nombres**, **Habilidades**, **Especie** o **General** y pulsa **Ini
 
 Al terminar pulsa **Evaluar respuestas con IA**. Gemini revisa el conjunto aceptando alias, traducciones y formulaciones equivalentes; cada resultado incluye tu respuesta, referencia y explicación. Correctas suman 1 punto, parciales 0,5 e incorrectas 0; los casos inciertos quedan por revisar y no puntúan. Puedes volver a jugar o regresar al menú. Las rondas viven en sesión, no en el archivo de opiniones. [Reglas, alias y detalles](datos/CONOCIMIENTO.md).
 
+### Interpretación alienígena
+
+Selecciona un submodo y pulsa **Iniciar**. **Mi alien favorito** interpreta tus motivos al elegir una transformación. **Tu afinidad alienígena** sortea seis preguntas abiertas de un banco de 30, una por tema: problemas, colaboración, valores, riesgos, aprendizaje y motivación. Puedes volver atrás, editar y revisar todo antes de pedir el análisis.
+
+La IA propone una conexión con el favorito o un alien principal y una alternativa en afinidad, explicando su relación con tus respuestas. Es recreativo, sin diagnósticos, porcentajes ni temporizador. Solo el botón final usa Gemini; respuestas y resultados permanecen en sesión. [Uso, límites y detalles](datos/INTERPRETACION.md).
+
 ### Consultar archivo
 
-Es la última opción del panel, después de Analizar opinión, Desafíos y Conocimiento alienígena. Filtra por alien y/o sentimiento, o selecciona Todos. La tabla, los recuentos y **Descargar resultados filtrados (JSON)** utilizan la misma selección. Consultar no llama a la IA ni escribe datos.
+Es la última opción del panel, después de Analizar opinión, Desafíos, Conocimiento e Interpretación alienígena. Filtra por alien y/o sentimiento, o selecciona Todos. La tabla, los recuentos y **Descargar resultados filtrados (JSON)** utilizan la misma selección. Consultar no llama a la IA ni escribe datos.
 
 ## Datos y recursos
 
@@ -152,6 +160,7 @@ Es la última opción del panel, después de Analizar opinión, Desafíos y Cono
 | --- | --- |
 | `datos/aliens.json` | 63 fichas con IDs estables; [catálogo completo](datos/README.md). |
 | `datos/desafios.json` | 32 situaciones originales, IDs d001–d032 y objetivos. |
+| `datos/interpretacion.json` | 30 preguntas originales en seis temas; seis por partida de afinidad. |
 | `datos/opiniones.json` | Opiniones pertinentes guardadas y sus metadatos. |
 | `datos/ejemplos/` | 16 opiniones ficticias y seis casos de evaluación, con referencias humanas. |
 | `assets/aliens/` | 63 PNG, alternativa local y [fuentes](assets/aliens/README.md). |

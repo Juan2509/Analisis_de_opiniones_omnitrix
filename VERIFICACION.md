@@ -4,6 +4,10 @@ Estado consolidado el 7 de noviembre de 2026. El [registro histórico](docs/VERI
 
 ## Resumen vigente
 
+Interpretación alienígena: **118 pruebas aprobadas** en Windows, 123,126 s ([registro](evidencias/pruebas-interpretacion-windows.txt)), incluidas 11 nuevas de banco/sorteo, entradas y salidas, adaptador real con transporte interceptado, menús, edición/revisión, conservación al navegar, resultado fijo, rejuego y error/reintento. Tras ajustar los botones para poder continuar sin desenfocar manualmente el campo, las 11 del módulo volvieron a pasar en 24,378 s (salida observada sin log adicional). No se consumió cuota de IA; queda pendiente comprobar la calidad de interpretaciones reales, incluida la cautela ante datos vagos o contradictorios. [Uso y límites](datos/INTERPRETACION.md).
+
+Navegador de interpretación: cuatro recorridos aprobados (dos submodos, escritorio 1440×1000 y móvil 390×1000), con servidor visual simulado identificado. Se comprobaron selección/Iniciar, favorito y motivos, seis respuestas, navegación anterior con texto conservado, revisión, resultado e imagen decodificada, alternativa y retorno al menú; sin desbordamiento, errores JavaScript ni peticiones externas. Se inspeccionaron capturas de resultado de escritorio y revisión móvil. [Registro](evidencias/navegador-interpretacion.json). Los módulos auxiliares requirieron reiniciar el servidor visual tras el ajuste del formulario.
+
 Umbral vigente: **cuatro segundos**, por petición posterior del usuario. La prueba aislada del renderer verifica silencio a cinco, reproducción única a cuatro, salto a tres, rejuego y desbloqueo por gesto. Las comprobaciones de umbrales anteriores que siguen se conservan como historial.
 
 Umbral del aviso ajustado posteriormente de cinco a **tres segundos**. La prueba `node tests/verificar_aviso_tiempo.cjs` comprueba silencio a cinco/cuatro, reproducción única a tres, salto a dos, rejuego y desbloqueo por gesto. El registro de navegador del párrafo siguiente corresponde a la versión anterior de cinco segundos; no se presenta como una nueva ejecución del umbral de tres.
@@ -28,7 +32,7 @@ Corrección posterior de posición inicial: cinco casos del navegador aprobados 
 
 | Comprobación | Resultado y alcance |
 | --- | --- |
-| Última suite completa archivada | **107 pruebas aprobadas** en Windows, 88,987 s. [Salida](evidencias/pruebas-correccion-evaluacion-conocimiento-windows.txt). |
+| Última suite completa archivada | **118 pruebas aprobadas** en Windows, 123,126 s. [Salida](evidencias/pruebas-interpretacion-windows.txt). |
 | Fichas comparables posteriores | 15 pruebas del juego y 20 de interfaz aprobadas; correspondencia de las tres pestañas, imagen y habilidades. Revisión de escritorio/móvil correcta. Salidas observadas durante el desarrollo, sin un archivo adicional de log permanente. |
 | Ampliación posterior de situaciones | 15 pruebas del juego aprobadas, 33,647 s; 32 situaciones válidas, IDs/títulos únicos y las 12 originales intactas. Salida observada durante el desarrollo, sin log permanente adicional. |
 | Catálogo | 63 fichas/PNG; hashes, dimensiones y correspondencia revisados; los 20 registros originales conservados. [Suite de ampliación](evidencias/pruebas-catalogo-ampliado-windows.txt). |

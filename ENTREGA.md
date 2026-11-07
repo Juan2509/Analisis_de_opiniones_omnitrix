@@ -29,6 +29,7 @@ La rúbrica conservada del taller distribuye: catálogo/asociación 10, prompt 2
 - Tres fichas consultables antes de elegir en Héroe bajo presión.
 - Cierre de ronda, resultado fijo, rejuego con otra situación y retorno al menú.
 - Conocimiento alienígena con Nombres/Habilidades/Especie/General, respuestas escritas, 60 segundos y corrección semántica conjunta por Gemini.
+- Interpretación alienígena: motivos del favorito y afinidad a partir de seis preguntas sorteadas por temas entre 30, con revisión y resultado recreativo justificado.
 
 Estas ampliaciones complementan el trabajo de sentimientos y persistencia. Las partidas de desafíos permanecen en sesión; no se mezclan con las opiniones guardadas. No se añadió un modo de opiniones de otras personas.
 
