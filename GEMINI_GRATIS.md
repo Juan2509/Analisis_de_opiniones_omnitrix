@@ -2,6 +2,8 @@
 
 La aplicación está adaptada a Gemini Developer API mediante LangChain. No utiliza la clave anterior de OpenAI, no llama a Vertex AI y no cambia automáticamente de proveedor o modelo. Para mantener el uso sin pago, la clave debe pertenecer a un proyecto **Free Tier sin facturación vinculada**.
 
+Esta configuración se comparte entre el análisis de opiniones y los tres submodos de Desafíos del Omnitrix, tanto en Windows como en el arranque propuesto para Linux. Los comandos de instalación y ejecución están en [INSTALACION.md](INSTALACION.md). El usuario confirmó que Gemini funciona en su equipo; una cuenta nueva debe comprobar su propio acceso y cuota.
+
 ## 1. Abrir Google AI Studio
 
 Entrar en [Google AI Studio — claves](https://aistudio.google.com/apikey) e iniciar sesión con una cuenta Google que permita usar el servicio. Aceptar las condiciones si aparecen. No es necesario contratar Google AI Pro o Ultra para este proyecto.
@@ -36,11 +38,14 @@ El modelo preparado es `gemini-3.5-flash-lite`; admite [salida estructurada](htt
 
 ## 4. Reiniciar y probar
 
-1. En la ventana de inicio, pulsar **Detener y cerrar**.
-2. Abrir `Iniciar Archivo Omnitrix.vbs` con doble clic.
-3. Elegir Fuego y enviar: «Fuego es el mejor alien».
+1. Si se usa el controlador Windows, pulsar **Detener y cerrar** y abrir de nuevo `Iniciar Archivo Omnitrix.vbs`. Con arranque por terminal, detener con Ctrl+C y volver a ejecutar el comando Windows o Linux de la guía de instalación.
+2. Pulsar dos veces el símbolo del Omnitrix, con clic o Enter, para acceder al dashboard.
+3. En Analizar opinión, elegir Fuego y enviar: «Fuego es el mejor alien».
 4. Revisar sentimiento y razón, y confirmar que aparezca «Opinión guardada en el Archivo Omnitrix».
 5. En Consultar archivo, filtrar por Fuego y comprobar el registro.
+6. En Desafíos, elegir un submodo e Iniciar. Evaluar una estrategia para comprobar también ese contrato; en Adaptabilidad hay que escribir el plan. Al terminar se puede volver a jugar o regresar al menú.
+
+Las situaciones, sorteos, fichas e imágenes son locales. Solo el envío de una opinión o el botón Evaluar consulta Gemini. Navegar, leer resultados o consultar el archivo no repite llamadas. Una evaluación válida cierra la ronda; un error permite reintentar explícitamente. La API tiene cuota compartida por ambos usos.
 
 Se conserva el contrato del taller: `ChatPromptTemplate`, composición con `|`, `invoke`, Pydantic, pertinencia, cuatro sentimientos y persistencia. Los ejemplos no sustituyen a los resultados reales.
 
@@ -57,4 +62,4 @@ La modalidad gratuita tiene límites: no es uso ilimitado ni se garantiza dispon
 
 Se reemplazó `langchain-openai` por `langchain-google-genai==4.4.3`, se adaptaron mensajes/errores y se actualizó el diagnóstico del lanzador. `vertexai=False` fuerza Gemini Developer API; `max_retries=1` significa un solo intento total en esta integración. Timeout: 30 segundos. El adaptador y su parser se prueban con transporte simulado, sin inferencias reales ni consumo de cuota.
 
-La instalación de paquetes no habilita facturación. La configuración de una clave propia y la evaluación real quedan pendientes del usuario. La implementación se basa en la [integración oficial de LangChain](https://docs.langchain.com/oss/python/integrations/chat/google_generative_ai).
+La instalación de paquetes no habilita facturación. El funcionamiento informado por el usuario no sustituye una evaluación sistemática de sentimientos o estrategias, que sigue pendiente de registro. La implementación se basa en la [integración oficial de LangChain](https://docs.langchain.com/oss/python/integrations/chat/google_generative_ai). Las pruebas de navegador del juego usan un servidor separado con respuestas explícitamente simuladas; ese servidor no es la aplicación de entrega.

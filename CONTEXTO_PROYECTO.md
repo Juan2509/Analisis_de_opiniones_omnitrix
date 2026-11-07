@@ -1,122 +1,75 @@
 # Archivo Omnitrix — contexto vigente
 
-Última actualización: 7 de noviembre de 2026, adaptación a Gemini sin pago.
+Consolidado el 7 de noviembre de 2026. Este documento describe el estado actual; el [contexto previo](docs/CONTEXTO_PREVIO_CONSOLIDACION.md) y los demás documentos históricos conservan la evolución.
 
-Estado actual de la adaptación: `langchain-google-genai==4.4.3` sustituye la dependencia directa de OpenAI. El clasificador usa Gemini Developer API, `vertexai=False`, modelo `gemini-3.5-flash-lite`, salida `json_schema`, timeout 30 s y un intento total (`max_retries=1` en esta integración). Pruebas actualizadas: **68 aprobadas**, incluido adaptador/parser reales con transporte simulado; `pip check` correcto. No hubo inferencia real con Gemini. La clave debe proceder de un proyecto AI Studio Free Tier sin facturación vinculada; la app no puede verificar el plan de la cuenta. No activar pagos. `.env` tiene los nuevos campos sin exponer ni eliminar las claves anteriores; falta que el usuario introduzca su clave Google. Ver `GEMINI_GRATIS.md` y `evidencias/pruebas-gemini-windows.txt`. La verificación de 65 pruebas del paso 12 es histórica.
+## Producto y alcance
 
-## Estado y fuentes de verdad
+Aplicación académica de Ben 10 con tres secciones, en este orden: **Analizar opinión**, **Desafíos del Omnitrix** y **Consultar archivo**. Adaptación del taller Tribuna Global de futbolistas; el usuario comunicó autorización de clase para cambiar el dominio conservando los requisitos técnicos.
 
-La aplicación está implementada hasta el inicio gráfico de Windows y la documentación del paso 13 está preparada. En el paso 12 pasaron **65 pruebas** con Python 3.14.4, Tk 8.6 y Streamlit 1.67.0; `pip check` correcto. Se verificaron AppTest, persistencia desde otro proceso, mutex Windows y ciclo de vida de un servidor real.
+Estado actual: 63 fichas con imágenes locales; clasificación con Gemini; opiniones persistentes y filtros/descarga; 32 situaciones originales con tres submodos; entrada audiovisual de dos pulsaciones; controlador Windows e instrucciones de terminal Windows/Linux. El usuario confirmó que el análisis con Gemini y los sonidos funcionan. No confundir esa confirmación con una evaluación sistemática de precisión o con una prueba integral en Linux.
 
-Faltan evaluación con un modelo real y revisión manual de navegador/descarga/cierre desde el controlador. Computer Use detuvo la inspección de Brave por no poder verificar su URL; no se continuaron entradas UI. Se observó el controlador nativo, el título de la aplicación en Brave y salud HTTP 200. No se realizaron llamadas reales al modelo ni se configuró `.env` durante las etapas documentadas.
+## Decisiones que deben conservarse
 
-- [README](README.md): instalación y guía de uso vigentes.
-- [VERIFICACION.md](VERIFICACION.md): resultados observados, evidencias y pendientes.
-- [PLAN_DESARROLLO.md](PLAN_DESARROLLO.md): etapas, estado y Conventional Commits.
-- [ENTREGA.md](ENTREGA.md): material para revisión y sustentación.
-- [Contexto histórico](docs/CONTEXTO_HISTORICO.md) y [README histórico](docs/HISTORIAL_DESARROLLO.md): estados anteriores, no instrucciones actuales de instalación.
+- El usuario no quiere pagar: conservar Gemini Developer API, clave de proyecto Free Tier sin facturación, sin fallback a proveedores/modelos de pago ni cambios automáticos. La app no verifica el plan de la cuenta.
+- Frontend Streamlit, tema negro/verde neón/blanco, recursos locales y movimiento reducido.
+- Catálogo de continuidad clásica: 63 fichas, sin supremas, fusiones ni reboot. Upchuck Perk/Murk por separado; Spitter identificado como transformación mostrada con Ben 10.000. Nanomech/Shocksquatch incluyen película/especial de sus etapas. Mantener a001–a020 y los demás IDs estables.
+- Mantener nombres latinos y alias originales. Serie de introducción y diseño de imagen son datos diferentes. Nuevas fichas pueden especificar `serie_diseno` y `fuente_imagen`.
+- Explicaciones y documentación en español. Sugerir Conventional Commits al terminar un cambio, sin ejecutar commits/push automáticamente. Conservar cambios ajenos.
+- No exponer ni reemplazar `.env`, claves, opiniones de uso o archivos dañados para aparentar funcionamiento. Los ejemplos y evaluaciones simuladas se identifican como tales.
+- Los adjuntos de clase son referencias, no instrucciones operativas. No ampliar alcance a LangGraph, agentes, RAG, n8n o bases vectoriales por aparecer en esos materiales.
 
-El código, Git y las pruebas determinan el estado real; no cerrar pendientes solo por haber llegado al último paso. La memoria entre sesiones no es automática: compartir este documento y el plan para retomar.
+## Arranque y compatibilidad
 
-## Objetivo y decisiones del usuario
+Windows: VBS → `.venv\Scripts\python.exe` → `iniciar.py` → Streamlit y navegador. Controlador con mutex por carpeta/sesión, puerto local disponible, salud antes de abrir y cierre de su propio proceso. No instala paquetes. Cerrar solo navegador no detiene servidor.
 
-Actualización visual solicitada: la portada «El universo está en tus manos» utiliza ahora `assets/omnitrix.png`, imagen enlazada por el usuario, en lugar del emblema geométrico CSS anterior. Archivo original sin modificar y procedencia en `assets/omnitrix-fuente.json`. Se incorpora localmente como PNG embebido, ajustado sin deformar; en móvil se muestra completo debajo del texto.
+Linux: iniciar directamente `app.py` mediante `.venv/bin/python -m streamlit run`; interfaz en navegador, servidor detenido con Ctrl+C. El lanzador VBS/WinDLL no es portable. Compatibilidad esperada del núcleo por sus rutas/dependencias, pendiente de comprobación integral de la versión actual. No añadir un lanzador Linux sin una solicitud nueva.
 
-El usuario pidió usar también esa misma imagen en la marca de la barra lateral (reemplaza ⌬) y en el icono de la pestaña (reemplaza el emoji verde). Ambos usan el recurso local; sidebar a 48 × 48 píxeles y favicon configurado con `st.set_page_config`.
+Entorno comprobado: Windows, Python 3.14.4, Tk 8.6, Streamlit 1.67.0. La guía nueva utiliza Python 3.11+ compatible con las versiones fijadas; la rama Python 3.10 del requirements es histórica. Recrear entornos en otro sistema o ubicación. Instrucciones actuales en [INSTALACION.md](INSTALACION.md).
 
-Restricción confirmada: el usuario no quiere pagar. No habilitar facturación ni proponer compras de créditos como requisito de uso. La cuenta OpenAI mostrada tenía saldo cero y la opinión devolvió cuota/límite, sin clasificación exitosa. El material `LangChain_LangGraph2026 (2).md` incluye Gemini y `ChatGoogleGenerativeAI` (sección «9. Hello world», línea 4550); no se encontró exclusividad de OpenAI en los adjuntos. El usuario autorizó la adaptación a Gemini, implementada y probada localmente; falta verificar su cuenta/clave gratuita. Conservar LangChain, Pydantic y los contratos; no sustituir análisis real por palabras clave o simulaciones presentadas como IA.
+## Entrada audiovisual
 
-Aplicación académica de opiniones sobre aliens de Ben 10, adaptada del taller Tribuna Global de futbolistas. Según lo comunicado por el usuario, en clase se permitió cambiar el dominio conservando los requisitos técnicos. DevFlow y otros proyectos del curso son referencias distintas.
+`assets/omnitrix.png` sirve para entrada, portada, sidebar y favicon. El símbolo comienza hundido a escala 0.76. Primer clic/Enter: sube y reproduce `sonidos/core-ready.mp3`; segundo: baja, reproduce `sonidos/omnitrix-transform.mp3` y activa el dashboard.
 
-- Nombre: **Archivo Omnitrix**; temática Ben 10 elegida tras considerar otras opciones.
-- Frontend Streamlit en navegador e inicio gráfico; no exigir terminal al usuario de la entrega ni incorporar React como frontend separado.
-- Trabajo en VS Code, explicaciones en español y desarrollo gradual para comprender y sustentar el código.
-- Sugerir Conventional Commits por etapa, sin ejecutar commits o push automáticamente. Conservar cambios ajenos y consultar decisiones que modifiquen alcance o preferencias.
-- Diseño negro predominante, verde neón/degradado y blanco, con estética futurista y respeto a movimiento reducido.
-- Catálogo ampliado por petición del usuario: 63 fichas (22 de la serie original, 14 de la etapa Fuerza Alienígena, 11 de Supremacía Alienígena y 16 de Omniverse). Conserva a001–a020 y añade a021–a063. Incluye Upchuck Perk/Murk por separado y Spitter, identificado como transformación de Ben 10.000. Nombres latinos y alias originales, sin formas supremas, fusiones ni reboot. Nanomech y Shocksquatch incluyen películas/especiales de sus etapas. No afirmar que todos los diseños son de Omniverse: fuente y diseño de los nuevos registros están en sus campos opcionales y en el manifiesto.
-- Imágenes de los personajes con diseños de Omniverse, locales y con procedencia documentada. Serie de introducción y diseño mostrado son datos distintos.
-- Alcance local, un único escritor. No incluye cuentas, combate, chatbot general, RAG, agentes, bases vectoriales o automatizaciones n8n. Jupyter es opcional para experimentar, no el producto final.
+No autoplay al abrir, botón de sonido adicional, contorno circular de foco ni círculo verde expansivo. La indicación de teclado conserva foco visible mediante el texto de ayuda. Una capa verde persistente en la capa superior del navegador cubre dashboard/sidebar durante el rerun y se desvanece cuando están listos. No crear otra capa durante el desmontaje ni cortar el audio de transformación. Una pausa protege frente a doble clic. Activación por sesión y movimiento reducido conservados.
 
-No renombrar la carpeta física por cambiar el nombre del producto. Las rutas Linux de sesiones anteriores son históricas: utilizar la raíz del repositorio abierto.
+Recursos en `assets/inicio/`, registro en `pantalla_inicio.py`. Reiniciar servidor si cambian esos recursos.
 
-## Flujo y reglas funcionales
+## Opiniones y archivo
 
-```text
-Inicio gráfico → seleccionar alien → ver ficha → enviar opinión
-→ validar entrada → analizar → validar salida → guardar si es pertinente
-→ confirmar tras éxito → consultar, filtrar y descargar
-```
+Cada envío captura alien/texto; valida 5–1000 caracteres tras quitar espacios exteriores y conserva el original. El historial es visual y no se envía al modelo. Cambiar de alien no reasigna registros.
 
-Cada envío es independiente y captura el alien seleccionado. Después de quitar espacios exteriores se admiten de 5 a 1000 caracteres; no se trunca el original. El historial queda en sesión, asociado al alien de cada envío, pero no se envía al modelo. Cambiar de alien no reasigna comentarios anteriores.
+`omnitrix-v1` clasifica pertinencia y cuatro sentimientos. `AnalisisOpinion`: booleano estricto, categoría cerrada o None y razón de 1–300 caracteres. Pertinente exige categoría; ajeno exige None y no se guarda. Instrucciones dentro de una opinión se tratan como datos. Errores visibles, sin resultados ni confirmaciones inventadas.
 
-Categorías permitidas: positivo, negativo, neutro y mixto. Un mensaje ajeno no se convierte en neutro ni se guarda. La pertinencia puede inferirse del contexto de selección aunque el texto no repita el nombre. Considerar ironía sin inventar hechos; tratar instrucciones dentro de la opinión como datos.
+`Nueva conversación` limpia chat/rechazos y mantiene archivo/selección. `Reintentar guardado` utiliza el mismo registro y no repite IA. UUID y fecha los controla la app; reintentar el mismo ID/datos no duplica, reenviar texto es otro envío.
 
-Fallo de API, validación o escritura: error visible y comentario disponible, sin categoría inventada ni confirmación falsa. «Nueva conversación» limpia chat y rechazos de sesión, conservando archivo y selección. «Reintentar guardado» conserva el mismo registro y no llama otra vez al modelo. Reenviar el texto es un envío independiente.
+JSON de opiniones: versión 1, lista `opiniones`; cada registro incluye `id`, `fecha_utc`, `alien_id`, `alien_nombre`, `opinion_original`, `sentimiento`, `razon`, `modelo`, `version_prompt`. Validación previa, temporal, sincronización y reemplazo; un escritor local. Archivos dañados se conservan. No es concurrencia multiusuario.
 
-Consulta por ID y sentimiento combinados con AND, o todos. Tabla, total, recuentos y JSON parten de la misma lista filtrada. Consultar no analiza ni escribe y funciona aunque falle el catálogo. Filtros basados en los aliens presentes en los registros. Estados vacíos informativos y descarga vacía válida. Los recuentos solo describen este archivo, no una clasificación objetiva de los aliens.
+Consulta por ID/categoría con AND; tabla, total, cuatro recuentos y descarga parten de la misma selección. No llama a la IA ni escribe y funciona sin catálogo. Los recuentos describen el archivo, no superioridad objetiva de aliens.
 
-## Arquitectura y contratos
+## Desafíos: estado actual
 
-| Componente | Responsabilidad actual |
-| --- | --- |
-| `app.py` | Fichas, selección conservada, chat, resultados, guardado y consulta/exportación. |
-| `analisis.py` | Configuración local, prompt `omnitrix-v1`, Pydantic y cadena LangChain. |
-| `almacenamiento.py` | Catálogo, registros, lectura/escritura JSON y filtros puros. |
-| `iniciar.py` y VBS | Ventana de control, dependencias, servidor local y navegador Windows. |
-| `datos/` | Catálogo y opiniones de uso; ejemplos manuales separados. |
-| `assets/` y `.streamlit/` | Recursos locales, fuentes, estilos y tema. |
+Menú previo con selección e Iniciar. Control maestro: todo el catálogo. Héroe bajo presión: tres IDs distintos de `random.sample`, con pestañas que muestran imagen/habilidades antes de elegir. Adaptabilidad: un ID al azar sin selector; exige una estrategia de 5–1000 caracteres. En los otros dos modos el plan es opcional.
 
-Rutas resueltas desde el proyecto, no desde el directorio de inicio. `cargar_aliens` comprueba UTF-8, JSON, versión entera 1, mínimo de 20 aliens, campos, textos, IDs únicos y rutas locales relativas. Rechaza absolutos tanto Windows como POSIX. `ErrorCatalogo` informa sin alterar archivos. `cargar_imagen_local` comprueba contención en el proyecto y lectura con Pillow; si falla, usa el SVG alternativo o un aviso de texto.
+Banco de 32 situaciones, d001–d032: rescates, batallas con villanos, seguridad, diplomacia y conflictos creativos. Son originales del juego. Se conservaron d001–d012 al añadir las otras 20. Sortear situaciones/aliens no consume API ni depende de conveniencia de poderes.
 
-Contrato del análisis:
+El sorteo se conserva al editar/navegar. Solo Iniciar o Volver a jugar crea una nueva ronda, salvo recuperación ante catálogo incompatible. Rejugar elige una situación diferente de la inmediatamente anterior; los sorteos de alien pueden repetirse entre rondas por azar.
 
-```python
-es_pertinente: bool
-sentimiento: Literal['positivo', 'negativo', 'neutro', 'mixto'] | None
-razon: str  # no vacía; de 1 a 300 caracteres después de quitar espacios exteriores
-```
+No hay Otra situación ni Cambiar modo durante la ronda. Una evaluación válida fija el resultado, retira el formulario y muestra Volver a jugar / Volver al menú de modos. Un error no finaliza ni inventa evaluación: conserva el formulario para corregir/reintentar. Las partidas permanecen en sesión, fuera de `datos/opiniones.json`.
 
-Pydantic estricto rechaza campos adicionales y relaciones incoherentes: pertinente exige categoría, ajeno exige `None`. `ChatPromptTemplate` separa system/human; el humano incluye datos JSON del alien y la opinión actual. La cadena usa `|`, `with_structured_output(method='json_schema')` e `invoke`; se leen atributos/datos validados, no se asume `response.content`. El esquema Pydantic permanece estricto aunque la integración Gemini no recibe el parámetro `strict` de OpenAI.
+`desafios-v2` recibe situación, alien, plan y modo. En Adaptabilidad valora el uso de las capacidades asignadas, sin exigir otro alien. `EvaluacionDesafio`: veredicto adecuado/arriesgado/poco_adecuado, resumen, ventajas, riesgos y resolución. No hay votos ni comentarios de otras personas.
 
-Proveedor actual: Gemini Developer API. `GOOGLE_API_KEY` (alternativamente `GEMINI_API_KEY`), `GEMINI_MODEL` y `GEMINI_TEMPERATURE` se leen del entorno y `.env`; el sistema tiene prioridad. Modelo preparado: `gemini-3.5-flash-lite`; otros IDs se rechazan para impedir cambios accidentales. Temperatura vacía utiliza la recomendada por la integración. Timeout 30 s, sin reintentos automáticos ni fallback a otros proveedores. No prometer exactitud, determinismo ni gratuidad de una clave de un proyecto de pago. Las credenciales no se imprimen ni se publican.
+## Integración de IA y módulos
 
-Opiniones: raíz `{"version": 1, "opiniones": []}`. Campos de cada registro:
+`analisis.ejecutar_estructurado` comparte configuración y errores; cada tarea conserva prompt/esquema propio. `ChatPromptTemplate`, operador `|`, `with_structured_output(method="json_schema")`, `invoke` y validación Pydantic estricta.
 
-```text
-id, fecha_utc, alien_id, alien_nombre, opinion_original,
-sentimiento, razon, modelo, version_prompt
-```
+Configuración local: `GOOGLE_API_KEY` o alternativa `GEMINI_API_KEY`, modelo fijado `gemini-3.5-flash-lite`, temperatura opcional. Variables del sistema prevalecen sobre `.env`. `vertexai=False`, timeout 30 s, un intento total con `max_retries=1`, sin fallback. No imprimir detalles privados del proveedor.
 
-UUID, fecha y selección los controla la aplicación. `crear_registro` admite solo análisis pertinentes; `cargar_opiniones` valida el archivo sin modificarlo y devuelve lista vacía si falta. `guardar_opinion` escribe UTF-8 con acentos, temporal en el mismo directorio, flush/fsync y reemplazo. Un envío repetido con el mismo ID/datos no se duplica; un ID con otros datos se rechaza. Un archivo dañado se conserva. El reemplazo atómico no resuelve concurrencia multiusuario.
+Módulos y contratos completos en [DESARROLLO.md](DESARROLLO.md). Los datos y manifiestos están en `datos/` y `assets/aliens/`. Los 63 PNG se conservan con fuente/hash; las cuatro excepciones a diseños Omniverse se indican en las fichas.
 
-## Entorno, recursos y evidencia
+## Evidencia y pendientes
 
-En Windows se instaló con aprobación Python 3.14.4 por usuario en `.python-runtime`, sin cambiar PATH/asociaciones. `.venv` contiene las dependencias de `requirements.txt`. Runtime, entorno e instalador `.herramientas` están ignorados. En otro equipo crear un entorno nuevo. Versiones transitivas: `evidencias/dependencias-windows.txt`.
+Última suite completa archivada: 87 pruebas aprobadas. Después pasaron 15 de juego + 20 de interfaz al mostrar las tres fichas y otras 15 de juego al ampliar a 32 situaciones. Las seis rutas de navegador de los submodos usan un servidor exclusivo con evaluador rotulado como simulado. La app normal usa Gemini real. No reemplazarla por `tests/app_desafios_visual.py` en la entrega.
 
-El VBS usa exclusivamente `.venv\Scripts\python.exe`, sin consola, y `iniciar.py` presenta el controlador. Mutex por carpeta y sesión Windows, puerto disponible en loopback, comprobación de salud antes de abrir navegador, controles Abrir y Detener/cerrar, diagnóstico en `inicio.log`. Cerrar solo navegador no detiene servidor. No se ha probado un lanzador de otros sistemas.
+Los 16 ejemplos y seis casos son referencias humanas. Persistencia/filtro se demostraron con datos manuales en temporales y lectura desde otro proceso. Falta registrar evaluación semántica real, cierre de evidencias manuales de entrega y prueba integral Linux. Estado y enlaces en [VERIFICACION.md](VERIFICACION.md).
 
-`datos/README.md` define catálogo y fuentes. `assets/aliens/README.md` y `fuentes.json` documentan los 20 PNG, origen, dimensiones y hashes. Los PNG no se generaron con IA ni se modificaron; la fuente comunitaria no acredita licencia libre de redistribución.
-
-`datos/ejemplos/` contiene 16 opiniones ficticias/cuatro aliens/cuatro categorías y seis casos adicionales. Clasificaciones, razones, UUID y fechas preparados manualmente, con `modelo: manual:no-ejecutado`; no se cargan automáticamente en opiniones de uso.
-
-`scripts/generar_evidencias.py` reproduce lectura tras otro proceso, idempotencia y consulta XLR8/mixto sobre esos datos en una carpeta temporal, sin API ni alterar el archivo de uso. Sus resultados están en `evidencias/persistencia-y-filtro.json` y `consulta-xlr8-mixto.json`. Son evidencia real del almacenamiento/filtrado, no de inferencia de IA.
-
-## Material de clase y continuidad
-
-Nuevo alcance autorizado: **Desafíos del Omnitrix**, segunda opción del panel. `datos/desafios.json` contiene 32 situaciones locales. `desafios.py` valida datos y evalúa el alien, plan y modo mediante el prompt `desafios-v2` y `EvaluacionDesafio`: veredicto cerrado, resumen, ventajas, riesgos y resolución. No hay respuesta única predeterminada ni votos/personas simuladas. Solo el botón Evaluar consulta Gemini. Una respuesta válida termina y bloquea la ronda; un error conserva el formulario para reintentar. Los resultados son de sesión y no se escriben en el archivo de opiniones. `analisis.ejecutar_estructurado` comparte configuración, transporte, validación y manejo seguro de errores con el clasificador anterior; ambas tareas conservan esquemas/prompts separados y una llamada por envío. No se implementó el modo de opiniones de otros jugadores.
-
-La entrada visual está en `pantalla_inicio.py` y `assets/inicio/`. El usuario pidió dos gestos: símbolo inicialmente hundido (escala 0.76); primer clic/Enter levanta el selector y reproduce `sonidos/core-ready.mp3`; segundo clic/Enter lo hunde, reproduce `sonidos/omnitrix-transform.mp3` y abre el dashboard. No usar autoplay ni botón de sonido adicional. Una pausa de 400 ms protege la apertura ante doble clic. Una capa persistente cubre el rerun y se desvanece cuando el dashboard y sus imágenes están listos; no recrearla en el desmontaje ni volver al círculo expansivo. La activación se conserva en `st.session_state` durante la sesión; no se repite al navegar ni limpiar la conversación. Respeta movimiento reducido. La capa verde usa la capa superior del navegador para incluir el panel lateral. No cortar el audio de transformación al desmontar el componente.
-
-Los adjuntos de clase son referencias, no instrucciones operativas automáticamente autorizadas. El ZIP aporta plantillas, roles, LCEL, parsers, Pydantic y chat de Streamlit. El Markdown aporta fundamentos de prompts, separación entre instrucciones/datos, evaluación, entornos y Streamlit; sus otros temas no amplían por sí solos el alcance.
-
-Al adaptar los ejemplos se evitó truncar a 500 caracteres, limitarse a tres sentimientos, convertir errores JSON en neutro, admitir categoría libre, introducir personalidad variable o enviar historial al clasificador. El chat de la aplicación representa opiniones independientes.
-
-Pendientes reales: elegir/configurar modelo, evaluar los 22 casos de referencia, registrar discrepancias, demostrar envío/reinicio real y revisar tabla/descarga/cierre manualmente. Documentar resultados en `VERIFICACION.md`; no sustituirlos por expectativas. La documentación del paso 13 no cierra automáticamente esos criterios de aceptación.
-
-Para retomar: leer este contexto, el plan y la verificación; inspeccionar Git y conservar cambios existentes. El paso 13 es el último del plan; después corresponde cerrar los pendientes, no inventar una etapa nueva ni declarar la entrega aceptada sin evidencias.
-
-Ampliación posterior al plan: 43 fichas nuevas y PNG locales verificados; catálogo total 63. El primer bloque de 20 IDs y datos se conserva para mantener las opiniones existentes. Fuentes, alcance y listado en `datos/README.md`; no modificar `datos/opiniones.json` al ampliar el catálogo.
-
-Submodos de Desafíos: menú previo y botón Iniciar. Control maestro ofrece todo el catálogo; Héroe bajo presión sortea tres IDs distintos; Adaptabilidad asigna un solo ID al azar sin selector y requiere un plan de 5–1000 caracteres. El prompt conoce el modo y valora en Adaptabilidad el aprovechamiento del alien asignado, sin exigir otro. No hay Otra situación ni Cambiar modo durante la ronda. Tras una evaluación válida se muestran Volver a jugar (otra situación, nuevos aliens aleatorios y formulario limpio) y Volver al menú de modos. preparar_mision sortea solo al iniciar/rejugar o recuperar un catálogo incompatible; navegar o editar no resortea. Orden lateral: Analizar opinión, Desafíos del Omnitrix, Consultar archivo. La prueba visual de rondas usa exclusivamente tests/app_desafios_visual.py con una evaluación rotulada como simulada; el servidor normal app.py sigue utilizando Gemini real.
-
-Héroe bajo presión muestra las tres fichas disponibles antes de elegir, en pestañas con nombre, imagen, habilidades y datos de origen. Se reutiliza mostrar_ficha con claves únicas para evitar colisiones de contenedores; no cambia el sorteo ni consume API.
+Para continuar: leer README, este contexto y verificación; revisar Git/código y conservar cambios. El desarrollo llegó al paso 13 y tiene ampliaciones posteriores; no reiniciar pasos ya implementados ni interpretar las casillas históricas como estado vigente.

@@ -1,65 +1,77 @@
-# Guía de entrega y sustentación
+# Entrega y sustentación — Archivo Omnitrix
 
-Último paso del plan: 13, documentación. La documentación está preparada; la aceptación completa permanece condicionada a las comprobaciones reales pendientes de `VERIFICACION.md`.
+Actualizado el 7 de noviembre de 2026. La implementación del plan de 13 pasos y sus ampliaciones está preparada. El estado de las pruebas y las comprobaciones pendientes se detalla en [VERIFICACION.md](VERIFICACION.md).
 
-## Material para revisar
+## Objetivo académico
+
+Adaptar el taller Tribuna Global de opiniones sobre futbolistas a una aplicación de opiniones sobre aliens de Ben 10. Según lo comunicado por el estudiante, se permitió cambiar la temática. Se conservaron catálogo, asociación de opiniones, LangChain, validación estructurada, persistencia y consulta/exportación.
+
+| Requisito conservado | Implementación |
+| --- | --- |
+| Catálogo de al menos 20 personajes con IDs únicos | 63 fichas locales, imágenes y metadatos; los 20 IDs iniciales permanecen. |
+| Opinión asociada al personaje elegido | Selección capturada en cada envío; longitud de 5–1000 caracteres y original conservado. |
+| Prompt y análisis con LangChain | `ChatPromptTemplate`, mensajes system/human, operador `|`, salida estructurada e `invoke`. |
+| Cuatro sentimientos y justificación | Positivo, negativo, neutro y mixto; pertinencia y esquema Pydantic. |
+| Errores y texto ajeno | Avisos visibles, sin categoría inventada ni guardado de rechazos. |
+| Guardado persistente | JSON versionado, UUID/fecha, reemplazo y reintento idempotente. |
+| Consulta y filtros | Alien/sentimiento combinados; tabla, recuentos y descarga de la misma selección. |
+| Ejemplos y documentación | 16 opiniones manuales sobre cuatro aliens/cuatro categorías, seis casos adicionales y guías. |
+
+La rúbrica conservada del taller distribuye: catálogo/asociación 10, prompt 20, validación/errores 15, persistencia 25, consultas/descarga 15 y pruebas/documentación/explicación 15 puntos. No se asigna una nota automática ni se sustituye la revisión del profesor.
+
+## Ampliaciones incluidas
+
+- Identidad visual local, símbolo en portada/sidebar/favicon y entrada de dos pulsaciones con audio.
+- Inicio gráfico por doble clic en Windows; guía de arranque por terminal para Windows y Linux.
+- 63 transformaciones de la continuidad clásica, con fichas y fuentes.
+- 32 situaciones de combate, seguridad, rescate y conflictos creativos.
+- Desafíos con Control maestro, Héroe bajo presión y Adaptabilidad.
+- Tres fichas consultables antes de elegir en Héroe bajo presión.
+- Cierre de ronda, resultado fijo, rejuego con otra situación y retorno al menú.
+
+Estas ampliaciones complementan el trabajo de sentimientos y persistencia. Las partidas de desafíos permanecen en sesión; no se mezclan con las opiniones guardadas. No se añadió un modo de opiniones de otras personas.
+
+## Material para entregar
 
 | Material | Ubicación |
 | --- | --- |
-| Instalación, configuración, inicio y uso | [README](README.md) |
-| Decisiones y contratos técnicos | [Contexto](CONTEXTO_PROYECTO.md) |
-| Etapas, verificaciones y commits sugeridos | [Plan](PLAN_DESARROLLO.md) |
-| Pruebas, limitaciones y dos reflexiones | [Registro de aceptación](VERIFICACION.md) |
-| Resultado vigente de 68 pruebas y versiones | [Pruebas Gemini](evidencias/pruebas-gemini-windows.txt), [dependencias](evidencias/dependencias-windows.txt) |
-| Configuración para uso sin pago | [Guía de Gemini Free Tier](GEMINI_GRATIS.md) |
-| Persistencia entre procesos y filtrado reproducidos | [Registro](evidencias/persistencia-y-filtro.json), [selección exportada](evidencias/consulta-xlr8-mixto.json) |
-| 16 opiniones ficticias y seis casos adicionales | [Ejemplos y procedencia manual](datos/ejemplos/README.md) |
-| Imágenes locales y sus fuentes | [Créditos](assets/aliens/README.md), [manifiesto](assets/aliens/fuentes.json) |
+| Presentación y uso | [README](README.md) |
+| Comandos Windows/Linux y configuración | [Instalación](INSTALACION.md) y [Gemini](GEMINI_GRATIS.md) |
+| Arquitectura, contratos y pruebas | [Desarrollo](DESARROLLO.md) |
+| Evidencia y pendientes | [Verificación](VERIFICACION.md) y `evidencias/` |
+| Continuidad e historial | [Contexto](CONTEXTO_PROYECTO.md), [plan](PLAN_DESARROLLO.md) y `docs/` |
+| Datos y procedencia | [Catálogo/situaciones](datos/README.md), [ejemplos](datos/ejemplos/README.md), [imágenes](assets/aliens/README.md) y [recursos visuales](assets/README.md) |
 
-No incluir `.env`, secretos, `.venv`, `.python-runtime`, `.herramientas` ni logs privados en una entrega del repositorio. Los ejemplos se conservan separados del archivo de opiniones de uso. No hay licencia libre acreditada para las imágenes de terceros.
+Incluye código, `requirements.txt`, `.env.example`, `.streamlit`, datos, recursos y fuentes. Excluye `.env`, secretos, `.venv`, `.python-runtime`, `.herramientas` y logs privados. Revisa si las opiniones de uso contienen datos personales antes de compartirlas. Las imágenes y audios son material de terceros/proporcionado por el usuario; conservarlos no acredita una licencia libre de redistribución.
 
-## Cómo explicar el proyecto
+## Recorrido sugerido de demostración
 
-1. Presentar el objetivo: clasificar lo expresado por un aficionado sobre un alien, con persistencia y consulta. La aplicación no mide objetivamente la calidad del personaje.
-2. Mostrar el catálogo: 20 IDs estables, cinco transformaciones de cada serie, nombres latinos y diseños locales de Omniverse; la serie de introducción es un dato distinto del diseño mostrado.
-3. Explicar el envío: validación de longitud, captura de selección y conservación del original. El historial visual no se envía al clasificador.
-4. Recorrer `analisis.py`: mensajes system/human, composición mediante `|`, `invoke`, salida Pydantic, pertinencia y cuatro categorías. Explicar la diferencia entre respuesta del modelo y resultado validado, y entre un error y un sentimiento neutro.
-5. Recorrer `almacenamiento.py`: identidad y fecha generadas por la aplicación, JSON versionado, temporal/reemplazo, rechazo de conflictos y límite de un solo escritor. Un reintento conserva el envío; dos envíos independientes iguales tienen IDs distintos.
-6. Mostrar que tabla, total, recuentos y descarga proceden de la misma selección filtrada. Consultar no vuelve a analizar ni escribe.
-7. Explicar las pruebas: cuáles usan archivos/procesos/servidor reales y cuáles usan respuestas simuladas. Los ejemplos y expectativas manuales no demuestran precisión de un LLM.
+1. Abrir el VBS en Windows o arrancar Streamlit desde la terminal según la guía Linux.
+2. Activar el símbolo dos veces y mostrar la continuidad de la transición sobre ambos paneles.
+3. Seleccionar un alien, explicar los campos de la ficha y enviar una opinión.
+4. Identificar sentimiento/razón y mostrar la confirmación de guardado.
+5. Consultar el registro, aplicar filtros y descargar el JSON.
+6. Reiniciar y recuperar el registro desde Consultar archivo.
+7. Abrir Desafíos y presentar los tres submodos. Mostrar las fichas de las tres opciones en Héroe bajo presión y la asignación única de Adaptabilidad.
+8. Evaluar una estrategia, explicar la incertidumbre de IA y mostrar las acciones finales.
+9. Explicar qué se conserva en JSON, qué permanece en sesión y qué llamadas consumen cuota.
+10. Detener el servidor con el controlador o Ctrl+C, según el arranque utilizado.
 
-## Demostración sin acceso a API
+Si no hay acceso a Gemini, se puede demostrar catálogo y consulta de registros existentes. Las pruebas con datos manuales o el servidor visual simulado deben identificarse como tales. No presentarlas como resultados obtenidos del modelo.
 
-Se puede abrir el catálogo y consultar el archivo existente con el lanzador. Si no hay opiniones de uso, el estado vacío es correcto. No cargar ejemplos en el archivo real para aparentar análisis obtenidos de una API.
+## Qué explicar del código
 
-Para demostrar persistencia y filtros con los ejemplos, el preparador puede ejecutar:
+- `analisis.py`: separación de instrucciones/datos, contratos, llamada compartida a Gemini y errores seguros.
+- `almacenamiento.py`: identidad del envío, fecha UTC, reintento sin duplicación y límites de concurrencia.
+- `interfaz_desafios.py`: menú, sorteo estable, asignación de 63/3/1, estado activo/terminado y nuevas rondas.
+- `desafios.py`: 32 escenarios originales y evaluación contextual del plan con `desafios-v2`.
+- `pantalla_inicio.py`: componente local, dos gestos para los audios y continuidad entre vistas.
+- Pruebas: diferencia entre ejecutar transporte/parser/archivos reales y obtener respuestas semánticas reales de Gemini.
 
-```powershell
-.\.venv\Scripts\python.exe scripts\generar_evidencias.py
-```
+## Pendientes antes de declarar aceptación completa
 
-El script escribe en una carpeta temporal, lee desde otro proceso y exporta la opinión de XLR8/mixto a `evidencias/`. Comprueba que reintentar no duplica registros y que el archivo de uso no cambia. El JSON exportado conserva `modelo: manual:no-ejecutado`; la clasificación fue humana y el procedimiento de almacenamiento/consulta se ejecutó realmente.
+El usuario confirmó que Gemini funciona; falta registrar una evaluación sistemática de las 16 opiniones y seis casos, con modelo/versión de prompt, respuestas y discrepancias. También debe documentarse calidad de estrategias en los tres submodos; hoy sus comprobaciones automatizadas usan evaluadores simulados.
 
-## Cierre de aceptación pendiente
+Quedan por cerrar las evidencias manuales de envío/reapertura/descarga y cierre desde el controlador en el recorrido de entrega, y la verificación integral de la versión actual en Linux. No se identifica un lanzador gráfico Linux como implementado.
 
-| Comprobación pendiente | Evidencia que debe registrarse |
-| --- | --- |
-| Modelo real compatible | Nombre configurado, versión del prompt y resultados observados, sin claves. |
-| Elogio, crítica, neutralidad y mixto | Opinión original, categoría y razón obtenidas; coincidencias y discrepancias frente a la referencia humana. |
-| Ironía, ambigüedad y contexto | Lectura del resultado y discusión; no asumir que la referencia es infalible. |
-| Texto ajeno e instrucciones embebidas | Resultado observado, rechazo cuando corresponda y ausencia de guardado de rechazos. |
-| Envío real, cierre y reapertura | Registro recuperable en Consultar archivo y asociación al alien correcto. |
-| Filtros y descarga en navegador | Coincidencia entre tabla, total, categorías y archivo descargado. |
-| Cierre desde el controlador | Servidor detenido después de «Detener y cerrar». |
-
-Los casos de referencia están en `datos/ejemplos/casos_evaluacion.json`; todavía no contienen resultados obtenidos. Registrar los resultados reales en una evidencia nueva y actualizar `VERIFICACION.md` antes de cerrar las casillas pendientes. No usar capturas con claves o información privada.
-
-## Estado del repositorio
-
-Los nombres de commit son sugerencias. No se ejecutan commits ni push automáticamente. El paso 13 sugiere:
-
-```text
-docs: documentar instalación pruebas y entrega final
-```
-
-Los cambios de verificación del paso 12 pueden seguir sin confirmar. Revisar el diff para mantenerlos separados de la documentación cuando se preparen los commits.
+Las reflexiones sobre dos ambigüedades están en [VERIFICACION.md](VERIFICACION.md). Para presentarlas como errores observados de IA hay que ejecutar y registrar los resultados correspondientes.
