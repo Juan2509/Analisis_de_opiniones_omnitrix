@@ -29,14 +29,15 @@ def cargar_imagen_local(ruta: str | None) -> Image.Image | None:
         return None
 
 
-def mostrar_ficha(alien: dict):
+def mostrar_ficha(alien: dict, *, clave: str | None = None, etiqueta: str = "ALIEN SELECCIONADO"):
     """Presenta datos del catálogo e imagen local, sin consultar modelos ni la red."""
-    with st.container(border=True, key="ficha_alien"):
-        st.caption("ALIEN SELECCIONADO")
+    sufijo = f"_{alien['id']}" if clave else ""
+    with st.container(border=True, key=clave or "ficha_alien"):
+        st.caption(etiqueta)
         st.subheader(alien["nombre"])
         columna_imagen, columna_datos = st.columns([1, 1.4], gap="large")
         with columna_imagen:
-            with st.container(key="imagen_alien"):
+            with st.container(key=f"imagen_alien{sufijo}"):
                 imagen = cargar_imagen_local(alien["imagen"])
                 if imagen is not None:
                     st.image(imagen, caption=f"Imagen de {alien['nombre']}", width="stretch")
@@ -53,7 +54,7 @@ def mostrar_ficha(alien: dict):
                         st.info("Imagen no disponible.")
                     else:
                         st.image(alternativa, caption="Imagen no disponible", width="stretch")
-        with columna_datos, st.container(key="datos_alien"):
+        with columna_datos, st.container(key=f"datos_alien{sufijo}"):
             st.caption("SERIE DE INTRODUCCIÓN")
             st.text(alien["serie_origen"])
             st.caption("NOMBRE ORIGINAL")

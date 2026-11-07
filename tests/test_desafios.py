@@ -24,7 +24,7 @@ RESPUESTA = {"resultado": EVALUACION, "modelo": "modelo-ficticio", "version_prom
 class PruebasDesafios(unittest.TestCase):
     def test_banco_local_y_azar_no_repiten_situacion_inmediata(self):
         situaciones = cargar_desafios()
-        self.assertEqual(len(situaciones), 12)
+        self.assertEqual(len(situaciones), 32)
         anterior = situaciones[0]["id"]
         for _ in range(30):
             actual = elegir_desafio(situaciones, anterior)
@@ -136,6 +136,12 @@ class PruebasInterfazDesafios(unittest.TestCase):
         app = self.abrir("Héroe bajo presión")
         opciones = list(app.session_state["desafio_opciones"])
         self.assertEqual(len(set(opciones)), 3)
+        catalogo = {a["id"]: a for a in cargar_aliens()}
+        self.assertEqual([t.label for t in app.tabs], [catalogo[i]["nombre"] for i in opciones])
+        for identificador in opciones:
+            self.assertIn(catalogo[identificador]["descripcion"], [m.value for m in app.markdown])
+            self.assertIn(f"Imagen de {catalogo[identificador]['nombre']}",
+                          [imagen.proto.imgs[0].caption for imagen in app.get("image")])
         self.assertEqual(len(app.selectbox[0].options), 4)
         app.selectbox(key="selector_desafio").select(opciones[0]).run()
         app.text_area(key="plan_desafio").set_value("Mi plan con lo que tengo.").run()

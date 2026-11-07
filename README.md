@@ -87,9 +87,11 @@ Elegir alien y/o sentimiento, o dejar «Todos». Los aliens disponibles son los 
 
 El panel izquierdo muestra **Analizar opinión**, **Desafíos del Omnitrix** y **Consultar archivo**, en ese orden. Al abrir Desafíos aparece un menú: elegir **Control maestro** (las 63 transformaciones), **Héroe bajo presión** (tres aliens distintos elegidos al azar) o **Adaptabilidad** (un único alien asignado al azar) y pulsar **Iniciar**. No se presenta una misión antes de iniciar.
 
-Se sortea una de 12 situaciones locales (incendio en un hangar, rescate submarino, robots descontrolados y otras). El sorteo se conserva al editar o navegar. No se permite saltar la situación durante la ronda. En los modos aleatorios los aliens no se eligen por sus poderes ni su adecuación a la misión.
+Se sortea una de 32 situaciones locales (incendio en un hangar, rescate submarino, robots descontrolados y otras). El sorteo se conserva al editar o navegar. No se permite saltar la situación durante la ronda. En los modos aleatorios los aliens no se eligen por sus poderes ni su adecuación a la misión.
 
 En Control maestro y Héroe bajo presión se elige un alien y la estrategia es opcional. En Adaptabilidad no hay selector: se muestra el alien asignado y se debe explicar cómo resolver la situación, con entre 5 y 1000 caracteres. La IA evalúa el uso de sus capacidades, sin penalizar al jugador por no poder elegir otro alien. El botón Evaluar consulta Gemini una vez y muestra un veredicto, ventajas, riesgos y una posible resolución. Puede haber varias soluciones válidas. La evaluación es una interpretación de IA de un juego de ficción, no una simulación física ni opiniones de otros jugadores.
+
+En Héroe bajo presión, las tres fichas se pueden consultar antes de elegir: cada pestaña muestra la imagen, habilidades, nombre original y serie del alien correspondiente. Consultar estas fichas no usa la IA ni cambia el sorteo.
 
 Al recibir una evaluación válida termina la ronda y la respuesta queda fija. Al final aparecen **Volver a jugar**, que sortea una situación diferente y renueva los aliens aleatorios, y **Volver al menú de modos**. La nueva ronda limpia la elección y la explicación. Si falla la API, no termina la ronda: conserva los datos para corregir o reintentar explícitamente. La partida y el resultado se conservan al navegar durante la sesión; no se escriben en `datos/opiniones.json`. Utiliza la misma configuración Gemini y cuota del análisis de opiniones.
 
@@ -111,7 +113,7 @@ La versión base admite **un único escritor local**. El reemplazo atómico y el
 | `analisis.py` | Configuración, prompt, esquema y análisis estructurado. |
 | `almacenamiento.py` | Validación de catálogo/registros, escritura y consultas. |
 | `desafios.py` e `interfaz_desafios.py` | Situaciones, estado del juego y evaluación estructurada de estrategias. |
-| `datos/desafios.json` | 12 situaciones de ficción preparadas localmente, sin respuestas obligatorias. |
+| `datos/desafios.json` | 32 situaciones de ficción preparadas localmente, sin respuestas obligatorias. |
 | `iniciar.py` y el VBS | Controlador gráfico y ciclo de vida del servidor Windows. |
 | `datos/aliens.json` | 63 fichas con IDs estables y nombres latinos, incluyendo ambas variantes de Upchuck; sin formas supremas ni reboot. |
 | `datos/opiniones.json` | Opiniones de uso persistentes. |

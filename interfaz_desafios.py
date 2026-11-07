@@ -120,6 +120,12 @@ def mostrar_desafios(mostrar_ficha):
         return
     st.info("Explica cómo aprovecharías las capacidades del alien asignado. Puede haber varias soluciones válidas."
             if modo == "Adaptabilidad" else "Elige un alien y, si quieres, explica tu estrategia. Puede haber varias soluciones válidas.")
+    if modo == "Héroe bajo presión":
+        st.markdown("**Conoce a tus tres aliens disponibles**")
+        st.caption("Abre cada pestaña para revisar su imagen y habilidades antes de elegir.")
+        for pestaña, identificador in zip(st.tabs([catalogo[i]["nombre"] for i in opciones]), opciones):
+            with pestaña:
+                mostrar_ficha(catalogo[identificador], clave=f"ficha_alien_{identificador}", etiqueta="ALIEN DISPONIBLE")
     ids = [None, *opciones]
     conservado = st.session_state.get("desafio_alien")
     if conservado not in ids:
@@ -131,7 +137,7 @@ def mostrar_desafios(mostrar_ficha):
         alien_id = st.selectbox("Tu transformación", ids, index=ids.index(conservado),
                             format_func=lambda valor: "Elige un alien…" if valor is None else catalogo[valor]["nombre"],
                             key="selector_desafio", on_change=conservar_respuesta)
-    if alien_id:
+    if alien_id and modo != "Héroe bajo presión":
         mostrar_ficha(catalogo[alien_id])
     plan = st.text_area("¿Cómo lo resolverías?" if modo == "Adaptabilidad" else "¿Cómo lo resolverías? (opcional)",
                         value=st.session_state.get("desafio_plan", ""), max_chars=1000,

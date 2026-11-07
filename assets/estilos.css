@@ -159,6 +159,7 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     background: radial-gradient(ellipse at 50% 85%, rgba(140, 255, 56, 0.14), transparent 55%), repeating-linear-gradient(0deg, transparent 0 31px, rgba(140, 255, 56, 0.025) 31px 32px), #080c08;
 }
 .st-key-imagen_alien img { max-height: 360px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(140, 255, 56, 0.09)); }
+[class*="st-key-imagen_alien_"] img { max-height: 360px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(140, 255, 56, 0.09)); }
 .st-key-datos_alien { padding: 0.75rem 0; }
 .st-key-datos_alien [data-testid="stCaptionContainer"] { color: var(--omni-verde); font-size: 0.65rem; letter-spacing: 0.13em; }
 /* Los errores conservan su semántica y su color; solo se personalizan los avisos informativos. */

@@ -1,5 +1,15 @@
 # Catálogo de Archivo Omnitrix
 
+## Situaciones de Desafíos del Omnitrix
+
+`desafios.json` contiene 32 escenarios originales para el juego, compartidos por Control maestro, Héroe bajo presión y Adaptabilidad. Se conservaron d001–d012 y se añadieron d013–d032. No fijan un alien obligatorio: la evaluación considera el objetivo, las capacidades y la estrategia.
+
+Los 20 nuevos abarcan batallas con Vilgax, Animo, Hex, Zombozo, los Caballeros Eternos, SixSix/Kraab y Albedo; seguridad de museos y bases, robo de credenciales, rescates sin gravedad, fauna protegida, primer contacto, espuma expansiva y anomalías temporales/dimensionales. Los conflictos y dispositivos descritos son invenciones del juego. Como referencia general de los personajes se consultaron la [lista de personajes de Ben 10](https://en.wikipedia.org/wiki/List_of_Ben_10_characters) y [Vilgax clásico](https://ben10.fandom.com/wiki/Vilgax_(Classic)); las misiones no reproducen guiones de episodios.
+
+El sorteo es local y no consume cuota. Una ronda conserva la situación hasta la evaluación; Volver a jugar elige otra diferente de la anterior.
+
+## Transformaciones
+
 `aliens.json` contiene 63 fichas de transformaciones de la continuidad clásica: las cuatro series, sus películas y el especial con Generador Rex. Conserva los 20 IDs originales y añade a021–a063. No es un ranking ni representa el millón de muestras de ADN del Omnitrix.
 
 Se excluyen reboot, formas supremas, fusiones, transformaciones exclusivas de videojuegos/directos teatrales y formas solo mencionadas sin transformación animada identificable. Spitter se incluye por Ben 10.000 y su ficha lo aclara. Las dos variantes de Upchuck, Perk y Murk, tienen fichas separadas. Nanomech debuta en la película de la etapa Fuerza Alienígena; Shocksquatch, en el especial de la etapa Supremacía Alienígena. `serie_origen` agrupa esos debuts por etapa.
