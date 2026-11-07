@@ -28,10 +28,10 @@ Actualizado el 7 de noviembre de 2026.
 - Guardado local, consulta, filtros, recuentos y descarga JSON de opiniones.
 - Desafíos de combate, seguridad, rescate y resolución creativa; incluyen escenarios originales con Vilgax y otros villanos.
 - Tres submodos: **Control maestro**, **Héroe bajo presión** y **Adaptabilidad**.
-- Conocimiento alienígena: **Nombres**, **Habilidades**, **Especie** y **General**, con respuestas escritas, 60 segundos y revisión conjunta por Gemini.
-- Interpretación alienígena: **Mi alien favorito** y **Tu afinidad alienígena**, sin tiempo ni puntuaciones, con análisis recreativo basado en tus motivos.
+- Conocimiento alienígena: **Nombres**, **Habilidades**, **Especie** y **General**, con respuestas escritas, 60 segundos, aviso sonoro al quedar **4 segundos** y revisión conjunta por Gemini.
+- Interpretación alienígena: **Mi alien favorito** y **Tu afinidad alienígena**, con seis preguntas sorteadas de un banco de 30 por temas, edición/revisión y análisis recreativo sin tiempo ni puntuaciones.
 
-Se adapta el taller de opiniones sobre futbolistas a Ben 10; según lo comunicado por el estudiante, en clase se permitió cambiar el tema manteniendo los requisitos técnicos. Los desafíos y la presentación audiovisual son ampliaciones posteriores.
+Se adapta el taller de opiniones sobre futbolistas a Ben 10; según lo comunicado por el estudiante, en clase se permitió cambiar el tema manteniendo los requisitos técnicos. Los desafíos, conocimiento, interpretación y presentación audiovisual son ampliaciones posteriores.
 
 ## Windows: inicio rápido
 
@@ -92,9 +92,11 @@ El modelo indicado es el ID fijado en el código; no hay cambio automático de m
 
 Usa una clave de un proyecto **Free Tier sin facturación vinculada**, conforme a la [guía gratuita](GEMINI_GRATIS.md). La aplicación no verifica el plan de la cuenta. Las cuotas y la disponibilidad dependen del servicio: no se promete uso ilimitado ni se habilitan pagos desde el programa. Las antiguas claves de OpenAI se ignoran.
 
-El catálogo, las fichas y las consultas locales funcionan sin clave. Analizar opiniones y evaluar estrategias requieren conexión y acceso a Gemini. La misma configuración se utiliza en Windows y Linux. `.env` está excluido de Git.
+El catálogo, las fichas, las consultas locales y las preguntas funcionan sin clave. Analizar opiniones, evaluar estrategias, corregir cuestionarios e interpretar motivos/afinidad requieren conexión y acceso a Gemini. Solo los botones de análisis o evaluación hacen solicitudes; escribir, navegar, sortear preguntas y reproducir sonidos no consume cuota. Cada análisis se solicita una vez; un fallo permite un reintento manual, sin reintentos automáticos. La misma configuración se utiliza en Windows y Linux. `.env` está excluido de Git.
 
 ## Cómo utilizarlo
+
+El panel lateral tiene cinco secciones en este orden: **Analizar opinión**, **Desafíos del Omnitrix**, **Conocimiento alienígena**, **Interpretación alienígena** y **Consultar archivo**. Los modos de juego e interpretación se abren mediante un menú: selecciona una opción y pulsa **Iniciar**.
 
 ### Entrada del Omnitrix
 
@@ -112,6 +114,8 @@ Al terminar la activación, el dashboard se presenta desde arriba, con el títul
 4. Comprueba el mensaje **Opinión guardada en el Archivo Omnitrix**.
 
 Cada envío se analiza independientemente; el historial no se envía al modelo. El texto original y el alien del envío se conservan. **Nueva conversación** limpia el chat de sesión y mantiene el archivo persistente.
+
+Las fichas muestran la especie y enlaces de referencia: 55 fichas identificadas, siete con «Especie sin nombre confirmado» y Nanomech como híbrido. Perk y Murk son subespecies de Gourmand. Las grafías originales y los casos ambiguos se explican en [Especies y fuentes](datos/ESPECIES.md).
 
 Si falla el análisis, no se inventa un resultado. Si falla el guardado, **Reintentar guardado** conserva el registro y no vuelve a consultar Gemini. Dos envíos independientes del mismo texto pueden producir dos registros; reintentar el mismo guardado no lo duplica.
 
@@ -142,13 +146,22 @@ Durante la ronda no hay botón para saltar de situación. Si la API falla, el fo
 
 Selecciona **Nombres**, **Habilidades**, **Especie** o **General** y pulsa **Iniciar**. Tienes **60 segundos** para responder por escrito a las imágenes, una pregunta a la vez, usando **Enviar y siguiente** o Enter. No hay pistas ni se muestran las soluciones durante la ronda. En Especie solo se preguntan fichas con especie identificada; General mezcla las tres categorías.
 
+Al quedar **4 segundos** se reproduce `sonidos/omnitrix-time-out.mp3`, una sola vez por ronda. El aviso no se reinicia al enviar otra respuesta. El reloj continúa si cambias de sección; solo cuentan las respuestas enviadas antes del plazo. Puedes cerrar antes con **Terminar ronda**. La reproducción depende de los permisos de sonido del navegador.
+
 Al terminar pulsa **Evaluar respuestas con IA**. Gemini revisa el conjunto aceptando alias, traducciones y formulaciones equivalentes; cada resultado incluye tu respuesta, referencia y explicación. Correctas suman 1 punto, parciales 0,5 e incorrectas 0; los casos inciertos quedan por revisar y no puntúan. Puedes volver a jugar o regresar al menú. Las rondas viven en sesión, no en el archivo de opiniones. [Reglas, alias y detalles](datos/CONOCIMIENTO.md).
 
 ### Interpretación alienígena
 
 Selecciona un submodo y pulsa **Iniciar**. **Mi alien favorito** interpreta tus motivos al elegir una transformación. **Tu afinidad alienígena** sortea seis preguntas abiertas de un banco de 30, una por tema: problemas, colaboración, valores, riesgos, aprendizaje y motivación. Puedes volver atrás, editar y revisar todo antes de pedir el análisis.
 
+| Submodo | Recorrido |
+| --- | --- |
+| Mi alien favorito | Elige entre las 63 fichas, explica por qué te gusta (10–1000 caracteres) y pulsa **Interpretar mi elección**. El resultado conserva tu alien elegido. |
+| Tu afinidad alienígena | Responde seis preguntas (10–1000 caracteres cada una), usa **Anterior**/**Siguiente**, revisa o edita tus respuestas y pulsa **Descubrir mi afinidad**. |
+
 La IA propone una conexión con el favorito o un alien principal y una alternativa en afinidad, explicando su relación con tus respuestas. Es recreativo, sin diagnósticos, porcentajes ni temporizador. Solo el botón final usa Gemini; respuestas y resultados permanecen en sesión. [Uso, límites y detalles](datos/INTERPRETACION.md).
+
+El resultado incluye imagen y ficha, valores, estilo de héroe, conexiones con tus motivos, límites y una pregunta de reflexión. **Volver a intentarlo** inicia otra interpretación; en afinidad sortea preguntas distintas de las seis anteriores. **Volver al menú de modos** descarta la partida y permite elegir otro submodo. Cambiar de sección conserva la partida; reiniciar el servidor o abrir una sesión nueva puede perderla.
 
 ### Consultar archivo
 
@@ -164,7 +177,7 @@ Es la última opción del panel, después de Analizar opinión, Desafíos, Conoc
 | `datos/opiniones.json` | Opiniones pertinentes guardadas y sus metadatos. |
 | `datos/ejemplos/` | 16 opiniones ficticias y seis casos de evaluación, con referencias humanas. |
 | `assets/aliens/` | 63 PNG, alternativa local y [fuentes](assets/aliens/README.md). |
-| `assets/omnitrix.png`, `assets/inicio/`, `sonidos/` | Símbolo, componente de entrada y dos MP3. |
+| `assets/omnitrix.png`, `assets/inicio/`, `assets/aviso_tiempo.js`, `sonidos/` | Símbolo, entrada y tres MP3 locales: preparación, transformación y aviso de cuatro segundos. |
 | `.streamlit/config.toml` | Tema y configuración local de Streamlit. |
 
 El catálogo cubre las cuatro series clásicas y transformaciones de películas/especiales de esas etapas. Incluye Upchuck Perk y Murk por separado y aclara el caso de Spitter con Ben 10.000. Se excluyen reboot, supremas y fusiones. Los 20 IDs iniciales se conservaron al ampliar el catálogo. Las imágenes mantienen su procedencia y sus límites de licencia; no se atribuye autoría propia.
@@ -173,9 +186,11 @@ Detén el servidor y respalda `datos/opiniones.json` antes de trasladar datos. C
 
 ## Arquitectura y verificación
 
-`app.py` presenta la aplicación; `analisis.py` gestiona Gemini y el análisis estructurado; `almacenamiento.py` valida y guarda JSON; `desafios.py` e `interfaz_desafios.py` implementan las misiones; `conocimiento.py` e `interfaz_conocimiento.py` implementan el cuestionario; `pantalla_inicio.py` y sus recursos implementan la entrada. Más detalle en [DESARROLLO.md](DESARROLLO.md).
+`app.py` presenta la aplicación; `analisis.py` gestiona Gemini y el análisis estructurado; `almacenamiento.py` valida y guarda JSON; `desafios.py` e `interfaz_desafios.py` implementan las misiones; `conocimiento.py` e `interfaz_conocimiento.py` implementan el cuestionario; `interpretacion.py` e `interfaz_interpretacion.py` implementan favorito/afinidad; `audio_cuestionario.py` controla el aviso y `pantalla_inicio.py` implementa la entrada. Más detalle en [DESARROLLO.md](DESARROLLO.md).
 
-Las pruebas de catálogo, interfaz, misiones y cuestionario utilizan servicios de IA simulados para no gastar cuota. El usuario confirmó el funcionamiento real de Gemini en la aplicación; todavía falta una evaluación sistemática documentada de su calidad, incluidos alias y respuestas equivalentes del cuestionario. Consulta los resultados vigentes en [VERIFICACION.md](VERIFICACION.md) para no confundir pruebas funcionales con precisión del modelo.
+La última suite completa archivada aprobó **118 pruebas** en Windows, incluidas 11 de interpretación; después de ajustar sus botones, esas 11 volvieron a pasar. Los dos submodos de interpretación se revisaron en escritorio y móvil con resultados simulados. Las pruebas usan IA simulada o transporte interceptado para no gastar cuota y no demuestran calidad semántica real. Consulta el alcance y las evidencias en [VERIFICACION.md](VERIFICACION.md).
+
+El usuario confirmó el funcionamiento de Gemini en la aplicación, pero sigue pendiente una evaluación sistemática de sentimientos, estrategias, alias y afinidades. Reinicia el servidor tras actualizar módulos o recursos de los componentes para cargar todos los cambios; si falla una evaluación, el mensaje distingue problemas de cuota, solicitud, formato o respuesta incompleta cuando es posible.
 
 ## Límites y pendientes
 
