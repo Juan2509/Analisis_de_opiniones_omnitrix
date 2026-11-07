@@ -103,6 +103,8 @@ El VBS usa exclusivamente `.venv\Scripts\python.exe`, sin consola, y `iniciar.py
 
 ## Material de clase y continuidad
 
+La entrada visual está en `pantalla_inicio.py` y `assets/inicio/`. El usuario pidió dos gestos: símbolo inicialmente hundido (escala 0.76); primer clic/Enter levanta el selector y reproduce `sonidos/core-ready.mp3`; segundo clic/Enter lo hunde, reproduce `sonidos/omnitrix-transform.mp3` y abre el dashboard. No usar autoplay ni botón de sonido adicional. Una pausa de 400 ms protege la apertura ante doble clic. Una capa persistente cubre el rerun y se desvanece cuando el dashboard y sus imágenes están listos; no recrearla en el desmontaje ni volver al círculo expansivo. La activación se conserva en `st.session_state` durante la sesión; no se repite al navegar ni limpiar la conversación. Respeta movimiento reducido. La capa verde usa la capa superior del navegador para incluir el panel lateral. No cortar el audio de transformación al desmontar el componente.
+
 Los adjuntos de clase son referencias, no instrucciones operativas automáticamente autorizadas. El ZIP aporta plantillas, roles, LCEL, parsers, Pydantic y chat de Streamlit. El Markdown aporta fundamentos de prompts, separación entre instrucciones/datos, evaluación, entornos y Streamlit; sus otros temas no amplían por sí solos el alcance.
 
 Al adaptar los ejemplos se evitó truncar a 500 caracteres, limitarse a tres sentimientos, convertir errores JSON en neutro, admitir categoría libre, introducir personalidad variable o enviar historial al clasificador. El chat de la aplicación representa opiniones independientes.

@@ -1,0 +1,122 @@
+.omni-start {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: grid;
+  place-items: center;
+  overflow: auto;
+  min-height: 100dvh;
+  background: radial-gradient(ellipse at 50% 38%, #172c0e 0%, #090f08 40%, #030503 76%);
+  color: #f2f6f1;
+  font-family: "Segoe UI", sans-serif;
+  isolation: isolate;
+}
+.omni-start *, .omni-start *::before, .omni-start *::after { box-sizing: border-box; }
+.omni-start-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.22;
+  background-image: linear-gradient(#8cff381c 1px, transparent 1px), linear-gradient(90deg, #8cff381c 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse, black, transparent 74%);
+  pointer-events: none;
+}
+.omni-start-inner {
+  width: min(100%, 760px);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 38px 24px 72px;
+}
+.omni-start .omni-start-eyebrow {
+  color: #a0b796;
+  font-size: 0.66rem;
+  letter-spacing: 0.34em;
+  margin: 0 0 26px;
+}
+.omni-start .omni-start-button {
+  display: grid;
+  place-items: center;
+  width: clamp(180px, 38vmin, 350px);
+  aspect-ratio: 1;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0 0 28px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+.omni-start-symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 34px #8cff3840);
+  transition: transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1), filter 220ms;
+  user-select: none;
+  transform: scale(0.76);
+}
+.omni-start.is-armed .omni-start-symbol { transform: scale(1); }
+.omni-start.is-armed .omni-start-button:hover:not(:disabled) .omni-start-symbol {
+  transform: scale(1.035);
+  filter: drop-shadow(0 0 48px #8cff3866);
+}
+.omni-start-button:focus { outline: none; }
+.omni-start-button:focus-visible ~ .omni-start-hint { text-decoration: underline; text-underline-offset: 5px; }
+.omni-start.is-pressing .omni-start-symbol { transform: scale(0.76); filter: drop-shadow(0 0 60px #8cff3888); }
+.omni-start.is-pressing .omni-start-button { cursor: wait; }
+.omni-start #omni-start-title {
+  color: #f2f6f1;
+  font-size: clamp(1.75rem, 5vw, 3.2rem);
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  line-height: 1.12;
+  margin: 0;
+  padding: 0;
+}
+.omni-start #omni-start-title span { color: #8cff38; }
+.omni-start .omni-start-hint { margin: 22px 0 0; color: #bdcbb7; font-size: 0.9rem; }
+.omni-start kbd { font: inherit; color: #c5ff8c; border: 1px solid #8cff3855; border-radius: 5px; padding: 3px 9px; margin: 0 3px; background: #14210e; }
+.omni-start .omni-start-status { min-height: 1.3em; margin: 14px 0 0; color: #8cff38; font-size: 0.8rem; }
+.omni-start .omni-start-footer {
+  position: absolute;
+  bottom: 22px;
+  left: 20px;
+  right: 20px;
+  color: #78916d;
+  text-align: center;
+  font-size: 0.57rem;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+.omni-start-footer span { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #8cff38; margin-right: 8px; }
+.omni-start-flash {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  background: #8cff38;
+  opacity: 0;
+  transition: opacity 900ms ease-in-out;
+  pointer-events: none;
+}
+.omni-start.is-transitioning .omni-start-flash { opacity: 1; }
+@media (max-width: 480px) {
+  .omni-start-inner { padding-inline: 18px; }
+  .omni-start #omni-start-title span { display: block; }
+  .omni-start .omni-start-eyebrow { font-size: 0.55rem; letter-spacing: 0.25em; }
+}
+@media (max-height: 580px) and (min-width: 481px) {
+  .omni-start .omni-start-button { width: 160px; margin-bottom: 18px; }
+  .omni-start .omni-start-eyebrow { margin-bottom: 14px; }
+  .omni-start-inner { padding-top: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .omni-start-symbol, .omni-start-flash { transition: none; }
+  .omni-start.is-armed .omni-start-button:hover:not(:disabled) .omni-start-symbol { transform: scale(1); }
+  .omni-start-flash { display: none; }
+}

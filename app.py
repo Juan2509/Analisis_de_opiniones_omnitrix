@@ -10,6 +10,7 @@ from almacenamiento import (
     cargar_aliens, crear_registro, guardar_opinion, cargar_opiniones, consultar_opiniones,
 )
 from analisis import ErrorAnalisis, analizar_opinion
+from pantalla_inicio import mostrar_inicio
 
 
 def cargar_imagen_local(ruta: str | None) -> Image.Image | None:
@@ -231,6 +232,9 @@ def main():
     simbolo_omnitrix = b64encode(ruta_simbolo.read_bytes()).decode("ascii")
     estilos = (RAIZ_PROYECTO / "assets" / "estilos.css").read_text(encoding="utf-8")
     st.markdown(f"<style>{estilos}</style>", unsafe_allow_html=True)
+
+    if mostrar_inicio(simbolo_omnitrix):
+        return
 
     with st.sidebar:
         st.markdown(

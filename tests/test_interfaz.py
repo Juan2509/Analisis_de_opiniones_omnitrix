@@ -36,6 +36,8 @@ class PruebasInterfaz(unittest.TestCase):
 
     def iniciar(self):
         app = AppTest.from_file(str(RAIZ_PROYECTO / "app.py"), default_timeout=15)
+        # Estas pruebas verifican el dashboard después de su activación.
+        app.session_state["omnitrix_activado"] = True
         app.run()
         self.assertFalse(app.exception)
         return app

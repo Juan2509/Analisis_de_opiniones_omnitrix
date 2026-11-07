@@ -110,6 +110,8 @@ La versión base admite **un único escritor local**. El reemplazo atómico y el
 
 ## Pruebas y evidencias
 
+Al abrir una sesión aparece el símbolo del Omnitrix hundido, sin reproducir audio. El primer clic o Enter levanta el selector y reproduce `sonidos/core-ready.mp3`. Una segunda pulsación reproduce `sonidos/omnitrix-transform.mp3`, hunde el símbolo y pone toda la pantalla en verde. Ambos audios empiezan dentro de un gesto del usuario. La capa se mantiene durante la carga y revela suavemente el dashboard y su barra lateral cuando están listos. La entrada aparece una vez por sesión; navegar y limpiar la conversación no la reinician. Respeta la preferencia del sistema de reducir movimiento.
+
 Con `.venv` preparado, desde la raíz:
 
 ```powershell
@@ -121,8 +123,13 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\comprobar_inicio_w
 
 La política indicada afecta solo al proceso PowerShell de la prueba. La suite usa archivos temporales y dobles del modelo, sin consumir API. Incluye servidor local real y otro proceso Python para demostrar persistencia. El generador tampoco consume API ni modifica opiniones de uso.
 
+La comprobación opcional de la entrada en navegador está en `tests/verificar_intro.cjs`. Requiere Node, `npm install --prefix .herramientas/browser-check playwright-core` y Brave (o la ruta de Chromium en `OMNITRIX_BROWSER`). Con el servidor abierto, ejecutar `node tests/verificar_intro.cjs http://127.0.0.1:PUERTO`. Usa un perfil temporal, comprueba clic/Enter/móvil/movimiento reducido, reproducción de MP3, cobertura del panel lateral y continuidad con autoplay bloqueado; guarda capturas en `.herramientas/browser-check/` y no envía opiniones a la API. Tras editar recursos de la entrada, reiniciar el servidor para recargar el componente.
+
 - [Registro de pruebas, límites y dos ambigüedades](VERIFICACION.md).
 - [Salida de las 68 pruebas aprobadas con Gemini](evidencias/pruebas-gemini-windows.txt).
+- [Salida de las 71 pruebas con la pantalla de activación](evidencias/pruebas-inicio-windows.txt).
+- [Comprobación en navegador: clic, Enter, móvil y movimiento reducido](evidencias/navegador-inicio.json).
+- [Comprobación de audio y transición continua, incluido bloqueo de autoplay](evidencias/navegador-inicio-audio.json).
 - [Registro histórico de 65 pruebas anterior a Gemini](evidencias/pruebas-windows.txt).
 - [Versiones instaladas](evidencias/dependencias-windows.txt).
 - [Evidencia de persistencia y filtrado](evidencias/persistencia-y-filtro.json).
