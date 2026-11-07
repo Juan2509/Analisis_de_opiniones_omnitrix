@@ -28,6 +28,7 @@ La rúbrica conservada del taller distribuye: catálogo/asociación 10, prompt 2
 - Desafíos con Control maestro, Héroe bajo presión y Adaptabilidad.
 - Tres fichas consultables antes de elegir en Héroe bajo presión.
 - Cierre de ronda, resultado fijo, rejuego con otra situación y retorno al menú.
+- Conocimiento alienígena con Nombres/Habilidades/Especie/General, respuestas escritas, 60 segundos y corrección semántica conjunta por Gemini.
 
 Estas ampliaciones complementan el trabajo de sentimientos y persistencia. Las partidas de desafíos permanecen en sesión; no se mezclan con las opiniones guardadas. No se añadió un modo de opiniones de otras personas.
 
@@ -65,6 +66,7 @@ Si no hay acceso a Gemini, se puede demostrar catálogo y consulta de registros 
 - `almacenamiento.py`: identidad del envío, fecha UTC, reintento sin duplicación y límites de concurrencia.
 - `interfaz_desafios.py`: menú, sorteo estable, asignación de 63/3/1, estado activo/terminado y nuevas rondas.
 - `desafios.py`: 32 escenarios originales y evaluación contextual del plan con `desafios-v2`.
+- `conocimiento.py` e `interfaz_conocimiento.py`: preguntas escritas, alias, reloj, corrección conjunta con `conocimiento-v2` y puntuación calculada localmente. Para demostrarlo, iniciar una categoría, enviar respuestas y pedir la revisión final; la calidad semántica real debe comprobarse con Gemini.
 - `pantalla_inicio.py`: componente local, dos gestos para los audios y continuidad entre vistas.
 - Pruebas: diferencia entre ejecutar transporte/parser/archivos reales y obtener respuestas semánticas reales de Gemini.
 

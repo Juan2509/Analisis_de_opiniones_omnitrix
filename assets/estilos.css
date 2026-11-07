@@ -8,6 +8,49 @@
 
 [data-testid="stAppViewContainer"] {
     background: radial-gradient(ellipse at 90% 8%, rgba(72, 151, 29, 0.075), transparent 45%), #050705;
+    isolation: isolate;
+}
+/* Ambiente detrás del contenido: dos capas suaves, sin elementos interactivos. */
+[data-testid="stAppViewContainer"]::before,
+[data-testid="stAppViewContainer"]::after {
+    --omni-celula: radial-gradient(ellipse at center,
+        rgba(41, 106, 20, 0.025) 0% 30%,
+        rgba(61, 147, 26, 0.055) 43%,
+        rgba(95, 190, 40, 0.095) 54%,
+        rgba(50, 123, 23, 0.045) 63%, transparent 75%);
+    content: "";
+    position: fixed;
+    inset: -12vmax;
+    z-index: -1;
+    pointer-events: none;
+    background-repeat: no-repeat;
+    transform-origin: 50% 50%;
+    animation: omni-celulas-deriva 24s ease-in-out infinite alternate;
+}
+[data-testid="stAppViewContainer"]::before {
+    background-image: var(--omni-celula), var(--omni-celula), var(--omni-celula), var(--omni-celula);
+    background-size: 500px 410px, 390px 450px, 540px 440px, 350px 305px;
+    background-position: 24% 27%, 42% 32%, 65% 76%, 80% 69%;
+    animation-delay: -17s;
+}
+[data-testid="stAppViewContainer"]::after {
+    background-image: var(--omni-celula), var(--omni-celula), var(--omni-celula);
+    background-size: 340px 300px, 440px 370px, 290px 335px;
+    background-position: 33% 43%, 72% 57%, 52% 66%;
+    animation-name: omni-celulas-contracorriente;
+    animation-duration: 32s;
+    animation-delay: -29s;
+    opacity: 0.75;
+}
+@keyframes omni-celulas-deriva {
+    0% { transform: translate3d(-3vw, 2vh, 0) scale(0.94, 0.98) rotate(-3deg); }
+    50% { transform: translate3d(5vw, -5vh, 0) scale(1.04, 1.08) rotate(2deg); }
+    100% { transform: translate3d(-2vw, 6vh, 0) scale(0.98, 0.93) rotate(-1deg); }
+}
+@keyframes omni-celulas-contracorriente {
+    0% { transform: translate3d(5vw, -3vh, 0) scale(1.06, 0.95) rotate(3deg); }
+    50% { transform: translate3d(-6vw, 5vh, 0) scale(0.91, 1.08) rotate(-2deg); }
+    100% { transform: translate3d(2vw, -5vh, 0) scale(1.02, 0.97) rotate(1deg); }
 }
 [data-testid="stHeader"] { background: rgba(5, 7, 5, 0.94); }
 [data-testid="stMainBlockContainer"] {
@@ -161,6 +204,12 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
 .st-key-imagen_alien img { max-height: 360px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(140, 255, 56, 0.09)); }
 [class*="st-key-imagen_alien_"] img { max-height: 360px; object-fit: contain; filter: drop-shadow(0 12px 22px rgba(140, 255, 56, 0.09)); }
 .st-key-datos_alien { padding: 0.75rem 0; }
+.st-key-pregunta_conocimiento {
+    padding: 1rem;
+    border-color: var(--omni-borde) !important;
+    background: linear-gradient(145deg, rgba(13, 19, 13, 0.92), rgba(7, 10, 7, 0.96));
+}
+.st-key-pregunta_conocimiento img { max-height: 220px; object-fit: contain; }
 .st-key-datos_alien [data-testid="stCaptionContainer"] { color: var(--omni-verde); font-size: 0.65rem; letter-spacing: 0.13em; }
 /* Los errores conservan su semántica y su color; solo se personalizan los avisos informativos. */
 [data-testid="stAlertContainer"]:has([data-testid="stAlertContentInfo"]) {
@@ -173,6 +222,12 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     .omnitrix-nucleo { flex-basis: 170px; height: 170px; }
 }
 @media (max-width: 600px) {
+    /* Menos superficies en móvil; conservar el movimiento con una sola capa. */
+    [data-testid="stAppViewContainer"]::before {
+        background-size: 280px 230px, 250px 290px, 300px 250px, 230px 210px;
+        background-position: 30% 20%, 70% 31%, 62% 75%, 28% 69%;
+    }
+    [data-testid="stAppViewContainer"]::after { display: none; }
     [data-testid="stMainBlockContainer"] { padding-top: 2.5rem; }
     .omnitrix-portada { min-height: 290px; padding: 1.5rem; flex-direction: column; align-items: flex-start; }
     .omnitrix-portada-texto { max-width: 100%; }
@@ -185,5 +240,7 @@ h1 { font-size: clamp(2rem, 4vw, 3.25rem) !important; font-weight: 800 !importan
     .st-key-imagen_alien img { max-height: 300px; }
 }
 @media (prefers-reduced-motion: reduce) {
+    [data-testid="stAppViewContainer"]::before,
+    [data-testid="stAppViewContainer"]::after { animation: none; }
     .st-key-seccion [role="radiogroup"] label { transition: none; }
 }

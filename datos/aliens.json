@@ -7,7 +7,12 @@
       "nombre_original": "Heatblast",
       "serie_origen": "Ben 10 (serie original)",
       "descripcion": "Controla el fuego y proyecta llamas.",
-      "imagen": "assets/aliens/a001.png"
+      "imagen": "assets/aliens/a001.png",
+      "especie": "Pyronite",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Pyronite_%28Classic%29"
+      ]
     },
     {
       "id": "a002",
@@ -15,7 +20,12 @@
       "nombre_original": "Diamondhead",
       "serie_origen": "Ben 10 (serie original)",
       "descripcion": "Genera estructuras y proyectiles de cristal.",
-      "imagen": "assets/aliens/a002.png"
+      "imagen": "assets/aliens/a002.png",
+      "especie": "Petrosapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Petrosapien_%28Classic%29"
+      ]
     },
     {
       "id": "a003",
@@ -23,7 +33,12 @@
       "nombre_original": "XLR8",
       "serie_origen": "Ben 10 (serie original)",
       "descripcion": "Se desplaza a gran velocidad.",
-      "imagen": "assets/aliens/a003.png"
+      "imagen": "assets/aliens/a003.png",
+      "especie": "Kineceleran",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Kineceleran_%28Classic%29"
+      ]
     },
     {
       "id": "a004",
@@ -31,7 +46,12 @@
       "nombre_original": "Four Arms",
       "serie_origen": "Ben 10 (serie original)",
       "descripcion": "Posee cuatro brazos y una gran fuerza física.",
-      "imagen": "assets/aliens/a004.png"
+      "imagen": "assets/aliens/a004.png",
+      "especie": "Tetramand",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Tetramand_%28Classic%29"
+      ]
     },
     {
       "id": "a005",
@@ -39,7 +59,12 @@
       "nombre_original": "Grey Matter",
       "serie_origen": "Ben 10 (serie original)",
       "descripcion": "Su pequeño tamaño y gran inteligencia facilitan resolver problemas técnicos.",
-      "imagen": "assets/aliens/a005.png"
+      "imagen": "assets/aliens/a005.png",
+      "especie": "Galvan",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Grey_Matter_%28Classic%29"
+      ]
     },
     {
       "id": "a006",
@@ -47,7 +72,12 @@
       "nombre_original": "Swampfire",
       "serie_origen": "Ben 10: Fuerza Alienígena",
       "descripcion": "Combina capacidades vegetales con la generación de fuego.",
-      "imagen": "assets/aliens/a006.png"
+      "imagen": "assets/aliens/a006.png",
+      "especie": "Methanosian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Swampfire"
+      ]
     },
     {
       "id": "a007",
@@ -55,7 +85,12 @@
       "nombre_original": "Echo Echo",
       "serie_origen": "Ben 10: Fuerza Alienígena",
       "descripcion": "Crea duplicados de sí mismo y emite ataques sónicos.",
-      "imagen": "assets/aliens/a007.png"
+      "imagen": "assets/aliens/a007.png",
+      "especie": "Sonorosian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Sonorosian"
+      ]
     },
     {
       "id": "a008",
@@ -63,7 +98,12 @@
       "nombre_original": "Humungousaur",
       "serie_origen": "Ben 10: Fuerza Alienígena",
       "descripcion": "Destaca por su fuerza física y capacidad de aumentar de tamaño.",
-      "imagen": "assets/aliens/a008.png"
+      "imagen": "assets/aliens/a008.png",
+      "especie": "Vaxasaurian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Vaxasaurian_%28Classic%29"
+      ]
     },
     {
       "id": "a009",
@@ -71,7 +111,12 @@
       "nombre_original": "Big Chill",
       "serie_origen": "Ben 10: Fuerza Alienígena",
       "descripcion": "Puede volar, volverse intangible y emitir aliento congelante.",
-      "imagen": "assets/aliens/a009.png"
+      "imagen": "assets/aliens/a009.png",
+      "especie": "Necrofriggian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Big_Chill_%28Classic%29"
+      ]
     },
     {
       "id": "a010",
@@ -79,7 +124,12 @@
       "nombre_original": "Spidermonkey",
       "serie_origen": "Ben 10: Fuerza Alienígena",
       "descripcion": "Combina agilidad para trepar con la producción de telarañas.",
-      "imagen": "assets/aliens/a010.png"
+      "imagen": "assets/aliens/a010.png",
+      "especie": "Arachnachimp",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Spidermonkey_%28Classic%29"
+      ]
     },
     {
       "id": "a011",
@@ -87,7 +137,12 @@
       "nombre_original": "Water Hazard",
       "serie_origen": "Ben 10: Supremacía Alienígena",
       "descripcion": "Lanza agua a presión y dispone de un cuerpo acorazado.",
-      "imagen": "assets/aliens/a011.png"
+      "imagen": "assets/aliens/a011.png",
+      "especie": "Orishan",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Waterhazard"
+      ]
     },
     {
       "id": "a012",
@@ -95,7 +150,12 @@
       "nombre_original": "Ampfibian",
       "serie_origen": "Ben 10: Supremacía Alienígena",
       "descripcion": "Manipula electricidad mediante su cuerpo de aspecto similar a una medusa.",
-      "imagen": "assets/aliens/a012.png"
+      "imagen": "assets/aliens/a012.png",
+      "especie": "Amperi",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Amperi_%28Classic%29"
+      ]
     },
     {
       "id": "a013",
@@ -103,7 +163,12 @@
       "nombre_original": "Armodrillo",
       "serie_origen": "Ben 10: Supremacía Alienígena",
       "descripcion": "Sus brazos generan vibraciones y le permiten excavar.",
-      "imagen": "assets/aliens/a013.png"
+      "imagen": "assets/aliens/a013.png",
+      "especie": "Talpaedan",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Armodrillo"
+      ]
     },
     {
       "id": "a014",
@@ -111,7 +176,12 @@
       "nombre_original": "Terraspin",
       "serie_origen": "Ben 10: Supremacía Alienígena",
       "descripcion": "Gira para generar fuertes corrientes de aire.",
-      "imagen": "assets/aliens/a014.png"
+      "imagen": "assets/aliens/a014.png",
+      "especie": "Geochelone Aerios",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Terraspin"
+      ]
     },
     {
       "id": "a015",
@@ -119,7 +189,12 @@
       "nombre_original": "NRG",
       "serie_origen": "Ben 10: Supremacía Alienígena",
       "descripcion": "Emite energía y calor; utiliza un traje de contención.",
-      "imagen": "assets/aliens/a015.png"
+      "imagen": "assets/aliens/a015.png",
+      "especie": "Prypiatosian-B",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Prypiatosian-B"
+      ]
     },
     {
       "id": "a016",
@@ -127,7 +202,12 @@
       "nombre_original": "Feedback",
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Absorbe energía y la devuelve mediante descargas.",
-      "imagen": "assets/aliens/a016.png"
+      "imagen": "assets/aliens/a016.png",
+      "especie": "Conductoid",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Conductoid"
+      ]
     },
     {
       "id": "a017",
@@ -135,7 +215,12 @@
       "nombre_original": "Bloxx",
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Reorganiza los bloques de su cuerpo para cambiar de forma.",
-      "imagen": "assets/aliens/a017.png"
+      "imagen": "assets/aliens/a017.png",
+      "especie": "Segmentasapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Bloxx"
+      ]
     },
     {
       "id": "a018",
@@ -143,7 +228,12 @@
       "nombre_original": "Gravattack",
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Manipula la gravedad para mover o suspender objetos.",
-      "imagen": "assets/aliens/a018.png"
+      "imagen": "assets/aliens/a018.png",
+      "especie": "Galilean",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Galilean"
+      ]
     },
     {
       "id": "a019",
@@ -151,7 +241,12 @@
       "nombre_original": "Crashhopper",
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Sus potentes patas le permiten realizar grandes saltos.",
-      "imagen": "assets/aliens/a019.png"
+      "imagen": "assets/aliens/a019.png",
+      "especie": "Orthopterran",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Crashhopper"
+      ]
     },
     {
       "id": "a020",
@@ -159,7 +254,13 @@
       "nombre_original": "Ball Weevil",
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Produce bolas pegajosas de plasma que pueden explotar.",
-      "imagen": "assets/aliens/a020.png"
+      "imagen": "assets/aliens/a020.png",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Ball_Weevil",
+        "https://ben10.fandom.com/wiki/Ball_Weevil%27s_Species"
+      ]
     },
     {
       "id": "a021",
@@ -169,7 +270,12 @@
       "descripcion": "Rastrea por el olfato y el oído y se mueve con gran agilidad.",
       "imagen": "assets/aliens/a021.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Vulpimancer",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Wildmutt"
+      ]
     },
     {
       "id": "a022",
@@ -179,7 +285,12 @@
       "descripcion": "Vuela y dispara una sustancia pegajosa.",
       "imagen": "assets/aliens/a022.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Lepidopterran",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Stinkfly_%28Classic%29"
+      ]
     },
     {
       "id": "a023",
@@ -189,7 +300,12 @@
       "descripcion": "Nada y respira bajo el agua; su mandíbula rompe materiales resistentes.",
       "imagen": "assets/aliens/a023.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Piscciss Volann",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Ripjaws_%28Classic%29"
+      ]
     },
     {
       "id": "a024",
@@ -199,7 +315,12 @@
       "descripcion": "Se fusiona con máquinas y modifica sus funciones.",
       "imagen": "assets/aliens/a024.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Galvanic Mechamorph",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Galvanic_Mechamorph_%28Classic%29"
+      ]
     },
     {
       "id": "a025",
@@ -209,7 +330,12 @@
       "descripcion": "Atraviesa objetos y puede volverse invisible.",
       "imagen": "assets/aliens/a025.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Ectonurite",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Ghostfreak"
+      ]
     },
     {
       "id": "a026",
@@ -219,7 +345,12 @@
       "descripcion": "Se enrolla en una esfera acorazada y embiste rodando.",
       "imagen": "assets/aliens/a026.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Arburian Pelarota",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Arburian_Pelarota_%28Classic%29"
+      ]
     },
     {
       "id": "a027",
@@ -229,7 +360,12 @@
       "descripcion": "Extiende su cuerpo vegetal y utiliza enredaderas para sujetarse o atrapar.",
       "imagen": "assets/aliens/a027.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Florauna",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Florauna_%28Classic%29"
+      ]
     },
     {
       "id": "a028",
@@ -239,7 +375,12 @@
       "descripcion": "Emite aullidos sónicos y combina garras con sentidos agudos.",
       "imagen": "assets/aliens/a028.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Loboan",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Loboan_%28Classic%29"
+      ]
     },
     {
       "id": "a029",
@@ -249,7 +390,12 @@
       "descripcion": "Despliega y controla sus vendas para alcanzar y sujetar objetos.",
       "imagen": "assets/aliens/a029.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Thep Khufan",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Thep_Khufan"
+      ]
     },
     {
       "id": "a030",
@@ -259,7 +405,12 @@
       "descripcion": "Genera descargas eléctricas y posee gran fuerza física.",
       "imagen": "assets/aliens/a030.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Transylian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Frankenstrike"
+      ]
     },
     {
       "id": "a031",
@@ -269,7 +420,12 @@
       "descripcion": "Ingiere materiales con sus lenguas y los convierte en proyectiles de energía.",
       "imagen": "assets/aliens/a031.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Gourmand (subespecie Perk)",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Upchuck"
+      ]
     },
     {
       "id": "a032",
@@ -279,7 +435,12 @@
       "descripcion": "Se divide en múltiples copias para realizar tareas en conjunto.",
       "imagen": "assets/aliens/a032.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Splixson",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Splixson"
+      ]
     },
     {
       "id": "a033",
@@ -289,7 +450,12 @@
       "descripcion": "Observa en varias direcciones y dispara rayos desde sus ojos.",
       "imagen": "assets/aliens/a033.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Opticoid",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Eye_Guy"
+      ]
     },
     {
       "id": "a034",
@@ -299,7 +465,12 @@
       "descripcion": "Combina un tamaño gigantesco con fuerza y rayos cósmicos.",
       "imagen": "assets/aliens/a034.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "To'kustar",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/To%27kustar_%28Classic%29"
+      ]
     },
     {
       "id": "a035",
@@ -309,7 +480,12 @@
       "descripcion": "Expulsa chorros de baba a presión. Se muestra como transformación de Ben 10.000.",
       "imagen": "assets/aliens/a035.png",
       "serie_diseno": "Ben 10 (serie original)",
-      "fuente_imagen": "https://ben10db.weebly.com/original-series.html"
+      "fuente_imagen": "https://ben10db.weebly.com/original-series.html",
+      "especie": "Sphoeroid",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Spitter"
+      ]
     },
     {
       "id": "a036",
@@ -319,7 +495,12 @@
       "descripcion": "Manipula electricidad, se duplica y se desplaza por sistemas eléctricos.",
       "imagen": "assets/aliens/a036.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Nosedeenian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Buzzshock_%28Classic%29"
+      ]
     },
     {
       "id": "a037",
@@ -329,7 +510,12 @@
       "descripcion": "Proyecta un aliento helado que congela objetivos.",
       "imagen": "assets/aliens/a037.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Polar Manzardill",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Polar_Manzardill"
+      ]
     },
     {
       "id": "a038",
@@ -339,7 +525,12 @@
       "descripcion": "Vuela a gran velocidad y lanza rayos de energía desde ojos y cola.",
       "imagen": "assets/aliens/a038.png",
       "serie_diseno": "Fuerza Alienígena",
-      "fuente_imagen": "https://ben10db.weebly.com/alien-force.html"
+      "fuente_imagen": "https://ben10db.weebly.com/alien-force.html",
+      "especie": "Aerophibian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Aerophibian_%28Classic%29"
+      ]
     },
     {
       "id": "a039",
@@ -349,7 +540,12 @@
       "descripcion": "Absorbe energía y la libera en forma de rayos.",
       "imagen": "assets/aliens/a039.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Crystalsapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Crystalsapien_%28Classic%29"
+      ]
     },
     {
       "id": "a040",
@@ -359,7 +555,12 @@
       "descripcion": "Combina gran inteligencia con descargas eléctricas.",
       "imagen": "assets/aliens/a040.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Cerebrocrustacean",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Cerebrocrustacean"
+      ]
     },
     {
       "id": "a041",
@@ -369,7 +570,12 @@
       "descripcion": "Moldea su cuerpo viscoso y se sostiene mediante un proyector antigravitatorio.",
       "imagen": "assets/aliens/a041.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Polymorph",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Goop_%28Classic%29"
+      ]
     },
     {
       "id": "a042",
@@ -379,7 +585,12 @@
       "descripcion": "Puede alterar la realidad, aunque actuar requiere resolver sus decisiones internas.",
       "imagen": "assets/aliens/a042.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Celestialsapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Alien_X"
+      ]
     },
     {
       "id": "a043",
@@ -389,7 +600,13 @@
       "descripcion": "Controla fuerzas magnéticas para atraer y mover metales.",
       "imagen": "assets/aliens/a043.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Biotsavartian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Lodestar",
+        "https://ben10.fandom.com/wiki/Vendetta/Transcript"
+      ]
     },
     {
       "id": "a044",
@@ -399,7 +616,12 @@
       "descripcion": "Combina gran fuerza, agilidad y garras con un temperamento impulsivo.",
       "imagen": "assets/aliens/a044.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Appoplexian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Appoplexian_%28Classic%29"
+      ]
     },
     {
       "id": "a045",
@@ -409,7 +631,12 @@
       "descripcion": "Su cuerpo diminuto puede volar y emitir descargas de energía.",
       "imagen": "assets/aliens/a045.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Humano / Microchip (Nanochip), híbrido",
+      "estado_especie": "hibrida",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Nanomech"
+      ]
     },
     {
       "id": "a046",
@@ -419,7 +646,12 @@
       "descripcion": "Ingiere materiales y los transforma en proyectiles de energía; es la variante Murk.",
       "imagen": "assets/aliens/a046.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Gourmand (subespecie Murk)",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Upchuck"
+      ]
     },
     {
       "id": "a047",
@@ -429,7 +661,12 @@
       "descripcion": "Corre a gran velocidad y conserva fuerza para transportar personas.",
       "imagen": "assets/aliens/a047.png",
       "serie_diseno": "Supremacía Alienígena",
-      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html"
+      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html",
+      "especie": "Citrakayah",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Citrakayah"
+      ]
     },
     {
       "id": "a048",
@@ -439,7 +676,12 @@
       "descripcion": "Se camufla hasta hacerse invisible y dispone de una cola con aguijón.",
       "imagen": "assets/aliens/a048.png",
       "serie_diseno": "Supremacía Alienígena",
-      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html"
+      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html",
+      "especie": "Merlinisapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Merlinisapien"
+      ]
     },
     {
       "id": "a049",
@@ -449,7 +691,12 @@
       "descripcion": "Consume materia y la convierte en rayos que dispara desde su cuerno.",
       "imagen": "assets/aliens/a049.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Oryctini",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Oryctini"
+      ]
     },
     {
       "id": "a050",
@@ -459,7 +706,12 @@
       "descripcion": "Manipula el tiempo mediante rayos y examina acontecimientos pasados.",
       "imagen": "assets/aliens/a050.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Chronosapien",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Chronosapien"
+      ]
     },
     {
       "id": "a051",
@@ -469,7 +721,12 @@
       "descripcion": "Desmonta y reconstruye máquinas con extraordinaria rapidez.",
       "imagen": "assets/aliens/a051.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Planchaküle",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Juryrigg"
+      ]
     },
     {
       "id": "a052",
@@ -479,7 +736,12 @@
       "descripcion": "Combina fuerza física con la generación de electricidad.",
       "imagen": "assets/aliens/a052.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Gimlinopithecus",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Gimlinopithecus"
+      ]
     },
     {
       "id": "a053",
@@ -489,7 +751,12 @@
       "descripcion": "Su pequeño cuerpo resbaladizo facilita escapar de agarres y moverse bajo el agua.",
       "imagen": "assets/aliens/a053.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Ickthyperambuloid",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Walkatrout"
+      ]
     },
     {
       "id": "a054",
@@ -499,7 +766,12 @@
       "descripcion": "Produce polvo que induce el sueño y permite intervenir en los sueños.",
       "imagen": "assets/aliens/a054.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Nemuina",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Nemuina"
+      ]
     },
     {
       "id": "a055",
@@ -509,7 +781,12 @@
       "descripcion": "Utiliza su bigote como extremidades fuertes y flexibles.",
       "imagen": "assets/aliens/a055.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/es/wiki/Mole-Stache"
+      ]
     },
     {
       "id": "a056",
@@ -519,7 +796,12 @@
       "descripcion": "Su cuerpo soporta golpes y daños, aunque sigue sintiendo dolor.",
       "imagen": "assets/aliens/a056.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Atrocian",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Atrocian"
+      ]
     },
     {
       "id": "a057",
@@ -529,7 +811,12 @@
       "descripcion": "Combate con gran agilidad, patadas y extremidades afiladas.",
       "imagen": "assets/aliens/a057.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Kickin%27_Hawk"
+      ]
     },
     {
       "id": "a058",
@@ -539,7 +826,12 @@
       "descripcion": "Oculta un rostro capaz de provocar un miedo intenso en quienes lo miran.",
       "imagen": "assets/aliens/a058.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Toepick%27s_Species"
+      ]
     },
     {
       "id": "a059",
@@ -549,7 +841,12 @@
       "descripcion": "Vuela con propulsión y utiliza látigos de energía.",
       "imagen": "assets/aliens/a059.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Astrodactyl"
+      ]
     },
     {
       "id": "a060",
@@ -559,7 +856,12 @@
       "descripcion": "Combina saltos potentes con una lengua larga y prensil.",
       "imagen": "assets/aliens/a060.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Incursean",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Incursean_%28Classic%29"
+      ]
     },
     {
       "id": "a061",
@@ -569,7 +871,12 @@
       "descripcion": "Genera y controla grandes cantidades de energía nuclear.",
       "imagen": "assets/aliens/a061.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Atomix%27s_Species"
+      ]
     },
     {
       "id": "a062",
@@ -579,7 +886,12 @@
       "descripcion": "Produce y mezcla gases con diferentes efectos químicos.",
       "imagen": "assets/aliens/a062.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Especie sin nombre confirmado",
+      "estado_especie": "sin_nombre_confirmado",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Gutrot"
+      ]
     },
     {
       "id": "a063",
@@ -589,7 +901,12 @@
       "descripcion": "Vuela, absorbe energía vital y puede controlar a otros mediante corrupturas.",
       "imagen": "assets/aliens/a063.png",
       "serie_diseno": "Omniverse",
-      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html",
+      "especie": "Vladat",
+      "estado_especie": "identificada",
+      "fuentes_especie": [
+        "https://ben10.fandom.com/wiki/Whampire"
+      ]
     }
   ]
 }

@@ -12,6 +12,7 @@ from almacenamiento import (
 from analisis import ErrorAnalisis, analizar_opinion
 from pantalla_inicio import mostrar_inicio
 from interfaz_desafios import mostrar_desafios
+from interfaz_conocimiento import mostrar_conocimiento
 
 
 def cargar_imagen_local(ruta: str | None) -> Image.Image | None:
@@ -59,6 +60,13 @@ def mostrar_ficha(alien: dict, *, clave: str | None = None, etiqueta: str = "ALI
             st.text(alien["serie_origen"])
             st.caption("NOMBRE ORIGINAL")
             st.text(alien["nombre_original"])
+            st.caption("ESPECIE")
+            st.text(alien.get("especie", "Sin información registrada"))
+            if alien.get("fuentes_especie"):
+                st.caption(" · ".join(
+                    f"[Fuente de especie{f' {i}' if i > 1 else ''}]({fuente})"
+                    for i, fuente in enumerate(alien["fuentes_especie"], start=1)
+                ))
             st.markdown("**Habilidades**")
             st.write(alien["descripcion"])
 
@@ -249,7 +257,7 @@ def main():
         st.divider()
         seccion = st.radio(
             "Secciones",
-            ("Analizar opinión", "Desafíos del Omnitrix", "Consultar archivo"),
+            ("Analizar opinión", "Desafíos del Omnitrix", "Conocimiento alienígena", "Consultar archivo"),
             key="seccion",
         )
         st.divider()
@@ -264,6 +272,10 @@ def main():
 
     if seccion == "Desafíos del Omnitrix":
         mostrar_desafios(mostrar_ficha)
+        return
+
+    if seccion == "Conocimiento alienígena":
+        mostrar_conocimiento(cargar_imagen_local)
         return
 
     st.markdown(

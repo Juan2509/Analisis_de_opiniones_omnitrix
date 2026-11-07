@@ -109,12 +109,19 @@ async function main() {
       }
       await page.locator('.omni-start').waitFor({ state: 'detached' });
       await page.locator('[data-omnitrix-reveal]').waitFor({ state: 'detached' });
+      await page.waitForTimeout(800);
+      assert.ok(await page.getByRole('main').evaluate(el => el.scrollTop <= 1), 'El dashboard debe iniciar arriba');
+      const tituloInicial = await page.getByRole('heading', { name: 'Archivo Omnitrix', exact: true }).boundingBox();
+      assert.ok(tituloInicial && tituloInicial.y >= 0 && tituloInicial.y < caso.viewport.height);
       assert.deepEqual(await page.evaluate(() => ({ vioCapa: window.omniContinuidad.vioCapa, corte: window.omniContinuidad.corte })), { vioCapa: true, corte: false });
       const audios = await page.evaluate(() => window.omniAudio.map(a => ({ tiempo: a.currentTime, duracion: a.duration, pausado: a.paused, error: a.error?.message, src: a.src.slice(0, 28) })));
       assert.ok(audios.at(-1).tiempo > 0 && !audios.at(-1).error, JSON.stringify(audios));
       if (caso.nombre === 'clic') {
         await page.screenshot({ path: path.join(output, 'intro-dashboard.png') });
       }
+      const desplazado = await page.getByRole('main').evaluate(el => { el.scrollTop = el.scrollHeight; return el.scrollTop; });
+      await page.waitForTimeout(250);
+      assert.ok(await page.getByRole('main').evaluate((el, esperado) => Math.abs(el.scrollTop - esperado) <= 1, desplazado), 'El desplazamiento manual debe seguir disponible');
       if (await page.getByTestId('stExpandSidebarButton').isVisible()) {
         await page.getByTestId('stExpandSidebarButton').click();
       }

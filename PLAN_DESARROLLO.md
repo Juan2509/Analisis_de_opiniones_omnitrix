@@ -34,18 +34,21 @@ Implementado no significa que toda aceptación manual o compatibilidad esté cer
 | Submodos | Control maestro, Héroe bajo presión y Adaptabilidad. | `feat(desafios): agregar adaptabilidad y cierre de rondas` |
 | Comparación de opciones | Tres fichas consultables en pestañas antes de elegir. | `feat(desafios): mostrar fichas de los tres aliens disponibles` |
 | Situaciones | 32 en total, incluidas 20 nuevas de combate/seguridad/rescate. | `feat(desafios): agregar 20 situaciones de combate seguridad y rescate` |
+| Especies | 63 fichas con especie/estado/fuentes y casos ambiguos documentados. | `feat(catalogo): agregar especies investigadas y fuentes a las 63 fichas` |
+| Conocimiento alienígena | Cuatro categorías, respuestas escritas, ronda de 60 s y corrección conjunta por IA. | `feat(conocimiento): agregar cuestionario escrito con temporizador y evaluación IA` |
 | Consolidación documental | Windows/Linux, detalles actuales y separación del historial. | `docs: actualizar guías de Windows Linux y funciones actuales` |
 
 Las sugerencias no implican que esos commits se hayan ejecutado. Revisar Git para conocer el estado confirmado y conservar cambios existentes.
 
 ## Comprobaciones realizadas
 
-Última ejecución completa archivada: 87 pruebas Windows. Después se comprobaron las fichas comparables con 15 pruebas del juego y 20 de interfaz, y la ampliación a 32 situaciones con 15 del juego. El recorrido de rondas en los tres submodos se comprobó en escritorio/móvil con evaluaciones simuladas y sin API real. El historial de resultados menores y evidencias se conserva en [VERIFICACION.md](VERIFICACION.md).
+Última ejecución completa archivada: 107 pruebas Windows, incluidas 16 de Conocimiento alienígena. El recorrido de desafíos y las pruebas del cuestionario usan evaluaciones simuladas y no acreditan exactitud semántica del modelo. La corrección del fallo real comunicado en Nombres debe confirmarse con Gemini; las nuevas comprobaciones del adaptador usan transporte interceptado. El historial de resultados y evidencias se conserva en [VERIFICACION.md](VERIFICACION.md).
 
 ## Pendientes reales
 
 - Ejecutar y registrar una evaluación real de opiniones: cuatro sentimientos, texto ajeno, ironía e instrucciones incrustadas, con resultados y discrepancias frente a referencias humanas.
 - Registrar evaluación real de estrategias en los tres submodos, incluyendo alternativas creativas y limitaciones del alien asignado.
+- Registrar una evaluación real del cuestionario, con alias, traducciones, habilidades equivalentes y respuestas ambiguas; las pruebas de interfaz utilizan IA simulada.
 - Cerrar el recorrido manual de envío, reinicio, recuperación, descarga desde navegador y cierre del controlador.
 - Instalar y comprobar la versión actual en Linux. El procedimiento de terminal está documentado; el lanzador gráfico Linux no está implementado.
 - Preparar la entrega sin secretos, entornos ni datos privados y revisar procedencia de recursos de terceros.

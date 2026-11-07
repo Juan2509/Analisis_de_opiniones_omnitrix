@@ -23,6 +23,8 @@ Se excluyen reboot, formas supremas, fusiones, transformaciones exclusivas de vi
 
 ### Catálogo completo
 
+Las 63 fichas también incluyen la especie y sus fuentes. La [investigación de especies](ESPECIES.md) contiene la tabla completa, el criterio empleado y los casos ambiguos: siete especies sin nombre confirmado, Nanomech híbrido y las subespecies de Gourmand. Las grafías de especie se conservan en su idioma original para evitar traducciones inventadas.
+
 | ID | Nombre latino | Nombre original |
 | --- | --- | --- |
 | a001 | Fuego | Heatblast |
@@ -118,7 +120,9 @@ Son referencias comunitarias, no un catálogo oficial. Algunas páginas de Fando
 
 Revisión: 7 de noviembre de 2026. Listas comunitarias de [transformaciones clásicas](https://ben10.fandom.com/es/wiki/Aliens_del_Omnitrix), [debuts por serie](https://ben10.fandom.com/wiki/Jetray_(Classic)/Gallery) y [Spitter](https://ben10.fandom.com/wiki/Spitter). Nombres regionales contrastados con las páginas de las cuatro series enlazadas arriba. No se interpretan personajes del Nemetrix, transformaciones supremas de Albedo ni variantes de diseño como aliens nuevos. No se incluyen Rocks y Squidstrictor, del espectáculo en vivo, ni Eon de otra continuidad cinematográfica.
 
-Los campos opcionales `serie_diseno` y `fuente_imagen` indican el diseño y la página de imagen de las fichas añadidas. En los 20 registros originales la interfaz conserva Omniverse como valor predeterminado; esos registros no se modificaron. Los hashes y dimensiones de las 63 imágenes se verifican contra el manifiesto de recursos.
+Los campos opcionales `serie_diseno` y `fuente_imagen` indican el diseño y la página de imagen de las fichas añadidas. En los 20 registros originales la interfaz conserva Omniverse como valor predeterminado; sus datos previos se conservaron y posteriormente se añadió el bloque de especies. Los hashes y dimensiones de las 63 imágenes se verifican contra el manifiesto de recursos.
+
+La extensión de especies usa `especie` (texto), `estado_especie` (`identificada`, `sin_nombre_confirmado`, `hibrida`) y `fuentes_especie` (lista no vacía de URLs HTTPS). Si aparece uno de esos campos se requieren los tres. Se admiten catálogos v1 antiguos sin todo el bloque; las 63 fichas vigentes lo tienen completo. Las fuentes son enlaces de consulta: cargar una ficha no realiza peticiones externas.
 
 ## Verificación histórica del paso 3
 

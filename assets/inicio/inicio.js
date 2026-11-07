@@ -42,7 +42,8 @@ export default function ({ parentElement, data, setTriggerValue }) {
     let revealing = false;
     let settle;
     const observer = new MutationObserver(check);
-    observer.observe(document.body, { childList: true, subtree: true });
+    observer.observe(document.body, { childList: true, subtree: true, attributes: true,
+      attributeFilter: ['data-test-script-state'] });
     const safety = window.setTimeout(reveal, 15000);
     function reveal() {
       if (revealing) return;
@@ -50,19 +51,39 @@ export default function ({ parentElement, data, setTriggerValue }) {
       observer.disconnect();
       window.clearTimeout(settle);
       window.clearTimeout(safety);
-      veil.style.pointerEvents = 'none';
+      // El chat de Streamlit puede enfocar su campo y desplazar el panel al montar.
+      // Corregir solo esta entrada, todavía bajo el verde, antes de revelarla.
+      const main = document.querySelector('main.stMain, [data-testid="stMain"]');
+      const title = main?.querySelector('h1');
+      if (title) {
+        title.setAttribute('tabindex', '-1');
+        title.focus({ preventScroll: true });
+      }
+      function startAtTop() {
+        main?.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
+      startAtTop();
       window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
+        startAtTop();
         veil.style.opacity = '0';
-        window.setTimeout(() => veil.remove(), reducedMotion ? 0 : 1500);
+        window.setTimeout(() => {
+          // También cubrir los ajustes de altura/foco pendientes del chat al entrar.
+          title?.focus({ preventScroll: true });
+          startAtTop();
+          veil.remove();
+        }, reducedMotion ? 0 : 1500);
       }));
     }
     function check() {
       window.clearTimeout(settle);
+      const app = document.querySelector('[data-testid="stApp"]');
+      if (app?.dataset.testScriptState && app.dataset.testScriptState !== 'notRunning') return;
       if (document.querySelector('.omni-start') ||
           !document.querySelector('[data-testid="stSidebar"] .omnitrix-marca') ||
           !document.querySelector('[data-testid="stChatInput"], [data-testid="stAlert"]')) return;
       settle = window.setTimeout(async () => {
-        await Promise.all(Array.from(document.querySelectorAll('[data-testid="stMain"] img'))
+        await Promise.all(Array.from(document.querySelectorAll('main.stMain img, [data-testid="stMain"] img'))
           .map(img => img.decode().catch(() => {})));
         const remaining = reducedMotion ? 0 : Math.max(0, 600 - (performance.now() - started));
         window.setTimeout(reveal, remaining);

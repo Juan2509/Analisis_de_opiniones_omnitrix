@@ -1,6 +1,6 @@
 # Archivo Omnitrix
 
-Aplicación académica de Ben 10 para explorar **63 transformaciones**, analizar opiniones con Gemini y resolver **32 situaciones** en tres submodos de desafíos. La interfaz funciona en el navegador y utiliza Python, Streamlit, LangChain, Pydantic y archivos JSON locales.
+Aplicación académica de Ben 10 para explorar **63 transformaciones**, analizar opiniones con Gemini, resolver **32 situaciones** en tres submodos de desafíos y jugar un cuestionario escrito de conocimiento alienígena. La interfaz funciona en el navegador y utiliza Python, Streamlit, LangChain, Pydantic y archivos JSON locales.
 
 Actualizado el 7 de noviembre de 2026.
 
@@ -14,16 +14,20 @@ Actualizado el 7 de noviembre de 2026.
 | [Verificación](VERIFICACION.md) | Resultados comprobados, evidencias y pendientes. |
 | [Entrega y sustentación](ENTREGA.md) | Requisitos académicos, demostración y material de entrega. |
 | [Catálogo y situaciones](datos/README.md) | Lista de los 63 aliens y alcance de las 32 misiones. |
+| [Especies y fuentes](datos/ESPECIES.md) | Revisión de las 63 fichas, especies sin nombre confirmado y casos especiales. |
+| [Conocimiento alienígena](datos/CONOCIMIENTO.md) | Categorías, reloj, alias y corrección escrita por IA. |
 | [Contexto](CONTEXTO_PROYECTO.md) y [plan](PLAN_DESARROLLO.md) | Estado vigente, decisiones y continuidad. |
 
 ## Qué incluye
 
 - Pantalla inicial del Omnitrix con dos pulsaciones, sonidos locales y transición verde que cubre el dashboard y el panel lateral.
-- Catálogo con imágenes, habilidades, nombres latinos/originales y serie de introducción.
+- Fondo negro con células verdes tenues en movimiento lento y cambios de escala; sin interacción y con movimiento reducido respetado.
+- Catálogo con imágenes, habilidades, nombres latinos/originales, especie con fuentes y serie de introducción.
 - Análisis de opiniones: positivo, negativo, neutro o mixto, con una justificación breve.
 - Guardado local, consulta, filtros, recuentos y descarga JSON de opiniones.
 - Desafíos de combate, seguridad, rescate y resolución creativa; incluyen escenarios originales con Vilgax y otros villanos.
 - Tres submodos: **Control maestro**, **Héroe bajo presión** y **Adaptabilidad**.
+- Conocimiento alienígena: **Nombres**, **Habilidades**, **Especie** y **General**, con respuestas escritas, 60 segundos y revisión conjunta por Gemini.
 
 Se adapta el taller de opiniones sobre futbolistas a Ben 10; según lo comunicado por el estudiante, en clase se permitió cambiar el tema manteniendo los requisitos técnicos. Los desafíos y la presentación audiovisual son ampliaciones posteriores.
 
@@ -96,6 +100,8 @@ El símbolo comienza hundido. El primer clic o Enter levanta el selector y repro
 
 La entrada aparece una vez por sesión de Streamlit y respeta la preferencia de movimiento reducido. Los recursos son locales. Reinicia el servidor después de modificar los recursos del componente inicial. El volumen y los permisos de sonido del navegador pueden afectar la reproducción.
 
+Al terminar la activación, el dashboard se presenta desde arriba, con el título y la portada visibles. El ajuste inicial evita que la carga del chat desplace la vista hacia el formulario; después puedes desplazarte normalmente.
+
 ### Analizar opinión
 
 1. Selecciona un alien y consulta su ficha.
@@ -130,9 +136,15 @@ Una evaluación válida termina la ronda y fija la respuesta. Al final aparecen:
 
 Durante la ronda no hay botón para saltar de situación. Si la API falla, el formulario permanece disponible para corregir o reintentar. Las partidas se conservan en sesión y no se escriben en el archivo de opiniones.
 
+### Conocimiento alienígena
+
+Selecciona **Nombres**, **Habilidades**, **Especie** o **General** y pulsa **Iniciar**. Tienes **60 segundos** para responder por escrito a las imágenes, una pregunta a la vez, usando **Enviar y siguiente** o Enter. No hay pistas ni se muestran las soluciones durante la ronda. En Especie solo se preguntan fichas con especie identificada; General mezcla las tres categorías.
+
+Al terminar pulsa **Evaluar respuestas con IA**. Gemini revisa el conjunto aceptando alias, traducciones y formulaciones equivalentes; cada resultado incluye tu respuesta, referencia y explicación. Correctas suman 1 punto, parciales 0,5 e incorrectas 0; los casos inciertos quedan por revisar y no puntúan. Puedes volver a jugar o regresar al menú. Las rondas viven en sesión, no en el archivo de opiniones. [Reglas, alias y detalles](datos/CONOCIMIENTO.md).
+
 ### Consultar archivo
 
-Es la última opción del panel, después de Analizar opinión y Desafíos. Filtra por alien y/o sentimiento, o selecciona Todos. La tabla, los recuentos y **Descargar resultados filtrados (JSON)** utilizan la misma selección. Consultar no llama a la IA ni escribe datos.
+Es la última opción del panel, después de Analizar opinión, Desafíos y Conocimiento alienígena. Filtra por alien y/o sentimiento, o selecciona Todos. La tabla, los recuentos y **Descargar resultados filtrados (JSON)** utilizan la misma selección. Consultar no llama a la IA ni escribe datos.
 
 ## Datos y recursos
 
@@ -152,9 +164,9 @@ Detén el servidor y respalda `datos/opiniones.json` antes de trasladar datos. C
 
 ## Arquitectura y verificación
 
-`app.py` presenta la aplicación; `analisis.py` gestiona Gemini y el análisis estructurado; `almacenamiento.py` valida y guarda JSON; `desafios.py` e `interfaz_desafios.py` implementan el juego; `pantalla_inicio.py` y sus recursos implementan la entrada. Más detalle en [DESARROLLO.md](DESARROLLO.md).
+`app.py` presenta la aplicación; `analisis.py` gestiona Gemini y el análisis estructurado; `almacenamiento.py` valida y guarda JSON; `desafios.py` e `interfaz_desafios.py` implementan las misiones; `conocimiento.py` e `interfaz_conocimiento.py` implementan el cuestionario; `pantalla_inicio.py` y sus recursos implementan la entrada. Más detalle en [DESARROLLO.md](DESARROLLO.md).
 
-La última suite completa registrada aprobó **87 pruebas** en Windows. Después pasaron las **35 pruebas de interfaz/juego** al añadir las fichas comparables y las **15 del juego** al ampliar a 32 situaciones. La revisión de los tres submodos en escritorio/móvil usa evaluaciones explícitamente simuladas. El usuario confirmó el funcionamiento real de Gemini; todavía falta una evaluación sistemática documentada de su calidad. Consulta [VERIFICACION.md](VERIFICACION.md) para no confundir pruebas funcionales con precisión del modelo.
+Las pruebas de catálogo, interfaz, misiones y cuestionario utilizan servicios de IA simulados para no gastar cuota. El usuario confirmó el funcionamiento real de Gemini en la aplicación; todavía falta una evaluación sistemática documentada de su calidad, incluidos alias y respuestas equivalentes del cuestionario. Consulta los resultados vigentes en [VERIFICACION.md](VERIFICACION.md) para no confundir pruebas funcionales con precisión del modelo.
 
 ## Límites y pendientes
 

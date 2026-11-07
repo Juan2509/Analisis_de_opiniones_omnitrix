@@ -142,7 +142,7 @@ Usa una clave de un proyecto AI Studio Free Tier sin facturación vinculada. El 
 
 Las variables del sistema prevalecen sobre `.env`; `GEMINI_API_KEY` es una alternativa a `GOOGLE_API_KEY`. No publiques credenciales. Si modificas configuración o recursos de la pantalla inicial, detén el servidor y vuelve a iniciarlo.
 
-Para comprobar el funcionamiento real: activa el Omnitrix con dos pulsaciones, envía una opinión en Analizar opinión y revisa el guardado; después prueba una estrategia en Desafíos. Cada evaluación solicitada consume cuota del mismo proyecto gratuito. Las pruebas automatizadas usan respuestas simuladas.
+Para comprobar el funcionamiento real: activa el Omnitrix con dos pulsaciones, envía una opinión en Analizar opinión y revisa el guardado; después prueba una estrategia en Desafíos. En Conocimiento alienígena elige categoría, pulsa Iniciar, escribe respuestas y solicita la revisión final con IA. Cada evaluación solicitada consume cuota del mismo proyecto gratuito; el reloj y los envíos del cuestionario no consumen cuota por separado. Las pruebas automatizadas usan respuestas simuladas.
 
 ## Actualizar o trasladar el proyecto
 

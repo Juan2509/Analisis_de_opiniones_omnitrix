@@ -1,0 +1,62 @@
+{
+  "casos": [
+    {
+      "ancho": 1440,
+      "modo": "Nombres",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 1440,
+      "modo": "Habilidades",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 1440,
+      "modo": "Especie",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 1440,
+      "modo": "General",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 390,
+      "modo": "Nombres",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 390,
+      "modo": "Habilidades",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 390,
+      "modo": "Especie",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    },
+    {
+      "ancho": 390,
+      "modo": "General",
+      "resultado": "correcto",
+      "reloj_y_borrador": "conservados",
+      "evaluacion": "simulada sin API"
+    }
+  ],
+  "errores_js": 0,
+  "peticiones_externas": 0
+}

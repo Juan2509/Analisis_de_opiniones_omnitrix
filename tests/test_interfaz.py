@@ -73,6 +73,22 @@ class PruebasInterfaz(unittest.TestCase):
         self.assertEqual(self.analizar.call_args_list[0].args[0]["id"], "a001")
         self.assertEqual(self.analizar.call_args_list[0].args[1], texto)
 
+    def test_fichas_muestran_especie_fuentes_e_incertidumbre_sin_ia(self):
+        app = self.iniciar()
+        for alien_id, especie in (
+            ("a001", "Pyronite"),
+            ("a043", "Biotsavartian"),
+            ("a045", "Humano / Microchip (Nanochip), híbrido"),
+            ("a046", "Gourmand (subespecie Murk)"),
+            ("a061", "Especie sin nombre confirmado"),
+        ):
+            with self.subTest(alien_id=alien_id):
+                app.selectbox[0].select(alien_id).run()
+                self.assertFalse(app.exception)
+                self.assertIn(especie, [t.value for t in app.text])
+                self.assertTrue(any("Fuente de especie" in c.value for c in app.caption))
+        self.analizar.assert_not_called()
+
     def test_aliens_nuevos_muestran_fuente_y_guardan_su_identidad(self):
         app = self.iniciar()
         app.selectbox[0].select("a047").run()

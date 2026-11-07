@@ -1,0 +1,26 @@
+[
+  {
+    "caso": "escritorio",
+    "resultado": "correcto",
+    "movimiento": "omni-celulas-deriva",
+    "controles_e_imagenes": "correctos",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "movil",
+    "resultado": "correcto",
+    "movimiento": "omni-celulas-deriva",
+    "controles_e_imagenes": "correctos",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "movimiento-reducido",
+    "resultado": "correcto",
+    "movimiento": "none",
+    "controles_e_imagenes": "correctos",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  }
+]

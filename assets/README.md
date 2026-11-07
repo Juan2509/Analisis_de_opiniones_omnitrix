@@ -1,5 +1,7 @@
 # Recursos visuales de la aplicación
 
+El dashboard incorpora un ambiente original de células/círculos verdes difuminados sobre negro, definido únicamente con gradientes y animaciones CSS en `estilos.css`. Dos capas de movimiento y escala lentos quedan detrás de los elementos, sin interceptar el ratón; en móvil se reduce a una capa y con movimiento reducido queda estático. No se emplearon imágenes ni logos de las referencias del usuario para ese fondo.
+
 La entrada utiliza dos pulsaciones: primero levanta el símbolo y reproduce el audio de preparación; después lo presiona y reproduce la transformación. La capa verde cubre dashboard y sidebar y evita el corte entre vistas. Los audios y sus momentos de reproducción se describen en [sonidos](../sonidos/README.md). El foco de teclado no dibuja un contorno circular alrededor de la imagen.
 
 La pantalla inicial reutiliza `omnitrix.png`. Sus recursos locales están en `inicio/`: HTML, CSS y JavaScript. El símbolo empieza hundido; el primer clic o Enter lo levanta y reproduce `sonidos/core-ready.mp3`. La segunda pulsación lo hunde y reproduce `sonidos/omnitrix-transform.mp3`, que continúa durante el cambio de vista. No se usa autoplay ni un botón de sonido adicional. `pantalla_inicio.py` conserva la activación durante la sesión e incorpora los dos MP3 locales. La capa verde cubre tanto el panel lateral como el área central. Respeta la preferencia de movimiento reducido.
@@ -11,3 +13,5 @@ La misma imagen se usa en la marca de la barra lateral, a 48 × 48 píxeles sin 
 La imagen sustituye el emblema geométrico anterior y su órbita. En pantallas pequeñas se presenta completa debajo del texto, sin recortes. Su procedencia está en `omnitrix-fuente.json`; no se atribuye autoría propia ni una licencia libre no comprobada.
 
 Las imágenes de los personajes conservan sus [créditos y manifiesto](aliens/README.md).
+
+`aviso_tiempo.js` es el componente de audio del cuestionario: precarga el MP3 local de aviso y reproduce una vez por ronda cuando quedan cinco segundos. Su estado en el documento evita reinicios al actualizar el reloj o enviar respuestas. No modifica la entrada ni su transición.

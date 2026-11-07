@@ -1,0 +1,21 @@
+{
+  "fichas": 63,
+  "estados": {
+    "identificada": 55,
+    "sin_nombre_confirmado": 7,
+    "hibrida": 1
+  },
+  "datos_previos_conservados": true,
+  "fuentes_por_ficha": true,
+  "sin_nombre_confirmado": [
+    "Escarabola",
+    "Mole-Stache",
+    "Halcón",
+    "Toepick",
+    "Astrodactyl",
+    "Atomix",
+    "Barrigobot"
+  ],
+  "metodo_investigacion": "Consulta web indexada de artículos individuales y especies de Ben 10 Wiki; fuente secundaria. Véase datos/ESPECIES.md.",
+  "llamadas_ia": 0
+}

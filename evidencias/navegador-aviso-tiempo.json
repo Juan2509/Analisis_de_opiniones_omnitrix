@@ -1,0 +1,20 @@
+[
+  {
+    "ancho": 1440,
+    "avisos": 2,
+    "rondas": 2,
+    "repeticiones_al_enviar": 0,
+    "errores_js": 0,
+    "peticiones_externas": 0,
+    "reproduccion": "interceptada; no comprueba volumen físico"
+  },
+  {
+    "ancho": 390,
+    "avisos": 2,
+    "rondas": 2,
+    "repeticiones_al_enviar": 0,
+    "errores_js": 0,
+    "peticiones_externas": 0,
+    "reproduccion": "interceptada; no comprueba volumen físico"
+  }
+]

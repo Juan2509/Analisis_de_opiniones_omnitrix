@@ -43,6 +43,45 @@ class PruebasCatalogo(unittest.TestCase):
         self.escribir(self.datos)
         self.assertEqual(cargar_aliens(self.ruta), self.datos["aliens"])
 
+    def test_especies_cubren_catalogo_y_distinguen_incertidumbre(self):
+        aliens = {a["id"]: a for a in cargar_aliens()}
+        desconocidos = {"a020", "a055", "a057", "a058", "a059", "a061", "a062"}
+        self.assertEqual({a["id"] for a in aliens.values()
+                          if a["estado_especie"] == "sin_nombre_confirmado"}, desconocidos)
+        self.assertEqual({a["id"] for a in aliens.values()
+                          if a["estado_especie"] == "hibrida"}, {"a045"})
+        for alien in aliens.values():
+            self.assertTrue(alien["especie"].strip())
+            self.assertTrue(alien["fuentes_especie"])
+        for alien_id, especie in {
+            "a014": "Geochelone Aerios", "a019": "Orthopterran",
+            "a031": "Gourmand (subespecie Perk)", "a035": "Sphoeroid",
+            "a043": "Biotsavartian", "a046": "Gourmand (subespecie Murk)",
+            "a063": "Vladat",
+        }.items():
+            self.assertEqual(aliens[alien_id]["especie"], especie)
+
+    def test_extension_especies_conserva_compatibilidad_con_catalogo_anterior(self):
+        for alien in self.datos["aliens"]:
+            for campo in ("especie", "estado_especie", "fuentes_especie"):
+                del alien[campo]
+        self.escribir(self.datos)
+        self.assertEqual(cargar_aliens(self.ruta), self.datos["aliens"])
+
+    def test_rechaza_metadatos_de_especies_invalidos(self):
+        for campo, valores in {
+            "especie": (None, "", " ", 10, []),
+            "estado_especie": (None, "", "inventada", [], True),
+            "fuentes_especie": (None, [], "https://ejemplo.com", [None],
+                                ["javascript:alert(1)"], ["http://ejemplo.com"],
+                                ["https:///sin-host"], ["https://ejemplo.com/ )"]),
+        }.items():
+            for valor in valores:
+                with self.subTest(campo=campo, valor=valor):
+                    datos = deepcopy(self.datos)
+                    datos["aliens"][0][campo] = valor
+                    self.comprobar_rechazo(datos, campo)
+
     def test_rutas_independientes_del_directorio_de_inicio(self):
         anterior = Path.cwd()
         try:

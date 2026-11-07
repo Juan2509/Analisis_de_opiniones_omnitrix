@@ -11,6 +11,9 @@ Estado documentado: 7 de noviembre de 2026. Instalación y arranque en [INSTALAC
 | `almacenamiento.py` | Validación de catálogo y registros, UUID/fecha, JSON persistente y filtros. |
 | `desafios.py` | Banco de situaciones, sorteo y contrato/prompt de evaluación de estrategias. |
 | `interfaz_desafios.py` | Menú de submodos, asignaciones, formulario, cierre de ronda y rejuego. |
+| `conocimiento.py` | Preguntas por categoría, alias, prompt/esquema de corrección y puntuación local. |
+| `interfaz_conocimiento.py` | Menú, ronda escrita de 60 segundos, reloj independiente y revisión final. |
+| `audio_cuestionario.py` y `assets/aviso_tiempo.js` | Audio local de los últimos cuatro segundos; deduplicación por ronda en el documento. |
 | `pantalla_inicio.py` | Componente Streamlit v2 con imagen/audio embebidos y activación de sesión. |
 | `assets/inicio/` | HTML, CSS y JavaScript de las dos pulsaciones y la transición. |
 | `iniciar.py` y `Iniciar Archivo Omnitrix.vbs` | Arranque gráfico, servidor y cierre en Windows. |
@@ -44,6 +47,8 @@ Una respuesta pertinente exige sentimiento; una ajena exige `None`. Se rechazan 
 
 ## Persistencia y consultas
 
+El catálogo incorpora `especie`, `estado_especie` (`identificada`, `sin_nombre_confirmado` o `hibrida`) y `fuentes_especie` (lista de enlaces HTTPS). Se muestran en la ficha reutilizada por catálogo y desafíos, sin consultas al modelo. El bloque es opcional para leer catálogos v1 antiguos, pero debe estar completo si aparece cualquiera de sus campos. Las 63 fichas actuales lo incluyen. Nombres originales de especie, decisiones editoriales y referencias en [Especies](datos/ESPECIES.md). Una especie sin nombre confirmado no equivale a ausencia de especie.
+
 `datos/opiniones.json` tiene esta estructura:
 
 ```json
@@ -76,13 +81,29 @@ El prompt `desafios-v2` recibe situación, alien, estrategia y modo. En Adaptabi
 
 Una evaluación válida guarda en sesión el resultado, alien y plan y retira el formulario. Las acciones finales aparecen solo entonces. Un error conserva los datos para reintentar; no se inventa un final. Volver a jugar limpia respuesta/error/selección/plan y sortea otra situación; volver al menú exige Iniciar para comenzar otra ronda. Las partidas no se escriben en el JSON de opiniones.
 
+## Conocimiento alienígena
+
+Menú de cuatro categorías con selección e Iniciar. `generar_preguntas` sortea una pregunta por imagen (máximo 63), fija el orden en sesión y usa enunciados locales. Especie solo incluye las 55 fichas identificadas; General aplica el mismo filtro al elegir esa categoría. No se llama al modelo para generar preguntas.
+
+`conocimiento_ronda` conserva ID de ronda, categoría, preguntas, respuestas enviadas, plazo monotónico, estado y evaluación/error. El formulario de cada pregunta conserva el borrador mientras un `st.fragment(run_every="1s")` actualiza únicamente el reloj. El plazo no se reinicia al navegar; se comprueba también al enviar para rechazar respuestas tardías. Las rondas se cierran al agotar 60 segundos, terminar manualmente o completar el banco. No se escriben en `opiniones.json`.
+
+Al pulsar Evaluar respuestas con IA, `evaluar_respuestas` envía todas las respuestas de esa ronda en una solicitud a `ejecutar_estructurado`. `conocimiento-v2` distingue instrucciones de datos, acepta alias/traducciones y evalúa habilidades por significado. Cada entrada recibe ID, categoría, texto y ficha compacta con nombres, habilidades, especie, estado y alias. No se envían imágenes, credenciales, opiniones ni partidas anteriores.
+
+`EvaluacionConocimiento` valida entre 1 y 63 correcciones, con ID y veredicto (`correcta`, `parcial`, `incorrecta`, `no_evaluable`), explicación (1–400 caracteres) y referencia (1–300). Se exige correspondencia exacta de IDs, sin duplicados ni omisiones; se recompone el orden local. La app calcula 1/0,5/0 puntos y excluye los casos no evaluables. No se repite IA al mostrar/navegar resultados; un error conserva respuestas y permite un reintento explícito. Desde `conocimiento-v2` se usa `ESQUEMA_API` explícito y sencillo, mediante el parámetro opcional `esquema_api` de `ejecutar_estructurado`; las restricciones detalladas siguen en Pydantic local. `include_raw=True` permite comprobar finalización por tokens y errores de parseo sin mostrar ni persistir el contenido privado. Las llamadas anteriores de opiniones/desafíos conservan su ruta por defecto. Límites semánticos, alias y guía de pruebas visuales en [datos/CONOCIMIENTO.md](datos/CONOCIMIENTO.md).
+
 ## Entrada audiovisual
+
+El fondo ambiental del dashboard está en `assets/estilos.css`: dos pseudoelementos fijos detrás del contenido, con siete formas de gradientes radiales. Las animaciones de transformación trasladan, escalan y giran las dos capas en ciclos lentos distintos. No se crean temporizadores de Python ni consultas a IA para animarlo. `pointer-events: none`, nivel negativo y aislamiento mantienen los controles y textos por delante; portada y fichas conservan sus fondos. En móvil se utiliza una sola capa y con movimiento reducido se detienen las animaciones. La capa superior verde de la transición sigue por encima del ambiente.
 
 El símbolo `assets/omnitrix.png` también se usa en la portada, sidebar y favicon. En la entrada comienza a escala 0.76. La primera interacción lo levanta y reproduce `core-ready.mp3`; la segunda lo presiona y reproduce `omnitrix-transform.mp3`.
 
 No se usa autoplay al cargar. El JavaScript evita activaciones repetidas durante la animación y crea una única capa verde persistente en la capa superior del navegador para cubrir el sidebar y el dashboard durante la reejecución. Se desvanece cuando el contenido está listo. El segundo audio continúa durante el desmontaje del componente. Se contempla movimiento reducido y una salida de seguridad de la capa para no dejar la interfaz bloqueada indefinidamente.
 
 La activación se guarda en `st.session_state`; navegar o limpiar el chat no repite la entrada. Cambiar los archivos de recursos requiere reiniciar el servidor para registrar el componente de nuevo.
+
+Antes de retirar la capa verde se enfoca el título con `preventScroll` y se restablece a cero el desplazamiento del contenedor principal (`main.stMain`), evitando que el chat deje el dashboard inicialmente abajo. Se aplica solo en esa entrada y no bloquea el desplazamiento manual posterior. La revisión de navegador comprueba la posición al terminar y tras una espera, además de verificar que se pueda bajar normalmente.
+
+La revelación espera también a que Streamlit termine su ejecución; al terminar el desvanecimiento confirma una última vez la posición inicial antes de retirar la capa. De ese modo los cambios de foco/altura pendientes del chat no desplazan el inicio bajo carga.
 
 ## Ampliar contenido
 
@@ -142,6 +163,14 @@ node tests/verificar_intro.cjs http://127.0.0.1:8501
 ```
 
 El script comprueba dos pulsaciones, audio local, cobertura del sidebar y movimiento reducido, sin enviar opiniones.
+
+Para verificar el ambiente y los controles con el servidor normal abierto:
+
+```text
+node tests/verificar_fondo.cjs http://127.0.0.1:8501
+```
+
+Comprueba movimiento, posición detrás del contenido, imágenes, selección y navegación en escritorio/móvil, además del estado estático con movimiento reducido. No envía opiniones ni estrategias a la IA.
 
 Para verificar el final de rondas sin consumir cuota, arranca **exclusivamente el servidor de pruebas**:
 

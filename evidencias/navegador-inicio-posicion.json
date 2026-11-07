@@ -1,0 +1,32 @@
+[
+  {
+    "caso": "clic",
+    "resultado": "correcto",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "enter",
+    "resultado": "correcto",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "movil",
+    "resultado": "correcto",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "movimiento-reducido",
+    "resultado": "correcto",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  },
+  {
+    "caso": "audio-bloqueado",
+    "resultado": "correcto",
+    "errores_js": 0,
+    "peticiones_externas": 0
+  }
+]

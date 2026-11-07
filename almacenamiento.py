@@ -6,12 +6,14 @@ import tempfile
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath, PureWindowsPath
 from uuid import UUID, uuid4
+from urllib.parse import urlsplit
 
 
 RAIZ_PROYECTO = Path(__file__).resolve().parent
 RUTA_CATALOGO = RAIZ_PROYECTO / "datos" / "aliens.json"
 RUTA_OPINIONES = RAIZ_PROYECTO / "datos" / "opiniones.json"
 CAMPOS_TEXTO = ("id", "nombre", "nombre_original", "serie_origen", "descripcion")
+CAMPOS_ESPECIE = ("especie", "estado_especie", "fuentes_especie")
 
 
 class ErrorCatalogo(ValueError):
@@ -49,6 +51,35 @@ def _validar_catalogo(datos: object) -> list[dict]:
                 raise ErrorCatalogo(
                     f"{referencia}: '{campo}' debe ser texto no vacío."
                 )
+
+        # Extensión compatible con catálogos v1 anteriores. Una ficha que
+        # incorpore especies debe incluir el bloque completo y su procedencia.
+        if any(campo in alien for campo in CAMPOS_ESPECIE):
+            for campo in CAMPOS_ESPECIE:
+                if campo not in alien:
+                    raise ErrorCatalogo(f"{referencia}: falta el campo '{campo}'.")
+            if not isinstance(alien["especie"], str) or not alien["especie"].strip():
+                raise ErrorCatalogo(f"{referencia}: 'especie' debe ser texto no vacío.")
+            if alien["estado_especie"] not in (
+                "identificada", "sin_nombre_confirmado", "hibrida"
+            ):
+                raise ErrorCatalogo(f"{referencia}: 'estado_especie' no es válido.")
+            fuentes = alien["fuentes_especie"]
+            if not isinstance(fuentes, list) or not fuentes:
+                raise ErrorCatalogo(f"{referencia}: 'fuentes_especie' requiere enlaces HTTPS.")
+            for fuente in fuentes:
+                try:
+                    url = urlsplit(fuente) if isinstance(fuente, str) else None
+                    valida = (
+                        url is not None and url.scheme == "https" and url.hostname
+                        and not url.username and not url.password
+                        and not any(c.isspace() for c in fuente)
+                        and not any(c in fuente for c in "<>\\\"()")
+                    )
+                except ValueError:
+                    valida = False
+                if not valida:
+                    raise ErrorCatalogo(f"{referencia}: 'fuentes_especie' requiere enlaces HTTPS.")
 
         alien_id = alien["id"]
         if alien_id != alien_id.strip():
