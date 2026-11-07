@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "desafios": [
+    {"id": "d001", "titulo": "Incendio en el hangar", "situacion": "En un hangar de los Plomeros se ha iniciado un incendio. Varios robots de mantenimiento están atrapados y las llamas amenazan las naves estacionadas.", "objetivo": "Rescatar a los robots y contener el incendio sin extender las llamas ni dañar las naves."},
+    {"id": "d002", "titulo": "Rescate en las profundidades", "situacion": "Una sonda de los Plomeros ha quedado atrapada entre rocas en el fondo de un océano alienígena. La corriente es intensa y su baliza apenas funciona.", "objetivo": "Localizar la sonda, liberarla y llevarla a la superficie sin destruirla."},
+    {"id": "d003", "titulo": "El puente interrumpido", "situacion": "Un puente de Bellwood ha perdido su tramo central. Un autobús de robots escolares espera en el extremo y una tormenta se aproxima.", "objetivo": "Trasladar a todos al otro lado sin provocar el derrumbe de los tramos restantes."},
+    {"id": "d004", "titulo": "Robots descontrolados", "situacion": "Los robots de limpieza de un museo alienígena han empezado a desmontar las exposiciones. El sistema que los controla está bloqueado.", "objetivo": "Detenerlos y recuperar el control conservando las piezas del museo."},
+    {"id": "d005", "titulo": "La señal perdida", "situacion": "Una estación espacial ha perdido la comunicación con su nave de apoyo. El transmisor está al otro lado de un conducto demasiado estrecho para una persona.", "objetivo": "Acceder al transmisor y restablecer la comunicación sin dañar la estación."},
+    {"id": "d006", "titulo": "Derrumbe en la mina", "situacion": "Un transporte robot ha quedado detrás de un derrumbe en una mina abandonada. El túnel tiene poco espacio y sus paredes son inestables.", "objetivo": "Recuperar el transporte sin hundir el resto del túnel."},
+    {"id": "d007", "titulo": "La llave diminuta", "situacion": "La llave de una cápsula de los Plomeros ha caído dentro de un mecanismo pequeño y delicado. Si se rompe, la cápsula quedará inutilizada.", "objetivo": "Recuperar la llave preservando el mecanismo."},
+    {"id": "d008", "titulo": "Laboratorio inundado", "situacion": "Una tubería de refrigeración ha inundado un laboratorio de tecnología alienígena. Varias cajas flotan hacia una compuerta abierta.", "objetivo": "Recuperar las cajas y frenar la inundación sin estropear los equipos."},
+    {"id": "d009", "titulo": "El código galvánico", "situacion": "La puerta de un archivo galvánico se ha bloqueado con un acertijo técnico. Detrás hay un mapa que Ben necesita, y forzar la puerta borraría el archivo.", "objetivo": "Resolver el bloqueo conservando los datos del archivo."},
+    {"id": "d010", "titulo": "Carrera contra el tiempo", "situacion": "Un mensajero robot necesita entregar una batería de repuesto en una estación lejana antes de que se apaguen sus escudos. La ruta está llena de obstáculos.", "objetivo": "Entregar la batería a tiempo y sin dañarla."},
+    {"id": "d011", "titulo": "La grieta de hielo", "situacion": "Un vehículo explorador ha quedado separado de su base por una grieta en un planeta helado. El suelo que lo rodea es frágil.", "objetivo": "Devolver el vehículo a la base sin romper el hielo bajo él."},
+    {"id": "d012", "titulo": "Carga a la deriva", "situacion": "Una nave de carga ha perdido sus propulsores cerca de un campo de asteroides. Sus contenedores metálicos flotan separados por el espacio.", "objetivo": "Reunir los contenedores y alejar la nave de los asteroides sin colisiones."}
+  ]
+}

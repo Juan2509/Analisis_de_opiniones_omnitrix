@@ -83,6 +83,14 @@ Elegir alien y/o sentimiento, o dejar «Todos». Los aliens disponibles son los 
 
 **Descargar resultados filtrados (JSON)** exporta registros completos, con UUID y metadatos, en UTF-8. Los estados vacíos son informativos y permiten descargar una lista vacía. Consultar funciona aunque falle el catálogo, sin llamar al modelo ni escribir. Un JSON dañado muestra un error sin sustituirlo por datos vacíos.
 
+### Desafíos del Omnitrix
+
+En el panel izquierdo, abrir **Desafíos del Omnitrix**. Se sortea una de 12 situaciones locales (incendio en un hangar, rescate submarino, robots descontrolados y otras). **Otra situación** elige una distinta de la anterior sin usar la API.
+
+Elegir una de las 63 transformaciones, revisar su ficha y escribir opcionalmente una estrategia de hasta 1000 caracteres. **Evaluar mi elección** consulta Gemini una vez y muestra un veredicto, ventajas, riesgos y una posible resolución. Puede haber varias elecciones válidas. La evaluación es una interpretación de IA de un juego de ficción, no una simulación física ni opiniones de otros jugadores.
+
+Se conserva la misión, elección, explicación y último resultado al navegar durante la sesión; modificar la respuesta retira la evaluación anterior y otra misión limpia la explicación. Si falla la API, los datos permanecen disponibles y solo se reintenta al pulsar el botón. Las partidas no se escriben en `datos/opiniones.json`. Utiliza la misma configuración Gemini y cuota del análisis de opiniones, sin proveedores alternativos ni facturación adicional habilitada por el programa.
+
 ## Datos, respaldo y alcance
 
 `datos/opiniones.json` usa `{"version": 1, "opiniones": []}`. Cada registro contiene UUID, fecha UTC, alien/ID capturado, opinión original, sentimiento, razón, modelo y versión del prompt. La aplicación genera identidad y fecha; no las elige el modelo.
@@ -100,6 +108,8 @@ La versión base admite **un único escritor local**. El reemplazo atómico y el
 | `app.py` | Navegación, fichas, chat, resultados, filtros y descarga. |
 | `analisis.py` | Configuración, prompt, esquema y análisis estructurado. |
 | `almacenamiento.py` | Validación de catálogo/registros, escritura y consultas. |
+| `desafios.py` e `interfaz_desafios.py` | Situaciones, estado del juego y evaluación estructurada de estrategias. |
+| `datos/desafios.json` | 12 situaciones de ficción preparadas localmente, sin respuestas obligatorias. |
 | `iniciar.py` y el VBS | Controlador gráfico y ciclo de vida del servidor Windows. |
 | `datos/aliens.json` | 63 fichas con IDs estables y nombres latinos, incluyendo ambas variantes de Upchuck; sin formas supremas ni reboot. |
 | `datos/opiniones.json` | Opiniones de uso persistentes. |
@@ -129,6 +139,8 @@ La comprobación opcional de la entrada en navegador está en `tests/verificar_i
 - [Salida de las 68 pruebas aprobadas con Gemini](evidencias/pruebas-gemini-windows.txt).
 - [Salida de las 71 pruebas con la pantalla de activación](evidencias/pruebas-inicio-windows.txt).
 - [Salida de las 72 pruebas con el catálogo ampliado a 63 fichas](evidencias/pruebas-catalogo-ampliado-windows.txt).
+- [Salida de las 82 pruebas con Desafíos del Omnitrix](evidencias/pruebas-desafios-windows.txt).
+- [Comprobación del modo Desafíos en escritorio y móvil](evidencias/navegador-desafios.json). Con los requisitos del navegador ya preparados, se reproduce mediante `node tests/verificar_desafios.cjs http://127.0.0.1:PUERTO`; revisa navegación, selección, plan y cambio de misión sin pulsar Evaluar ni consumir API.
 - [Comprobación en navegador: clic, Enter, móvil y movimiento reducido](evidencias/navegador-inicio.json).
 - [Comprobación de audio y transición continua, incluido bloqueo de autoplay](evidencias/navegador-inicio-audio.json).
 - [Registro histórico de 65 pruebas anterior a Gemini](evidencias/pruebas-windows.txt).

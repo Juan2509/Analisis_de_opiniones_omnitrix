@@ -2,6 +2,8 @@
 
 ## Cómo retomar en una nueva sesión
 
+Modo adicional solicitado: Desafíos del Omnitrix implementado como tercera sección, con 12 situaciones aleatorias locales y elección entre 63 aliens. Gemini evalúa solo al pulsar Evaluar; plan opcional, estado conservado al navegar, evaluación anterior invalidada al editar y errores sin resultados inventados. Partidas de sesión separadas del JSON de opiniones. 82 pruebas aprobadas, sin llamadas reales al proveedor. Commit sugerido: `feat(desafios): agregar desafíos del Omnitrix evaluados con Gemini`.
+
 Ampliación posterior solicitada por el usuario: catálogo de 63 fichas y 63 PNG locales. Se conservaron a001–a020 y se añadieron a021–a063, sin supremas, reboot ni fusiones; Upchuck Perk/Murk por separado y Spitter identificado como transformación de Ben 10.000. 72 pruebas aprobadas, con todos los selectores/fichas, hashes de recursos y guardado/consulta de un alien nuevo. Evidencia en `evidencias/pruebas-catalogo-ampliado-windows.txt`. Commit sugerido: `feat(catalogo): ampliar a 63 transformaciones de Ben 10`.
 
 Actualización posterior al paso 13: adaptación a Gemini solicitada por el usuario, con condición de no pagar. `langchain-google-genai==4.4.3`, Gemini Developer API sin Vertex ni fallback, modelo `gemini-3.5-flash-lite`, configuración Google local y guía `GEMINI_GRATIS.md`. 68 pruebas aprobadas y `pip check` correcto. Solo usar clave de un proyecto Free Tier sin facturación; disponibilidad/cuota de la cuenta e inferencia real pendientes. Conservar los resultados anteriores como históricos. Commit sugerido: `feat(analisis): integrar Gemini para uso en modalidad gratuita`.

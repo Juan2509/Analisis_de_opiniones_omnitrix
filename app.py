@@ -11,6 +11,7 @@ from almacenamiento import (
 )
 from analisis import ErrorAnalisis, analizar_opinion
 from pantalla_inicio import mostrar_inicio
+from interfaz_desafios import mostrar_desafios
 
 
 def cargar_imagen_local(ruta: str | None) -> Image.Image | None:
@@ -247,7 +248,7 @@ def main():
         st.divider()
         seccion = st.radio(
             "Secciones",
-            ("Analizar opinión", "Consultar archivo"),
+            ("Analizar opinión", "Consultar archivo", "Desafíos del Omnitrix"),
             key="seccion",
         )
         st.divider()
@@ -258,6 +259,10 @@ def main():
 
     if seccion == "Consultar archivo":
         mostrar_archivo()
+        return
+
+    if seccion == "Desafíos del Omnitrix":
+        mostrar_desafios(mostrar_ficha)
         return
 
     st.markdown(

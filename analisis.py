@@ -68,10 +68,8 @@ Devuelve únicamente el análisis conforme al esquema solicitado."""),
 ])
 
 
-def analizar_opinion(alien: dict, texto: str) -> dict:
-    """Analiza un envío; no recibe historial, no escribe archivos y no cachea resultados."""
-    if not isinstance(texto, str) or not 5 <= len(texto.strip()) <= 1000:
-        raise ErrorAnalisis("La opinión debe tener entre 5 y 1000 caracteres.")
+def ejecutar_estructurado(prompt: ChatPromptTemplate, esquema: type[BaseModel], datos: dict) -> dict:
+    """Invoca Gemini una vez con la configuración local y valida el esquema indicado."""
     # Leer .env sin modificar el entorno global; las variables del sistema tienen prioridad.
     try:
         config = {**dotenv_values(RUTA_ENV), **os.environ}
@@ -97,10 +95,7 @@ def analizar_opinion(alien: dict, texto: str) -> dict:
             parametros["temperature"] = valor
         except ValueError:
             raise ErrorAnalisis("GEMINI_TEMPERATURE debe estar vacía o ser un número entre 0 y 2.") from None
-    datos = json.dumps({
-        "alien": {campo: alien[campo] for campo in ("id", "nombre", "nombre_original", "descripcion")},
-        "opinion": texto,
-    }, ensure_ascii=False)
+    contenido = json.dumps(datos, ensure_ascii=False)
     try:
         llm = ChatGoogleGenerativeAI(
             model=modelo, api_key=clave, vertexai=False,
@@ -108,12 +103,12 @@ def analizar_opinion(alien: dict, texto: str) -> dict:
             timeout=30, max_retries=1, **parametros,
         )
         estructurado = llm.with_structured_output(
-            AnalisisOpinion, method="json_schema",
+            esquema, method="json_schema",
         )
-        resultado = (PROMPT | estructurado).invoke({"datos": datos})
-        if not isinstance(resultado, AnalisisOpinion):
+        resultado = (prompt | estructurado).invoke({"datos": contenido})
+        if not isinstance(resultado, esquema):
             raise ValueError("Respuesta estructurada ausente.")
-        analisis = AnalisisOpinion.model_validate(resultado.model_dump())
+        analisis = esquema.model_validate(resultado.model_dump())
     except (ModelAuthenticationError, ModelPermissionDeniedError):
         raise ErrorAnalisis("Google rechazó las credenciales o el acceso. Revisa la clave y el proyecto Free Tier en AI Studio; si solicita pagos, no continúes.") from None
     except ModelRateLimitError:
@@ -138,4 +133,15 @@ def analizar_opinion(alien: dict, texto: str) -> dict:
             "No se pudo obtener un análisis válido. Revisa la conexión y que el modelo "
             "admita salida estructurada y la temperatura configurada."
         ) from None
-    return {"analisis": analisis.model_dump(), "modelo": modelo, "version_prompt": VERSION_PROMPT}
+    return {"resultado": analisis.model_dump(), "modelo": modelo}
+
+
+def analizar_opinion(alien: dict, texto: str) -> dict:
+    """Analiza un envío; no recibe historial, no escribe archivos y no cachea resultados."""
+    if not isinstance(texto, str) or not 5 <= len(texto.strip()) <= 1000:
+        raise ErrorAnalisis("La opinión debe tener entre 5 y 1000 caracteres.")
+    respuesta = ejecutar_estructurado(PROMPT, AnalisisOpinion, {
+        "alien": {campo: alien[campo] for campo in ("id", "nombre", "nombre_original", "descripcion")},
+        "opinion": texto,
+    })
+    return {"analisis": respuesta["resultado"], "modelo": respuesta["modelo"], "version_prompt": VERSION_PROMPT}
