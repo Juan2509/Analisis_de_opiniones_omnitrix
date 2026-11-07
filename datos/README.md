@@ -1,13 +1,83 @@
 # Catálogo de Archivo Omnitrix
 
-`aliens.json` es un catálogo didáctico versionado, no una lista exhaustiva ni un ranking. El usuario confirmó nombres en español latino y representación de las cuatro series de la continuidad clásica, excluyendo por ahora las versiones supremas. La selección distribuye los 20 registros en cinco por serie.
+`aliens.json` contiene 63 fichas de transformaciones de la continuidad clásica: las cuatro series, sus películas y el especial con Generador Rex. Conserva los 20 IDs originales y añade a021–a063. No es un ranking ni representa el millón de muestras de ADN del Omnitrix.
 
-| IDs | Serie de introducción | Selección |
+Se excluyen reboot, formas supremas, fusiones, transformaciones exclusivas de videojuegos/directos teatrales y formas solo mencionadas sin transformación animada identificable. Spitter se incluye por Ben 10.000 y su ficha lo aclara. Las dos variantes de Upchuck, Perk y Murk, tienen fichas separadas. Nanomech debuta en la película de la etapa Fuerza Alienígena; Shocksquatch, en el especial de la etapa Supremacía Alienígena. `serie_origen` agrupa esos debuts por etapa.
+
+| Serie de introducción | Fichas |
+| --- | --- |
+| Ben 10 (serie original) | 22 |
+| Ben 10: Fuerza Alienígena | 14 |
+| Ben 10: Supremacía Alienígena | 11 |
+| Ben 10: Omniverse | 16 |
+
+### Catálogo completo
+
+| ID | Nombre latino | Nombre original |
 | --- | --- | --- |
-| a001–a005 | Ben 10, serie original | Fuego, Diamante, XLR8, Cuatro Brazos, Materia Gris |
-| a006–a010 | Fuerza Alienígena | Fuego Pantanoso, Eco Eco, Humungosaurio, Frío, Mono Araña |
-| a011–a015 | Supremacía Alienígena | Amenaza Acuática, Ampfibio, Armadillo, Tortutornado, NRG |
-| a016–a020 | Omniverse | Feedback, Bloxx, Gravattack, Crashhopper, Escarabola |
+| a001 | Fuego | Heatblast |
+| a002 | Diamante | Diamondhead |
+| a003 | XLR8 | XLR8 |
+| a004 | Cuatro Brazos | Four Arms |
+| a005 | Materia Gris | Grey Matter |
+| a006 | Fuego Pantanoso | Swampfire |
+| a007 | Eco Eco | Echo Echo |
+| a008 | Humungosaurio | Humungousaur |
+| a009 | Frío | Big Chill |
+| a010 | Mono Araña | Spidermonkey |
+| a011 | Amenaza Acuática | Water Hazard |
+| a012 | Ampfibio | Ampfibian |
+| a013 | Armadillo | Armodrillo |
+| a014 | Tortutornado | Terraspin |
+| a015 | NRG | NRG |
+| a016 | Feedback | Feedback |
+| a017 | Bloxx | Bloxx |
+| a018 | Gravattack | Gravattack |
+| a019 | Crashhopper | Crashhopper |
+| a020 | Escarabola | Ball Weevil |
+| a021 | Bestia | Wildmutt |
+| a022 | Insectoide | Stinkfly |
+| a023 | Acuático | Ripjaws |
+| a024 | Ultra-T | Upgrade |
+| a025 | Fantasmático | Ghostfreak |
+| a026 | Cannonbolt | Cannonbolt |
+| a027 | Wildvine | Wildvine |
+| a028 | Blitzwolfer | Blitzwolfer |
+| a029 | Snare-oh | Snare-Oh |
+| a030 | Frankentrueno | Frankenstrike |
+| a031 | Upchuck Perk | Upchuck (Perk) |
+| a032 | Ditto | Ditto |
+| a033 | Multi Ojos | Eye Guy |
+| a034 | Muy Grande | Way Big |
+| a035 | Spitter | Spitter |
+| a036 | Bátore | Buzzshock |
+| a037 | Arctiguana | Arctiguana |
+| a038 | Jetray | Jetray |
+| a039 | Piedra | Chromastone |
+| a040 | Cerebrón | Brainstorm |
+| a041 | Goop | Goop |
+| a042 | Alien X | Alien X |
+| a043 | Lodestar | Lodestar |
+| a044 | Rath | Rath |
+| a045 | Nanomech | Nanomech |
+| a046 | Upchuck Murk | Upchuck (Murk) |
+| a047 | Fasttrack | Fasttrack |
+| a048 | Camaleón | Chamalien |
+| a049 | Eatle | Eatle |
+| a050 | Clockwork | Clockwork |
+| a051 | Jury Rigg | Juryrigg |
+| a052 | Shocksquatch | Shocksquatch |
+| a053 | Walkatrout | Walkatrout |
+| a054 | Molestolvo | Pesky Dust |
+| a055 | Mole-Stache | Mole-Stache |
+| a056 | El Peor | The Worst |
+| a057 | Halcón | Kickin' Hawk |
+| a058 | Toepick | Toepick |
+| a059 | Astrodactyl | Astrodactyl |
+| a060 | Bullfrag | Bullfrag |
+| a061 | Atomix | Atomix |
+| a062 | Barrigobot | Gutrot |
+| a063 | Whampire | Whampire |
 
 ## Contrato de datos, versión 1
 
@@ -24,7 +94,7 @@ La raíz contiene `version: 1` y una lista `aliens`.
 
 La serie de origen no indica todas las series donde aparece el alien. Por ejemplo, los recuerdos de Feedback en Omniverse no lo convierten en una transformación introducida en la serie original. Un rediseño posterior del mismo alien no constituye un registro nuevo. Las formas supremas y el reboot no forman parte de esta selección.
 
-No asignar rutas ficticias a imágenes inexistentes. Desde el paso 6, los 20 registros apuntan a PNG locales en `assets/aliens/`. La interfaz admite `null` y archivos ausentes, dañados o ilegibles mediante un recurso alternativo local. Las imágenes muestran diseños de Omniverse; `serie_origen` sigue indicando el debut del alien. Ver [fuentes y créditos](../assets/aliens/README.md). El catálogo y las fichas no requieren llamadas al modelo.
+No asignar rutas ficticias a imágenes inexistentes. Los 63 registros apuntan a PNG locales en `assets/aliens/`. La interfaz admite `null` y archivos ausentes, dañados o ilegibles mediante un recurso alternativo local. La mayoría de las imágenes muestran diseños de Omniverse; Jetray, Fasttrack, Camaleón y Spitter usan imágenes de otras etapas, indicadas en sus fichas; `serie_origen` sigue indicando el debut del alien. Ver [fuentes y créditos](../assets/aliens/README.md). El catálogo y las fichas no requieren llamadas al modelo.
 
 ## Referencias consultadas
 
@@ -34,7 +104,13 @@ Las descripciones sintetizan habilidades generales, sin estadísticas de poder, 
 
 Son referencias comunitarias, no un catálogo oficial. Algunas páginas de Fandom bloquearon la apertura directa; en esos casos se consultó el contenido indexado disponible en búsqueda. Las descripciones son síntesis propias y pueden ajustarse si se detecta una discrepancia de doblaje o contenido, conservando los IDs.
 
-## Verificación del paso 3
+## Fuentes de la ampliación
+
+Revisión: 7 de noviembre de 2026. Listas comunitarias de [transformaciones clásicas](https://ben10.fandom.com/es/wiki/Aliens_del_Omnitrix), [debuts por serie](https://ben10.fandom.com/wiki/Jetray_(Classic)/Gallery) y [Spitter](https://ben10.fandom.com/wiki/Spitter). Nombres regionales contrastados con las páginas de las cuatro series enlazadas arriba. No se interpretan personajes del Nemetrix, transformaciones supremas de Albedo ni variantes de diseño como aliens nuevos. No se incluyen Rocks y Squidstrictor, del espectáculo en vivo, ni Eon de otra continuidad cinematográfica.
+
+Los campos opcionales `serie_diseno` y `fuente_imagen` indican el diseño y la página de imagen de las fichas añadidas. En los 20 registros originales la interfaz conserva Omniverse como valor predeterminado; esos registros no se modificaron. Los hashes y dimensiones de las 63 imágenes se verifican contra el manifiesto de recursos.
+
+## Verificación histórica del paso 3
 
 Se comprobó el parseo del JSON, versión 1, 20 registros, IDs y nombres únicos, campos presentes y tipos básicos, cinco registros por serie, imágenes null y ausencia de nombres de formas supremas.
 

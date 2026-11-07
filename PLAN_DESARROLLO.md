@@ -2,6 +2,8 @@
 
 ## Cómo retomar en una nueva sesión
 
+Ampliación posterior solicitada por el usuario: catálogo de 63 fichas y 63 PNG locales. Se conservaron a001–a020 y se añadieron a021–a063, sin supremas, reboot ni fusiones; Upchuck Perk/Murk por separado y Spitter identificado como transformación de Ben 10.000. 72 pruebas aprobadas, con todos los selectores/fichas, hashes de recursos y guardado/consulta de un alien nuevo. Evidencia en `evidencias/pruebas-catalogo-ampliado-windows.txt`. Commit sugerido: `feat(catalogo): ampliar a 63 transformaciones de Ben 10`.
+
 Actualización posterior al paso 13: adaptación a Gemini solicitada por el usuario, con condición de no pagar. `langchain-google-genai==4.4.3`, Gemini Developer API sin Vertex ni fallback, modelo `gemini-3.5-flash-lite`, configuración Google local y guía `GEMINI_GRATIS.md`. 68 pruebas aprobadas y `pip check` correcto. Solo usar clave de un proyecto Free Tier sin facturación; disponibilidad/cuota de la cuenta e inferencia real pendientes. Conservar los resultados anteriores como históricos. Commit sugerido: `feat(analisis): integrar Gemini para uso en modalidad gratuita`.
 
 Estado más reciente (2026-11-07, Windows): paso 13 de documentación completado. README de entrega reorganizado, contexto consolidado, guía `ENTREGA.md` y evidencias reproducibles de persistencia/filtro preparadas; documentos anteriores archivados en `docs/`. Python 3.14.4 y `.venv` disponibles, 65 pruebas aprobadas en el paso 12 y `pip check` correcto. Pasos 8, 10, 11 y 12 conservan pendientes de API o revisión manual en `VERIFICACION.md`; completar la documentación no los cierra. No hubo llamadas reales al modelo. Los estados del 2026-11-06 son históricos.

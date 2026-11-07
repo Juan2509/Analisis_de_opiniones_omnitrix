@@ -1,6 +1,6 @@
 # Archivo Omnitrix
 
-Aplicación académica para explorar 20 aliens de Ben 10, opinar sobre ellos y clasificar el sentimiento con un modelo de lenguaje. Adapta el taller de opiniones sobre futbolistas; según lo comunicado por el estudiante, en clase se permitió cambiar la temática conservando los requisitos técnicos.
+Aplicación académica para explorar 63 transformaciones de Ben 10, opinar sobre ellos y clasificar el sentimiento con un modelo de lenguaje. Adapta el taller de opiniones sobre futbolistas; según lo comunicado por el estudiante, en clase se permitió cambiar la temática conservando los requisitos técnicos.
 
 Python y Streamlit construyen la interfaz negra, verde neón y blanca; LangChain y Pydantic coordinan y validan el análisis. Las opiniones pertinentes se guardan en JSON local.
 
@@ -101,7 +101,7 @@ La versión base admite **un único escritor local**. El reemplazo atómico y el
 | `analisis.py` | Configuración, prompt, esquema y análisis estructurado. |
 | `almacenamiento.py` | Validación de catálogo/registros, escritura y consultas. |
 | `iniciar.py` y el VBS | Controlador gráfico y ciclo de vida del servidor Windows. |
-| `datos/aliens.json` | 20 aliens con IDs estables y nombres latinos; cinco por serie, sin formas supremas. |
+| `datos/aliens.json` | 63 fichas con IDs estables y nombres latinos, incluyendo ambas variantes de Upchuck; sin formas supremas ni reboot. |
 | `datos/opiniones.json` | Opiniones de uso persistentes. |
 | `datos/ejemplos/` | 16 registros y seis casos con expectativas manuales. |
 | `assets/` y `.streamlit/` | Estilos, imágenes locales, fuentes y tema. |
@@ -128,6 +128,7 @@ La comprobación opcional de la entrada en navegador está en `tests/verificar_i
 - [Registro de pruebas, límites y dos ambigüedades](VERIFICACION.md).
 - [Salida de las 68 pruebas aprobadas con Gemini](evidencias/pruebas-gemini-windows.txt).
 - [Salida de las 71 pruebas con la pantalla de activación](evidencias/pruebas-inicio-windows.txt).
+- [Salida de las 72 pruebas con el catálogo ampliado a 63 fichas](evidencias/pruebas-catalogo-ampliado-windows.txt).
 - [Comprobación en navegador: clic, Enter, móvil y movimiento reducido](evidencias/navegador-inicio.json).
 - [Comprobación de audio y transición continua, incluido bloqueo de autoplay](evidencias/navegador-inicio-audio.json).
 - [Registro histórico de 65 pruebas anterior a Gemini](evidencias/pruebas-windows.txt).

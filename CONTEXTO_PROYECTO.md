@@ -33,7 +33,7 @@ Aplicación académica de opiniones sobre aliens de Ben 10, adaptada del taller 
 - Trabajo en VS Code, explicaciones en español y desarrollo gradual para comprender y sustentar el código.
 - Sugerir Conventional Commits por etapa, sin ejecutar commits o push automáticamente. Conservar cambios ajenos y consultar decisiones que modifiquen alcance o preferencias.
 - Diseño negro predominante, verde neón/degradado y blanco, con estética futurista y respeto a movimiento reducido.
-- Catálogo: 20 IDs estables, cinco transformaciones por serie de introducción: original, Fuerza Alienígena, Supremacía Alienígena y Omniverse. Nombres latinos y alias originales, sin formas supremas ni reboot.
+- Catálogo ampliado por petición del usuario: 63 fichas (22 de la serie original, 14 de la etapa Fuerza Alienígena, 11 de Supremacía Alienígena y 16 de Omniverse). Conserva a001–a020 y añade a021–a063. Incluye Upchuck Perk/Murk por separado y Spitter, identificado como transformación de Ben 10.000. Nombres latinos y alias originales, sin formas supremas, fusiones ni reboot. Nanomech y Shocksquatch incluyen películas/especiales de sus etapas. No afirmar que todos los diseños son de Omniverse: fuente y diseño de los nuevos registros están en sus campos opcionales y en el manifiesto.
 - Imágenes de los personajes con diseños de Omniverse, locales y con procedencia documentada. Serie de introducción y diseño mostrado son datos distintos.
 - Alcance local, un único escritor. No incluye cuentas, combate, chatbot general, RAG, agentes, bases vectoriales o automatizaciones n8n. Jupyter es opcional para experimentar, no el producto final.
 
@@ -112,3 +112,5 @@ Al adaptar los ejemplos se evitó truncar a 500 caracteres, limitarse a tres sen
 Pendientes reales: elegir/configurar modelo, evaluar los 22 casos de referencia, registrar discrepancias, demostrar envío/reinicio real y revisar tabla/descarga/cierre manualmente. Documentar resultados en `VERIFICACION.md`; no sustituirlos por expectativas. La documentación del paso 13 no cierra automáticamente esos criterios de aceptación.
 
 Para retomar: leer este contexto, el plan y la verificación; inspeccionar Git y conservar cambios existentes. El paso 13 es el último del plan; después corresponde cerrar los pendientes, no inventar una etapa nueva ni declarar la entrega aceptada sin evidencias.
+
+Ampliación posterior al plan: 43 fichas nuevas y PNG locales verificados; catálogo total 63. El primer bloque de 20 IDs y datos se conserva para mantener las opiniones existentes. Fuentes, alcance y listado en `datos/README.md`; no modificar `datos/opiniones.json` al ampliar el catálogo.

@@ -1,0 +1,128 @@
+test_casos_de_evaluacion_tienen_expectativas_coherentes_y_no_resultados_reales (test_aceptacion.PruebasAceptacion.test_casos_de_evaluacion_tienen_expectativas_coherentes_y_no_resultados_reales) ... ok
+test_datos_ficticios_cubren_cuatro_aliens_y_categorias (test_aceptacion.PruebasAceptacion.test_datos_ficticios_cubren_cuatro_aliens_y_categorias) ... ok
+test_filtros_y_exportacion_reutilizan_registros_completos (test_aceptacion.PruebasAceptacion.test_filtros_y_exportacion_reutilizan_registros_completos) ... ok
+test_persistencia_tras_terminar_y_abrir_otro_proceso (test_aceptacion.PruebasAceptacion.test_persistencia_tras_terminar_y_abrir_otro_proceso) ... ok
+test_adaptador_gemini_real_con_transporte_simulado (test_analisis.PruebasAnalisis.test_adaptador_gemini_real_con_transporte_simulado) ... ok
+test_cadena_envia_solo_opinion_actual_y_conserva_metadatos (test_analisis.PruebasAnalisis.test_cadena_envia_solo_opinion_actual_y_conserva_metadatos) ... ok
+test_clave_anterior_no_se_usa_como_alternativa (test_analisis.PruebasAnalisis.test_clave_anterior_no_se_usa_como_alternativa) ... ok
+test_configuracion_ausente_no_crea_modelo (test_analisis.PruebasAnalisis.test_configuracion_ausente_no_crea_modelo) ... ok
+test_contrato_categorias_y_pertinencia (test_analisis.PruebasAnalisis.test_contrato_categorias_y_pertinencia) ... ok
+test_entrada_invalida_no_crea_modelo (test_analisis.PruebasAnalisis.test_entrada_invalida_no_crea_modelo) ... ok
+test_errores_de_api_visibles_sin_exponer_detalles (test_analisis.PruebasAnalisis.test_errores_de_api_visibles_sin_exponer_detalles) ... ok
+test_fallo_y_salida_invalida_no_se_convierten_en_neutro (test_analisis.PruebasAnalisis.test_fallo_y_salida_invalida_no_se_convierten_en_neutro) ... ok
+test_no_cambia_a_otro_modelo (test_analisis.PruebasAnalisis.test_no_cambia_a_otro_modelo) ... ok
+test_archivo_ausente_no_se_crea (test_catalogo.PruebasCatalogo.test_archivo_ausente_no_se_crea) ... ok
+test_campos_de_texto_invalidos (test_catalogo.PruebasCatalogo.test_campos_de_texto_invalidos) ... ok
+test_campos_obligatorios (test_catalogo.PruebasCatalogo.test_campos_obligatorios) ... ok
+test_catalogo_puede_crecer_sin_cambiar_ids_existentes (test_catalogo.PruebasCatalogo.test_catalogo_puede_crecer_sin_cambiar_ids_existentes) ... ok
+test_catalogo_real (test_catalogo.PruebasCatalogo.test_catalogo_real) ... ok
+test_codificacion_invalida_se_conserva (test_catalogo.PruebasCatalogo.test_codificacion_invalida_se_conserva) ... ok
+test_directorio_en_lugar_de_archivo (test_catalogo.PruebasCatalogo.test_directorio_en_lugar_de_archivo) ... ok
+test_error_de_permisos (test_catalogo.PruebasCatalogo.test_error_de_permisos) ... ok
+test_id_con_espacios_exteriores (test_catalogo.PruebasCatalogo.test_id_con_espacios_exteriores) ... ok
+test_ids_repetidos (test_catalogo.PruebasCatalogo.test_ids_repetidos) ... ok
+test_imagen_invalida (test_catalogo.PruebasCatalogo.test_imagen_invalida) ... ok
+test_imagenes_pendientes_o_locales_ausentes_permitidas (test_catalogo.PruebasCatalogo.test_imagenes_pendientes_o_locales_ausentes_permitidas) ... ok
+test_json_danado_se_conserva (test_catalogo.PruebasCatalogo.test_json_danado_se_conserva) ... ok
+test_lista_invalida_o_ausente (test_catalogo.PruebasCatalogo.test_lista_invalida_o_ausente) ... ok
+test_minimo_de_veinte_aliens (test_catalogo.PruebasCatalogo.test_minimo_de_veinte_aliens) ... ok
+test_raiz_invalida (test_catalogo.PruebasCatalogo.test_raiz_invalida) ... ok
+test_registro_invalido (test_catalogo.PruebasCatalogo.test_registro_invalido) ... ok
+test_rutas_independientes_del_directorio_de_inicio (test_catalogo.PruebasCatalogo.test_rutas_independientes_del_directorio_de_inicio) ... ok
+test_version_invalida_o_ausente (test_catalogo.PruebasCatalogo.test_version_invalida_o_ausente) ... ok
+test_combinaciones_de_filtros_conservan_orden_y_usan_ids (test_consultas.PruebasConsultas.test_combinaciones_de_filtros_conservan_orden_y_usan_ids) ... ok
+test_lista_vacia_y_categoria_invalida (test_consultas.PruebasConsultas.test_lista_vacia_y_categoria_invalida) ... ok
+test_no_modifica_entrada_y_devuelve_copias (test_consultas.PruebasConsultas.test_no_modifica_entrada_y_devuelve_copias) ... ok
+test_cierre_es_idempotente_si_el_proceso_ya_termino (test_inicio.PruebasInicio.test_cierre_es_idempotente_si_el_proceso_ya_termino) ... ok
+test_cierre_forzado_si_el_servidor_no_termina (test_inicio.PruebasInicio.test_cierre_forzado_si_el_servidor_no_termina) ... ok
+test_comando_usa_interprete_actual_ruta_absoluta_y_red_local (test_inicio.PruebasInicio.test_comando_usa_interprete_actual_ruta_absoluta_y_red_local) ... ok
+test_detener_termina_solo_el_proceso_recibido (test_inicio.PruebasInicio.test_detener_termina_solo_el_proceso_recibido) ... ok
+test_mutex_real_impide_duplicados_y_se_libera (test_inicio.PruebasInicio.test_mutex_real_impide_duplicados_y_se_libera) ... ok
+test_salud_exige_respuesta_de_streamlit (test_inicio.PruebasInicio.test_salud_exige_respuesta_de_streamlit) ... ok
+test_servidor_real_inicia_responde_y_se_detiene (test_inicio.PruebasInicio.test_servidor_real_inicia_responde_y_se_detiene) ... ok
+test_aliens_nuevos_muestran_fuente_y_guardan_su_identidad (test_interfaz.PruebasInterfaz.test_aliens_nuevos_muestran_fuente_y_guardan_su_identidad) ... 2026-11-07 10:41:47.163 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:47.164 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_consulta_accesible_aunque_falle_catalogo (test_interfaz.PruebasInterfaz.test_consulta_accesible_aunque_falle_catalogo) ... 2026-11-07 10:41:50.309 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:50.309 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_consulta_actualiza_datos_y_restablece_filtro_si_desaparece_alien (test_interfaz.PruebasInterfaz.test_consulta_actualiza_datos_y_restablece_filtro_si_desaparece_alien) ... 2026-11-07 10:41:51.299 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:51.299 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_consulta_archivo_danado_muestra_error_sin_tabla_ni_descarga (test_interfaz.PruebasInterfaz.test_consulta_archivo_danado_muestra_error_sin_tabla_ni_descarga) ... 2026-11-07 10:41:52.682 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:52.683 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_consulta_filtros_tabla_recuentos_y_descarga_coherentes_sin_escribir (test_interfaz.PruebasInterfaz.test_consulta_filtros_tabla_recuentos_y_descarga_coherentes_sin_escribir) ... 2026-11-07 10:41:53.585 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:53.586 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_consulta_vacia_no_crea_archivo_y_exporta_lista_vacia (test_interfaz.PruebasInterfaz.test_consulta_vacia_no_crea_archivo_y_exporta_lista_vacia) ... 2026-11-07 10:41:56.915 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:56.915 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_envios_identicos_independientes_y_limpieza_sin_escritura (test_interfaz.PruebasInterfaz.test_envios_identicos_independientes_y_limpieza_sin_escritura) ... 2026-11-07 10:41:57.816 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:57.817 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_error_de_analisis_conserva_comentario_sin_reintento_al_navegar (test_interfaz.PruebasInterfaz.test_error_de_analisis_conserva_comentario_sin_reintento_al_navegar) ... 2026-11-07 10:41:59.793 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:41:59.793 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_error_de_catalogo_visible_y_sin_selector (test_interfaz.PruebasInterfaz.test_error_de_catalogo_visible_y_sin_selector) ... 2026-11-07 10:42:01.166 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:01.166 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:01.776 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:01.776 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:02.293 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:02.293 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_ficha_funciona_sin_red (test_interfaz.PruebasInterfaz.test_ficha_funciona_sin_red) ... 2026-11-07 10:42:02.821 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:02.821 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_imagen_ausente_o_danada_muestra_alternativa_y_permite_cambiar (test_interfaz.PruebasInterfaz.test_imagen_ausente_o_danada_muestra_alternativa_y_permite_cambiar) ... 2026-11-07 10:42:03.645 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:03.645 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:04.438 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:04.438 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:05.318 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:05.318 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_imagen_sin_permiso_no_bloquea_ficha (test_interfaz.PruebasInterfaz.test_imagen_sin_permiso_no_bloquea_ficha) ... 2026-11-07 10:42:06.375 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:06.375 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_inicio_muestra_catalogo_y_funciones_pendientes (test_interfaz.PruebasInterfaz.test_inicio_muestra_catalogo_y_funciones_pendientes) ... 2026-11-07 10:42:06.856 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:06.857 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_longitud_se_valida_sin_truncar_y_conserva_texto_rechazado (test_interfaz.PruebasInterfaz.test_longitud_se_valida_sin_truncar_y_conserva_texto_rechazado) ... 2026-11-07 10:42:07.860 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:07.861 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_navegar_conserva_el_alien_seleccionado (test_interfaz.PruebasInterfaz.test_navegar_conserva_el_alien_seleccionado) ... 2026-11-07 10:42:10.894 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:10.894 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_opinion_ajena_se_muestra_sin_categoria (test_interfaz.PruebasInterfaz.test_opinion_ajena_se_muestra_sin_categoria) ... 2026-11-07 10:42:12.493 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:12.493 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_opiniones_conservan_alien_texto_y_no_se_duplican_al_navegar (test_interfaz.PruebasInterfaz.test_opiniones_conservan_alien_texto_y_no_se_duplican_al_navegar) ... 2026-11-07 10:42:13.330 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:13.330 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_recursos_del_catalogo_tienen_procedencia_y_archivos_validos (test_interfaz.PruebasInterfaz.test_recursos_del_catalogo_tienen_procedencia_y_archivos_validos) ... ok
+test_reintentar_guardado_conserva_id_y_no_repite_analisis (test_interfaz.PruebasInterfaz.test_reintentar_guardado_conserva_id_y_no_repite_analisis) ... 2026-11-07 10:42:15.361 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:15.361 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_seleccion_de_todos_los_aliens (test_interfaz.PruebasInterfaz.test_seleccion_de_todos_los_aliens) ... 2026-11-07 10:42:16.942 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:16.942 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_archivos_danados_se_conservan (test_opiniones.PruebasOpiniones.test_archivos_danados_se_conservan) ... ok
+test_creacion_lectura_nueva_e_idempotencia (test_opiniones.PruebasOpiniones.test_creacion_lectura_nueva_e_idempotencia) ... ok
+test_envios_iguales_independientes_y_conflicto_de_id (test_opiniones.PruebasOpiniones.test_envios_iguales_independientes_y_conflicto_de_id) ... ok
+test_fallo_de_escritura_no_crea_destino_y_limpia_temporal (test_opiniones.PruebasOpiniones.test_fallo_de_escritura_no_crea_destino_y_limpia_temporal) ... ok
+test_fallo_de_reemplazo_conserva_archivo_y_limpia_temporal (test_opiniones.PruebasOpiniones.test_fallo_de_reemplazo_conserva_archivo_y_limpia_temporal) ... ok
+test_rechaza_analisis_no_pertinente (test_opiniones.PruebasOpiniones.test_rechaza_analisis_no_pertinente) ... ok
+test_registros_invalidos_y_duplicados_se_rechazan (test_opiniones.PruebasOpiniones.test_registros_invalidos_y_duplicados_se_rechazan) ... ok
+test_evento_de_activacion_abre_dashboard_y_no_se_repite_al_navegar (test_pantalla_inicio.PruebasPantallaInicio.test_evento_de_activacion_abre_dashboard_y_no_se_repite_al_navegar) ... 2026-11-07 10:42:36.909 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_otra_sesion_comienza_con_la_pantalla_inicial (test_pantalla_inicio.PruebasPantallaInicio.test_otra_sesion_comienza_con_la_pantalla_inicial) ... 2026-11-07 10:42:39.266 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:39.266 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+2026-11-07 10:42:39.867 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+test_sesion_nueva_espera_activacion_sin_cargar_catalogo_ni_ia (test_pantalla_inicio.PruebasPantallaInicio.test_sesion_nueva_espera_activacion_sin_cargar_catalogo_ni_ia) ... 2026-11-07 10:42:40.418 Thread 'MainThread': missing ScriptRunContext! This warning can be ignored when running in bare mode.
+ok
+
+----------------------------------------------------------------------
+Ran 72 tests in 56.657s
+
+OK

@@ -32,7 +32,7 @@ class PruebasPantallaInicio(unittest.TestCase):
             self.assertTrue(app.session_state["omnitrix_activado"])
             self.assertEqual(componente.call_count, 1)
             app.run()
-            self.assertEqual(len(app.selectbox[0].options), 20)
+            self.assertEqual(len(app.selectbox[0].options), 63)
             app.radio[0].set_value("Consultar archivo").run()
             app.radio[0].set_value("Analizar opinión").run()
             app.button(key="nueva_conversacion").click().run()

@@ -32,13 +32,13 @@ class PruebasCatalogo(unittest.TestCase):
         contenido = RUTA_CATALOGO.read_bytes()
         aliens = cargar_aliens()
         self.assertEqual(aliens, self.datos["aliens"])
-        self.assertEqual(len(aliens), 20)
-        self.assertEqual(len({alien["id"] for alien in aliens}), 20)
+        self.assertEqual(len(aliens), 63)
+        self.assertEqual(len({alien["id"] for alien in aliens}), 63)
         self.assertEqual(RUTA_CATALOGO.read_bytes(), contenido)
 
     def test_catalogo_puede_crecer_sin_cambiar_ids_existentes(self):
         nuevo = deepcopy(self.datos["aliens"][0])
-        nuevo.update(id="a021", nombre="Alien de prueba")
+        nuevo.update(id="a064", nombre="Alien de prueba")
         self.datos["aliens"].append(nuevo)
         self.escribir(self.datos)
         self.assertEqual(cargar_aliens(self.ruta), self.datos["aliens"])

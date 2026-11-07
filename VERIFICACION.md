@@ -4,6 +4,8 @@ Fecha: 7 de noviembre de 2026. Sistema comprobado: Windows, Python 3.14.4, Tk 8.
 
 ## Actualización vigente: Gemini
 
+Actualización posterior del catálogo: 63 fichas, con 43 PNG adicionales y los 20 registros originales conservados sin cambios. Se aprobaron **72 pruebas en 56,657 segundos**, incluida selección de todas las fichas, verificación de hashes/dimensiones de las 63 imágenes, fuente del diseño y guardado/consulta de una opinión asociada a Whampire. Registro: `evidencias/pruebas-catalogo-ampliado-windows.txt`. Las respuestas del modelo siguen simuladas en esta suite; no consume cuota ni modifica opiniones de uso. La revisión visual comprobó la correspondencia de las 43 imágenes nuevas. Alcance y fuentes en `datos/README.md`.
+
 Tras la solicitud de uso sin pago, se adaptó el clasificador a Gemini Developer API con `langchain-google-genai==4.4.3` y `google-genai==3.0.0`. La nueva ejecución aprobó **68 pruebas en 14,482 segundos** y `pip check` no encontró incompatibilidades. Registro en `evidencias/pruebas-gemini-windows.txt`. Las secciones de 65 pruebas más abajo conservan la ejecución anterior a este cambio.
 
 Las pruebas de análisis pasaron de 6 a 9: comprueban que no se reutilizan claves OpenAI, que no se cambia a otro modelo, y ejecutan el adaptador Gemini y parser reales con transporte simulado. También verifican Developer API (`vertexai=False`), timeout y un solo intento (`max_retries=1`), categorías, pertinencia, cuota, credenciales y errores sin detalles privados. No hubo generación real ni consumo de cuota. El lanzador comprueba la importación de la nueva integración.

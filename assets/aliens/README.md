@@ -1,6 +1,6 @@
 # Imágenes del catálogo
 
-Se incluyen 20 PNG de los personajes de la serie, seleccionados según la preferencia del usuario y descargados el 6 de noviembre de 2026 de la [galería comunitaria Ben 10 DB: Omniverse](https://ben10db.weebly.com/omniverse.html). Son diseños de Omniverse de las transformaciones de la continuidad clásica, sin formas supremas ni personajes del reboot. La ficha señala el diseño mostrado; `serie_origen` mantiene la serie de introducción del alien, que puede ser anterior a Omniverse.
+Se incluyen 63 PNG de las transformaciones de la continuidad clásica, sin formas supremas ni personajes del reboot. Los primeros 20 se descargaron el 6 de noviembre de 2026 de la [galería comunitaria Ben 10 DB: Omniverse](https://ben10db.weebly.com/omniverse.html); los 43 adicionales, el 7 de noviembre, de las galerías detalladas al final. La ficha señala el diseño mostrado; `serie_origen` mantiene la etapa de introducción del alien, que puede ser anterior a Omniverse.
 
 Los archivos se guardaron tal como los entrega la fuente, sin generación con IA, recortes ni cambios de color o resolución. La aplicación limita su tamaño de presentación conservando la proporción. Algunas imágenes de la fuente son pequeñas (por ejemplo, Eco Eco y Crashhopper), por lo que su nitidez es menor. Se verificaron su formato PNG, dimensiones, correspondencia visual con el personaje e integridad.
 
@@ -40,3 +40,9 @@ El manifiesto [fuentes.json](fuentes.json) conserva para cada ID la página de p
 Las rutas del catálogo parten de la raíz del proyecto, por ejemplo `assets/aliens/a001.png`. Para sustituir una imagen, conservar el ID, actualizar la ruta si cambia y registrar su procedencia y hash en el manifiesto. No asignar al catálogo enlaces remotos o rutas a imágenes inexistentes.
 
 Se exploró también la API pública de Ben 10 Wiki/Fandom, pero su CDN devolvió HTTP 403 al intentar descargar los archivos. Ninguna de las imágenes entregadas se descargó desde ese CDN.
+
+## Ampliación del catálogo: 63 fichas
+
+Se añadieron a021–a063, con los PNG originales de las galerías comunitarias de [Omniverse](https://ben10db.weebly.com/omniverse.html), [serie original](https://ben10db.weebly.com/original-series.html), [Fuerza Alienígena](https://ben10db.weebly.com/alien-force.html) y [Supremacía Alienígena](https://ben10db.weebly.com/ultimate-alien.html). No se generaron imágenes ni se modificaron sus píxeles.
+
+Jetray (a038), Fasttrack (a047), Camaleón (a048) y Spitter (a035) conservan diseños de otras etapas, indicadas en la ficha; los demás añadidos usan Omniverse. Piedra (a039) utiliza el segundo diseño de Omniverse. La correspondencia completa está en el [catálogo](../../datos/README.md), y las 63 URLs exactas, hashes, dimensiones y fechas están en `fuentes.json`. Los créditos y límites de licencia de los recursos anteriores se aplican también a esta ampliación.

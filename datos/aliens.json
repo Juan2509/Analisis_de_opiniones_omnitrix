@@ -160,6 +160,436 @@
       "serie_origen": "Ben 10: Omniverse",
       "descripcion": "Produce bolas pegajosas de plasma que pueden explotar.",
       "imagen": "assets/aliens/a020.png"
+    },
+    {
+      "id": "a021",
+      "nombre": "Bestia",
+      "nombre_original": "Wildmutt",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Rastrea por el olfato y el oído y se mueve con gran agilidad.",
+      "imagen": "assets/aliens/a021.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a022",
+      "nombre": "Insectoide",
+      "nombre_original": "Stinkfly",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Vuela y dispara una sustancia pegajosa.",
+      "imagen": "assets/aliens/a022.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a023",
+      "nombre": "Acuático",
+      "nombre_original": "Ripjaws",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Nada y respira bajo el agua; su mandíbula rompe materiales resistentes.",
+      "imagen": "assets/aliens/a023.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a024",
+      "nombre": "Ultra-T",
+      "nombre_original": "Upgrade",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Se fusiona con máquinas y modifica sus funciones.",
+      "imagen": "assets/aliens/a024.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a025",
+      "nombre": "Fantasmático",
+      "nombre_original": "Ghostfreak",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Atraviesa objetos y puede volverse invisible.",
+      "imagen": "assets/aliens/a025.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a026",
+      "nombre": "Cannonbolt",
+      "nombre_original": "Cannonbolt",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Se enrolla en una esfera acorazada y embiste rodando.",
+      "imagen": "assets/aliens/a026.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a027",
+      "nombre": "Wildvine",
+      "nombre_original": "Wildvine",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Extiende su cuerpo vegetal y utiliza enredaderas para sujetarse o atrapar.",
+      "imagen": "assets/aliens/a027.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a028",
+      "nombre": "Blitzwolfer",
+      "nombre_original": "Blitzwolfer",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Emite aullidos sónicos y combina garras con sentidos agudos.",
+      "imagen": "assets/aliens/a028.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a029",
+      "nombre": "Snare-oh",
+      "nombre_original": "Snare-Oh",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Despliega y controla sus vendas para alcanzar y sujetar objetos.",
+      "imagen": "assets/aliens/a029.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a030",
+      "nombre": "Frankentrueno",
+      "nombre_original": "Frankenstrike",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Genera descargas eléctricas y posee gran fuerza física.",
+      "imagen": "assets/aliens/a030.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a031",
+      "nombre": "Upchuck Perk",
+      "nombre_original": "Upchuck (Perk)",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Ingiere materiales con sus lenguas y los convierte en proyectiles de energía.",
+      "imagen": "assets/aliens/a031.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a032",
+      "nombre": "Ditto",
+      "nombre_original": "Ditto",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Se divide en múltiples copias para realizar tareas en conjunto.",
+      "imagen": "assets/aliens/a032.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a033",
+      "nombre": "Multi Ojos",
+      "nombre_original": "Eye Guy",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Observa en varias direcciones y dispara rayos desde sus ojos.",
+      "imagen": "assets/aliens/a033.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a034",
+      "nombre": "Muy Grande",
+      "nombre_original": "Way Big",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Combina un tamaño gigantesco con fuerza y rayos cósmicos.",
+      "imagen": "assets/aliens/a034.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a035",
+      "nombre": "Spitter",
+      "nombre_original": "Spitter",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Expulsa chorros de baba a presión. Se muestra como transformación de Ben 10.000.",
+      "imagen": "assets/aliens/a035.png",
+      "serie_diseno": "Ben 10 (serie original)",
+      "fuente_imagen": "https://ben10db.weebly.com/original-series.html"
+    },
+    {
+      "id": "a036",
+      "nombre": "Bátore",
+      "nombre_original": "Buzzshock",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Manipula electricidad, se duplica y se desplaza por sistemas eléctricos.",
+      "imagen": "assets/aliens/a036.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a037",
+      "nombre": "Arctiguana",
+      "nombre_original": "Arctiguana",
+      "serie_origen": "Ben 10 (serie original)",
+      "descripcion": "Proyecta un aliento helado que congela objetivos.",
+      "imagen": "assets/aliens/a037.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a038",
+      "nombre": "Jetray",
+      "nombre_original": "Jetray",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Vuela a gran velocidad y lanza rayos de energía desde ojos y cola.",
+      "imagen": "assets/aliens/a038.png",
+      "serie_diseno": "Fuerza Alienígena",
+      "fuente_imagen": "https://ben10db.weebly.com/alien-force.html"
+    },
+    {
+      "id": "a039",
+      "nombre": "Piedra",
+      "nombre_original": "Chromastone",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Absorbe energía y la libera en forma de rayos.",
+      "imagen": "assets/aliens/a039.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a040",
+      "nombre": "Cerebrón",
+      "nombre_original": "Brainstorm",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Combina gran inteligencia con descargas eléctricas.",
+      "imagen": "assets/aliens/a040.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a041",
+      "nombre": "Goop",
+      "nombre_original": "Goop",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Moldea su cuerpo viscoso y se sostiene mediante un proyector antigravitatorio.",
+      "imagen": "assets/aliens/a041.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a042",
+      "nombre": "Alien X",
+      "nombre_original": "Alien X",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Puede alterar la realidad, aunque actuar requiere resolver sus decisiones internas.",
+      "imagen": "assets/aliens/a042.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a043",
+      "nombre": "Lodestar",
+      "nombre_original": "Lodestar",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Controla fuerzas magnéticas para atraer y mover metales.",
+      "imagen": "assets/aliens/a043.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a044",
+      "nombre": "Rath",
+      "nombre_original": "Rath",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Combina gran fuerza, agilidad y garras con un temperamento impulsivo.",
+      "imagen": "assets/aliens/a044.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a045",
+      "nombre": "Nanomech",
+      "nombre_original": "Nanomech",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Su cuerpo diminuto puede volar y emitir descargas de energía.",
+      "imagen": "assets/aliens/a045.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a046",
+      "nombre": "Upchuck Murk",
+      "nombre_original": "Upchuck (Murk)",
+      "serie_origen": "Ben 10: Fuerza Alienígena",
+      "descripcion": "Ingiere materiales y los transforma en proyectiles de energía; es la variante Murk.",
+      "imagen": "assets/aliens/a046.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a047",
+      "nombre": "Fasttrack",
+      "nombre_original": "Fasttrack",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Corre a gran velocidad y conserva fuerza para transportar personas.",
+      "imagen": "assets/aliens/a047.png",
+      "serie_diseno": "Supremacía Alienígena",
+      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html"
+    },
+    {
+      "id": "a048",
+      "nombre": "Camaleón",
+      "nombre_original": "Chamalien",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Se camufla hasta hacerse invisible y dispone de una cola con aguijón.",
+      "imagen": "assets/aliens/a048.png",
+      "serie_diseno": "Supremacía Alienígena",
+      "fuente_imagen": "https://ben10db.weebly.com/ultimate-alien.html"
+    },
+    {
+      "id": "a049",
+      "nombre": "Eatle",
+      "nombre_original": "Eatle",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Consume materia y la convierte en rayos que dispara desde su cuerno.",
+      "imagen": "assets/aliens/a049.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a050",
+      "nombre": "Clockwork",
+      "nombre_original": "Clockwork",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Manipula el tiempo mediante rayos y examina acontecimientos pasados.",
+      "imagen": "assets/aliens/a050.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a051",
+      "nombre": "Jury Rigg",
+      "nombre_original": "Juryrigg",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Desmonta y reconstruye máquinas con extraordinaria rapidez.",
+      "imagen": "assets/aliens/a051.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a052",
+      "nombre": "Shocksquatch",
+      "nombre_original": "Shocksquatch",
+      "serie_origen": "Ben 10: Supremacía Alienígena",
+      "descripcion": "Combina fuerza física con la generación de electricidad.",
+      "imagen": "assets/aliens/a052.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a053",
+      "nombre": "Walkatrout",
+      "nombre_original": "Walkatrout",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Su pequeño cuerpo resbaladizo facilita escapar de agarres y moverse bajo el agua.",
+      "imagen": "assets/aliens/a053.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a054",
+      "nombre": "Molestolvo",
+      "nombre_original": "Pesky Dust",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Produce polvo que induce el sueño y permite intervenir en los sueños.",
+      "imagen": "assets/aliens/a054.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a055",
+      "nombre": "Mole-Stache",
+      "nombre_original": "Mole-Stache",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Utiliza su bigote como extremidades fuertes y flexibles.",
+      "imagen": "assets/aliens/a055.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a056",
+      "nombre": "El Peor",
+      "nombre_original": "The Worst",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Su cuerpo soporta golpes y daños, aunque sigue sintiendo dolor.",
+      "imagen": "assets/aliens/a056.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a057",
+      "nombre": "Halcón",
+      "nombre_original": "Kickin' Hawk",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Combate con gran agilidad, patadas y extremidades afiladas.",
+      "imagen": "assets/aliens/a057.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a058",
+      "nombre": "Toepick",
+      "nombre_original": "Toepick",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Oculta un rostro capaz de provocar un miedo intenso en quienes lo miran.",
+      "imagen": "assets/aliens/a058.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a059",
+      "nombre": "Astrodactyl",
+      "nombre_original": "Astrodactyl",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Vuela con propulsión y utiliza látigos de energía.",
+      "imagen": "assets/aliens/a059.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a060",
+      "nombre": "Bullfrag",
+      "nombre_original": "Bullfrag",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Combina saltos potentes con una lengua larga y prensil.",
+      "imagen": "assets/aliens/a060.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a061",
+      "nombre": "Atomix",
+      "nombre_original": "Atomix",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Genera y controla grandes cantidades de energía nuclear.",
+      "imagen": "assets/aliens/a061.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a062",
+      "nombre": "Barrigobot",
+      "nombre_original": "Gutrot",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Produce y mezcla gases con diferentes efectos químicos.",
+      "imagen": "assets/aliens/a062.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
+    },
+    {
+      "id": "a063",
+      "nombre": "Whampire",
+      "nombre_original": "Whampire",
+      "serie_origen": "Ben 10: Omniverse",
+      "descripcion": "Vuela, absorbe energía vital y puede controlar a otros mediante corrupturas.",
+      "imagen": "assets/aliens/a063.png",
+      "serie_diseno": "Omniverse",
+      "fuente_imagen": "https://ben10db.weebly.com/omniverse.html"
     }
   ]
 }

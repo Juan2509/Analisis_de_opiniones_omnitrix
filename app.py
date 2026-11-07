@@ -40,8 +40,8 @@ def mostrar_ficha(alien: dict):
                 if imagen is not None:
                     st.image(imagen, caption=f"Imagen de {alien['nombre']}", width="stretch")
                     st.caption(
-                        "Diseño de Omniverse · "
-                        "[Fuente](https://ben10db.weebly.com/omniverse.html)"
+                        f"Diseño de {alien.get('serie_diseno', 'Omniverse')} · "
+                        f"[Fuente]({alien.get('fuente_imagen', 'https://ben10db.weebly.com/omniverse.html')})"
                     )
                 else:
                     try:

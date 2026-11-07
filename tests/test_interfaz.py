@@ -46,7 +46,7 @@ class PruebasInterfaz(unittest.TestCase):
         app = self.iniciar()
         self.assertEqual(app.title[0].value, "Archivo Omnitrix")
         self.assertEqual(app.radio[0].value, "Analizar opinión")
-        self.assertEqual(len(app.selectbox[0].options), 20)
+        self.assertEqual(len(app.selectbox[0].options), 63)
         self.assertEqual(app.subheader[0].value, "Fuego")
         self.assertIn("archivo local", app.info[0].value)
         self.assertEqual(len(app.chat_input), 1)
@@ -72,6 +72,23 @@ class PruebasInterfaz(unittest.TestCase):
         self.assertEqual(self.analizar.call_count, 2)
         self.assertEqual(self.analizar.call_args_list[0].args[0]["id"], "a001")
         self.assertEqual(self.analizar.call_args_list[0].args[1], texto)
+
+    def test_aliens_nuevos_muestran_fuente_y_guardan_su_identidad(self):
+        app = self.iniciar()
+        app.selectbox[0].select("a047").run()
+        self.assertEqual(app.subheader[0].value, "Fasttrack")
+        self.assertTrue(any("Diseño de Supremacía Alienígena" in c.value for c in app.caption))
+        app.selectbox[0].select("a063").run()
+        self.assertEqual(app.subheader[0].value, "Whampire")
+        app.chat_input[0].set_value("Me encanta su diseño.").run()
+        self.assertFalse(app.exception)
+        registros = cargar_opiniones(self.ruta_opiniones)
+        self.assertEqual(registros[0]["alien_id"], "a063")
+        self.assertEqual(registros[0]["alien_nombre"], "Whampire")
+        self.assertEqual(self.analizar.call_args.args[0]["nombre_original"], "Whampire")
+        app.radio[0].set_value("Consultar archivo").run()
+        self.assertFalse(app.exception)
+        self.assertIn("Whampire (a063)", app.selectbox[0].options)
 
     def test_longitud_se_valida_sin_truncar_y_conserva_texto_rechazado(self):
         app = self.iniciar()
