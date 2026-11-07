@@ -2,7 +2,9 @@
 
 ## Cómo retomar en una nueva sesión
 
-Estado más reciente (2026-11-07, Windows): pasos 7 a 11 implementados, pendientes de verificación completa por ausencia de Python y `.venv`. El paso 11 añade VBS de doble clic y controlador gráfico con inicio/cierre del servidor. Diagnóstico VBS comprobado, incluida prueba con archivos simulados en carpeta con espacios. Siguiente: preparar el entorno, datos y aceptación (12). Las comprobaciones y estados del 2026-11-06 que aparecen más abajo son históricos; no equivalen a pruebas de estas nuevas etapas.
+Actualización posterior al paso 13: adaptación a Gemini solicitada por el usuario, con condición de no pagar. `langchain-google-genai==4.4.3`, Gemini Developer API sin Vertex ni fallback, modelo `gemini-3.5-flash-lite`, configuración Google local y guía `GEMINI_GRATIS.md`. 68 pruebas aprobadas y `pip check` correcto. Solo usar clave de un proyecto Free Tier sin facturación; disponibilidad/cuota de la cuenta e inferencia real pendientes. Conservar los resultados anteriores como históricos. Commit sugerido: `feat(analisis): integrar Gemini para uso en modalidad gratuita`.
+
+Estado más reciente (2026-11-07, Windows): paso 13 de documentación completado. README de entrega reorganizado, contexto consolidado, guía `ENTREGA.md` y evidencias reproducibles de persistencia/filtro preparadas; documentos anteriores archivados en `docs/`. Python 3.14.4 y `.venv` disponibles, 65 pruebas aprobadas en el paso 12 y `pip check` correcto. Pasos 8, 10, 11 y 12 conservan pendientes de API o revisión manual en `VERIFICACION.md`; completar la documentación no los cierra. No hubo llamadas reales al modelo. Los estados del 2026-11-06 son históricos.
 
 1. Leer `CONTEXTO_PROYECTO.md` para conocer el alcance, la temática de Ben 10, las reglas del taller y las decisiones del usuario.
 2. Leer este plan y revisar los archivos, el historial Git y los cambios sin confirmar. El historial y el código determinan qué está terminado; las casillas son una ayuda.
@@ -101,9 +103,9 @@ Las imágenes definitivas no deben bloquear el desarrollo: puede emplearse un re
 
 ### 7. Capturar opiniones y mantener historial visual
 
-- [ ] Completado y verificado.
+- [x] Completado y verificado con AppTest en el paso 12.
 
-Implementado el 2026-11-07; falta ejecutar las pruebas en esta copia de Windows. `app.py` captura el texto sin truncar, valida su longitud tras `strip`, conserva texto original e identidad del alien y muestra el historial de sesión. Los rechazos quedan visibles; Nueva conversación limpia el chat y conserva la selección. No hay análisis ni escritura. Se añadieron tres pruebas de interacción y se actualizó la de inicio. `git diff --check` correcto. No existe `.venv` y no se encontró Python en el PATH; no se atribuyen resultados de pruebas ejecutables a esta etapa. Antes de cerrar el paso, preparar el entorno y ejecutar la suite.
+Implementado el 2026-11-07 y comprobado durante el paso 12: captura sin truncar, longitud tras `strip`, texto original e identidad del alien, historial al navegar y limpieza del chat sin modificar el archivo. La prueba del texto de solo espacios verifica su conservación en sesión y su presentación normalizada por Streamlit. Suite completa: 65 pruebas aprobadas.
 
 Contenido: `st.chat_input`, `st.chat_message`, historial en `st.session_state`, asociación del envío con el alien y botón Nueva conversación.
 
@@ -117,7 +119,7 @@ En esta etapa todavía no simular clasificación o confirmación de guardado. Pr
 
 - [ ] Completado y verificado.
 
-Implementado el 2026-11-07; pendiente de ejecutar pruebas y evaluación real. `analisis.py` define `AnalisisOpinion`, prompt `omnitrix-v1`, configuración local, cadena con salida `json_schema` y errores sanitizados. `app.py` analiza solo cada nuevo envío válido y conserva resultado o error en sesión, sin persistencia ni reintentos al navegar. Se añadieron cinco pruebas del análisis y dos de interfaz; las pruebas de chat usan dobles locales, sin API. `git diff --check` correcto. No hay Python en el PATH ni `.venv`; no se ha confirmado modelo/credenciales ni realizado llamadas reales. No cerrar esta casilla hasta verificar el entorno, la suite y los casos con el modelo elegido. Configuración en README y `.env.example`.
+Implementado y comprobado con seis pruebas de análisis y pruebas AppTest, dentro de la suite de 65 aprobadas. Esquema estricto, `omnitrix-v1`, salida `json_schema`, errores sanitizados y análisis solo del envío actual. Incluye autenticación, cuota y tiempo de espera con dobles; no demuestra exactitud semántica. Mantener abierta la etapa hasta configurar y evaluar un modelo real. Configuración en README y `.env.example`.
 
 Contenido: prompt system/human mediante `ChatPromptTemplate`, cadena LangChain, esquema Pydantic y `with_structured_output` con `invoke`. Configurar proveedor/modelo compatible mediante entorno.
 
@@ -129,9 +131,9 @@ Registrar qué comprobaciones usaron un modelo real. Si faltan credenciales, doc
 
 ### 9. Implementar persistencia
 
-- [ ] Completado y verificado.
+- [x] Completado y verificado localmente en el paso 12.
 
-Implementado el 2026-11-07, pendiente de ejecución de pruebas y reinicio real. Archivo inicial `datos/opiniones.json`, creación de registros con UUID y fecha UTC, validación completa del archivo y escritura UTF-8 mediante temporal, sincronización y reemplazo. Idempotencia por ID con rechazo de conflictos. La interfaz guarda solo análisis pertinentes, confirma después del éxito y permite reintentar el mismo registro sin volver a analizar. Archivos dañados y errores de escritura no se ocultan ni se sobrescriben. Siete pruebas nuevas de almacenamiento y una de interfaz; pruebas de UI con ruta temporal aislada. `git diff --check` correcto; ninguna prueba Python ejecutada por falta de intérprete. No cerrar esta casilla hasta ejecutar la suite y demostrar persistencia tras reinicio. Alcance: un único escritor local.
+Siete pruebas de almacenamiento y pruebas AppTest aprobadas; se demostró además lectura de las 16 opiniones desde otro proceso Python y otro cwd, sin duplicar reintentos. Validación, UTF-8, UUID/UTC, temporal/reemplazo, conflictos, fallos de escritura y conservación de archivos dañados comprobados. No se modificó el archivo de uso. La demostración manual con un envío de API real forma parte de la aceptación final. Alcance: un único escritor local.
 
 Contenido: `datos/opiniones.json`, UUID, fecha UTC, alien, texto original, análisis y metadatos del modelo/prompt. Escritura UTF-8 mediante temporal en el mismo directorio y reemplazo final.
 
@@ -145,7 +147,7 @@ Alcance: un único escritor local; no afirmar soporte concurrente por utilizar r
 
 - [ ] Completado y verificado.
 
-Implementado el 2026-11-07; pendiente de suite y revisión en navegador. Función pura `consultar_opiniones`, filtros por ID del alien y categoría o todos; tabla, total y recuentos alimentados por la misma selección que el JSON descargable. Se consulta solo el archivo persistente, sin depender del catálogo, llamar al modelo ni escribir. Estados vacío/sin coincidencias y error de archivo visibles; descarga vacía permitida. Si desaparece un alien filtrado, vuelve a Todos. Tres pruebas de filtros y cuatro de interfaz añadidas; no ejecutadas porque faltan Python y `.venv`. `git diff --check` correcto. No cerrar esta casilla hasta verificar la suite y la descarga real desde el navegador.
+Tres pruebas de filtros y cuatro de interfaz aprobadas: tabla/recuentos/bytes exportados coherentes, consultas sin IA ni escritura, vacíos, errores y opciones actualizadas. La revisión visual y descarga real en Brave siguen pendientes: Computer Use no pudo determinar la URL y detuvo la inspección. Ver `VERIFICACION.md`.
 
 Contenido: filtros por alien/sentimiento o todos, tabla, total, recuentos y descarga JSON.
 
@@ -157,7 +159,7 @@ Commit: `feat(consultas): filtrar y exportar opiniones registradas`
 
 - [ ] Completado y verificado.
 
-Implementado el 2026-11-07 para Windows: `Iniciar Archivo Omnitrix.vbs` e `iniciar.py`. Usa únicamente `.venv\Scripts\python.exe`, rutas absolutas y cwd del proyecto, comprueba dependencias, inicia Streamlit oculto en loopback con puerto disponible y espera su salud antes de abrir el navegador. Ventana con Abrir y Detener/cerrar; cierre limitado al proceso propio. Mutex por carpeta/sesión de Windows impide lanzadores duplicados. Errores visibles y `inicio.log` ignorado. El VBS se diagnosticó desde otra carpeta: entorno ausente detectado. La prueba PowerShell pasó para archivos ausentes y presentes simulados en ruta con espacios, sin ejecutar Python ni GUI. Cinco pruebas Python añadidas sin ejecutar; falta preparar el entorno y comprobar navegador, segunda instancia y cierre reales antes de marcar la casilla. `git diff --check` correcto. No se asegura portabilidad a otros sistemas.
+Implementado para Windows y comprobado con siete pruebas Python, incluido mutex real y arranque/salud/detención de servidor real. La prueba PowerShell del VBS pasó. También se observó la ventana del controlador con dirección local y botones, HTTP 200 y título de la aplicación en Brave. Pendiente revisar la página y el clic de cierre: Computer Use detuvo esa inspección por no poder determinar la URL del navegador. El controlador abierto puede cerrarse manualmente. No se asegura portabilidad a otros sistemas.
 
 Contenido: acceso directo o mecanismo gráfico adecuado al sistema de destino, con instrucciones claras.
 
@@ -169,6 +171,8 @@ Commit: `feat(inicio): agregar acceso gráfico a la aplicación`
 
 - [ ] Completado y verificado.
 
+Datos y verificación local preparados el 2026-11-07: 16 opiniones ficticias, cuatro aliens/categorías, análisis manuales identificados y seis casos de evaluación. Python 3.14.4 local y `.venv` instalados con aprobación; `pip check` correcto. 65 pruebas aprobadas, incluidas persistencia entre procesos, errores de API simulados, mutex y servidor real. Se corrigió la validación de rutas POSIX en Windows y una aserción sobre espacios normalizados. Evidencias y reflexiones en `VERIFICACION.md`. Mantener abierta esta casilla hasta evaluar un modelo real y completar la revisión manual de navegador limitada por Computer Use. Los datos de uso no se sustituyeron por ejemplos.
+
 Contenido: al menos 12 opiniones ficticias entre 4 aliens y las 4 categorías; pruebas relevantes y registro de resultados observados. Identificar datos de ejemplo y cualquier análisis preparado manualmente.
 
 Comprobar: elogios, críticas, neutralidad, mixtos, ironía, pertinencia, entradas inválidas, instrucciones embebidas, persistencia, cambios de alien, limpieza del chat, errores de API/validación/escritura, JSON dañado, filtros y ausencia de duplicados.
@@ -179,7 +183,9 @@ Las pruebas se realizan también durante las etapas anteriores. Este paso consol
 
 ### 13. Documentar la entrega
 
-- [ ] Completado y verificado.
+- [x] Documentación completada y revisada; aceptación funcional pendiente según `VERIFICACION.md`.
+
+Preparado el 2026-11-07: README de instalación/configuración/inicio/uso/respaldo/errores, versiones y pruebas; contexto consolidado; `ENTREGA.md` para revisión y sustentación; historial anterior archivado en `docs/`. `scripts/generar_evidencias.py` reprodujo 16 registros recuperados desde otro proceso, cero duplicados al reintentar y filtro XLR8/mixto de un registro, sin API ni cambios al archivo de uso. Resultados JSON en `evidencias/` y reflexiones en `VERIFICACION.md`. Se revisaron enlaces locales y consistencia de los archivos. La suite previa de 65 pruebas no se repitió por cambios documentales. No se afirma aceptación completa: faltan modelo real y revisión manual de navegador/descarga/cierre. No hubo commit ni push automático.
 
 Contenido: README de instalación, configuración, versiones comprobadas, inicio visual y uso; evidencias reales de persistencia y filtros; reflexión sobre dos errores o ambigüedades; contexto actualizado.
 
@@ -211,6 +217,8 @@ Actualizar al finalizar cada etapa con evidencia breve. No inventar hashes ni re
 
 | Fecha | Etapa | Avance real | Verificación y pendientes | Commit, si existe |
 | --- | --- | --- | --- | --- |
+| 2026-11-07 | Paso 13 | Guía de entrega, contexto consolidado, archivo histórico y evidencias JSON reproducibles | Generador ejecutado; enlaces/archivos revisados; conserva pendientes de API y revisión manual | Pendiente de commit |
+| 2026-11-07 | Paso 12 | 16 opiniones y seis casos manuales; entorno Windows preparado; corrección de ruta POSIX | 65 pruebas aprobadas, pip check y VBS correctos; servidor/mutex reales comprobados; API y revisión manual pendientes | Pendiente de commit |
 | 2026-11-07 | Paso 11 | Inicio por doble clic y ventana de control para Windows, proceso local y exclusión de duplicados | Diagnóstico VBS y prueba PowerShell correctos; Python, GUI, servidor y cierre reales pendientes | Pendiente de commit |
 | 2026-11-07 | Paso 10 | Consulta visual, filtros combinados, tabla/recuentos y descarga de la misma selección | Diff correcto; siete pruebas nuevas sin ejecutar por falta de Python; revisión de navegador pendiente | Pendiente de commit |
 | 2026-11-07 | Paso 9 | Registros persistentes, validación JSON, escritura atómica y reintento del mismo envío | Revisión del diff correcta; ocho pruebas añadidas sin ejecutar por falta de Python; reinicio real pendiente | Pendiente de commit |

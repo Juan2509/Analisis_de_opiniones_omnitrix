@@ -2,13 +2,52 @@
 
 import subprocess
 import sys
+import tempfile
+import time
+from pathlib import Path
 import unittest
 from unittest.mock import MagicMock, patch
 
-from iniciar import RAIZ, comando_servidor, detener_proceso, servidor_listo
+from iniciar import RAIZ, comando_servidor, detener_proceso, servidor_listo, tomar_instancia, puerto_disponible
 
 
 class PruebasInicio(unittest.TestCase):
+    @unittest.skipUnless(sys.platform == "win32", "Mutex específico de Windows")
+    def test_mutex_real_impide_duplicados_y_se_libera(self):
+        with tempfile.TemporaryDirectory() as carpeta, patch("iniciar.RAIZ", Path(carpeta)):
+            primera = tomar_instancia()
+            self.assertIsNotNone(primera)
+            try:
+                self.assertIsNone(tomar_instancia())
+            finally:
+                primera[0].CloseHandle(primera[1])
+            siguiente = tomar_instancia()
+            self.assertIsNotNone(siguiente)
+            siguiente[0].CloseHandle(siguiente[1])
+
+    def test_servidor_real_inicia_responde_y_se_detiene(self):
+        puerto = puerto_disponible()
+        url = f"http://127.0.0.1:{puerto}"
+        with tempfile.TemporaryFile(mode="w+b") as registro:
+            proceso = subprocess.Popen(
+                comando_servidor(puerto), cwd=RAIZ, stdout=registro, stderr=subprocess.STDOUT,
+                creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
+            )
+            try:
+                limite = time.monotonic() + 30
+                while proceso.poll() is None and time.monotonic() < limite:
+                    if servidor_listo(url):
+                        break
+                    time.sleep(0.1)
+                else:
+                    registro.seek(0)
+                    self.fail("Streamlit no respondió: " + registro.read().decode("utf-8", errors="replace"))
+                self.assertIsNone(proceso.poll())
+            finally:
+                detener_proceso(proceso)
+            self.assertIsNotNone(proceso.poll())
+            self.assertFalse(servidor_listo(url))
+
     def test_comando_usa_interprete_actual_ruta_absoluta_y_red_local(self):
         comando = comando_servidor(18501)
         self.assertEqual(comando[:5], [sys.executable, "-m", "streamlit", "run", str(RAIZ / "app.py")])

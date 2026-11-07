@@ -4,7 +4,7 @@ import json
 import os
 import tempfile
 from datetime import datetime, timezone
-from pathlib import Path, PureWindowsPath
+from pathlib import Path, PurePosixPath, PureWindowsPath
 from uuid import UUID, uuid4
 
 
@@ -68,6 +68,7 @@ def _validar_catalogo(datos: object) -> list[dict]:
         ruta_imagen = Path(imagen)
         if (
             ruta_imagen.is_absolute()
+            or PurePosixPath(imagen).is_absolute()
             or PureWindowsPath(imagen).drive
             or "\\" in imagen
             or "\x00" in imagen

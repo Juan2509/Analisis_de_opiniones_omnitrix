@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "opiniones": [
+    {
+      "id": "00000000-0000-4000-8000-000000000012",
+      "fecha_utc": "2026-11-07T00:11:00+00:00",
+      "alien_id": "a003",
+      "alien_nombre": "XLR8",
+      "opinion_original": "Me fascina su velocidad, pero no me gusta la forma de su casco.",
+      "sentimiento": "mixto",
+      "razon": "Combina entusiasmo por su velocidad y crítica al casco.",
+      "modelo": "manual:no-ejecutado",
+      "version_prompt": "demo-manual-v1"
+    }
+  ]
+}

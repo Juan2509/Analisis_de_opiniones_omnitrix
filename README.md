@@ -1,67 +1,36 @@
 # Archivo Omnitrix
 
-Proyecto académico de análisis de opiniones sobre aliens de **Ben 10**, adaptado del taller de percepción de futbolistas. Según lo comunicado por el estudiante, en clase se permitió cambiar la temática conservando los requisitos técnicos.
+Aplicación académica para explorar 20 aliens de Ben 10, opinar sobre ellos y clasificar el sentimiento con un modelo de lenguaje. Adapta el taller de opiniones sobre futbolistas; según lo comunicado por el estudiante, en clase se permitió cambiar la temática conservando los requisitos técnicos.
 
-## Estado
+Python y Streamlit construyen la interfaz negra, verde neón y blanca; LangChain y Pydantic coordinan y validan el análisis. Las opiniones pertinentes se guardan en JSON local.
 
-Pasos 1 a 6 completados. Los pasos 7 a 11 están implementados y pendientes de verificación completa en esta copia de Windows: captura, clasificación, persistencia, consulta, exportación e inicio gráfico. Aquí no existe `.venv` ni se encontró Python en el PATH; las comprobaciones de entorno descritas más abajo corresponden al equipo anterior. El diagnóstico del lanzador VBS sí se ejecutó. El siguiente paso es preparar datos y verificar la aceptación (12), resolviendo primero el entorno pendiente.
+## Estado de la entrega
 
-## Opiniones de sesión (paso 7)
+Implementación y documentación de los 13 pasos preparadas. **68 pruebas automatizadas aprobadas** tras adaptar el análisis a Gemini, en Windows con Python 3.14.4 y Streamlit 1.67.0; `pip check` sin incompatibilidades. Se comprobaron persistencia entre procesos, filtros/exportación, mutex y arranque/respuesta/detención de un servidor real.
 
-Debajo de la ficha se puede enviar una opinión de 5 a 1000 caracteres, contando después de quitar espacios exteriores y sin recortar el texto. Cada envío conserva el texto original, ID y nombre del alien seleccionado. El historial permanece al cambiar de alien o sección; dos envíos iguales son independientes. Los textos rechazados quedan visibles para recuperarlos y corregirlos.
+**Uso sin pago:** seguir [GEMINI_GRATIS.md](GEMINI_GRATIS.md), usando únicamente un proyecto Google AI Studio **Free Tier sin facturación vinculada**. No se utiliza la clave anterior de OpenAI. La app no puede comprobar el estado de facturación de tu proyecto: esa elección debe hacerse en AI Studio. La cuota gratuita y disponibilidad dependen de la cuenta/modelo.
 
-«Nueva conversación» limpia el historial y el texto rechazado, conservando la selección y las opiniones guardadas en disco. Desde el paso 8, los envíos válidos se analizan con IA cuando existe configuración; desde el paso 9, los pertinentes se guardan en `datos/opiniones.json`. El chat solo dura durante la sesión de Streamlit.
+**La aceptación completa sigue pendiente:** falta configurar y evaluar un modelo real y completar la revisión manual de la página, descarga y cierre desde el controlador. Computer Use detuvo la inspección de Brave al no poder verificar su URL. Las pruebas del análisis usan respuestas simuladas y no demuestran precisión semántica. Ver [resultados, reflexiones y límites](VERIFICACION.md).
 
-Se añadieron tres pruebas de interacción para estos flujos y se actualizó la prueba de inicio. `git diff --check` correcto; pruebas Python pendientes de ejecutar con las dependencias instaladas mediante `python -m unittest discover -s tests -v`.
+Los 16 ejemplos y los seis casos de evaluación tienen referencias humanas explícitas. No se mezclan automáticamente con las opiniones de uso ni se presentan como resultados obtenidos de una API.
 
-## Clasificación estructurada (paso 8)
+## Inicio gráfico
 
-Preparación de desarrollo: copiar `.env.example` a `.env` y completar localmente `OPENAI_API_KEY` y `OPENAI_MODEL`. No pegar claves en el código, el chat o el repositorio. El modelo debe estar disponible en la cuenta y admitir Structured Outputs con `json_schema`. No se fija un modelo ni se supone que la cuenta tenga acceso. `OPENAI_TEMPERATURE=0` se usa si el modelo lo admite; dejar el valor vacío para omitir el parámetro. Las variables del sistema tienen prioridad sobre `.env`, que se lee desde la raíz del proyecto sin modificar el entorno global.
+En este equipo ya están preparados Python y `.venv`. Abrir [Iniciar Archivo Omnitrix.vbs](<Iniciar Archivo Omnitrix.vbs>) con doble clic. El controlador comprueba dependencias, inicia el servidor local y abre el navegador cuando responde.
 
-`analisis.py` compone `ChatPromptTemplate | modelo.with_structured_output(...)` e invoca el resultado completo. Pydantic exige pertinencia booleana, una de las cuatro categorías o `null`, razón no vacía de hasta 300 caracteres y coherencia: solo las opiniones pertinentes llevan sentimiento. La longitud de la razón y la relación entre campos se comprueban localmente. El prompt `omnitrix-v1` contiene reglas de ironía y separación entre instrucciones y datos. El envío incluye únicamente datos del alien y texto actual, sin historial. La salida estructurada no garantiza que el juicio de sentimiento sea correcto.
+- **Abrir en navegador:** vuelve a abrir la aplicación si se cerró su pestaña.
+- **Detener y cerrar:** cierra el controlador y detiene su servidor. Cerrar solo la pestaña deja el servidor activo.
+- Una segunda apertura de esta carpeta en la misma sesión de Windows muestra un aviso; utilizar la ventana de control existente.
 
-La interfaz muestra el resultado o el rechazo por falta de pertinencia. Ante configuración incompleta, fallo de API o resultado inválido, conserva el comentario y muestra un error sin inventar una categoría. Cada envío válido intenta una llamada, con espera máxima de 30 segundos y sin reintentos automáticos. Navegar no repite el análisis; reenviar es un envío independiente. Se conservan modelo y versión del prompt en el registro persistente de las opiniones pertinentes.
+La dirección usa `127.0.0.1` y un puerto disponible, que puede cambiar en cada inicio. El lanzador resuelve las rutas desde el proyecto, utiliza exclusivamente `.venv\Scripts\python.exe` y carga el tema de `.streamlit/config.toml`. Requiere Windows Script Host y Python de Windows con Tkinter. No se afirma compatibilidad del lanzador con otros sistemas.
 
-Verificación del paso 8: cinco pruebas nuevas del contrato y la cadena, y dos nuevas de interfaz; las pruebas de chat usan dobles locales y nunca consumen API. No ejecutadas en esta copia por ausencia de Python y `.venv`. No se ha evaluado un modelo real ni confirmado acceso o credenciales. Antes de cerrar la etapa, ejecutar la suite y evaluar elogios, críticas, neutralidad, mixtos, ironía, texto ajeno e instrucciones embebidas con el modelo elegido.
+## Preparación de otro equipo
 
-Referencias de implementación: [Structured Outputs de OpenAI](https://developers.openai.com/api/docs/guides/structured-outputs) y [salida estructurada de LangChain](https://reference.langchain.com/python/langchain-openai/chat_models/base/ChatOpenAI/with_structured_output).
+Esta preparación es técnica y se realiza una vez. El uso posterior es mediante doble clic, sin comandos.
 
-## Persistencia local (paso 9)
-
-`almacenamiento.py` implementa `crear_registro`, `cargar_opiniones` y `guardar_opinion`. El archivo parte de `{"version": 1, "opiniones": []}`; cada registro guarda UUID, fecha UTC, ID/nombre del alien capturado, opinión original, sentimiento, razón, modelo y versión del prompt. La aplicación genera UUID y fecha; el modelo no controla la identidad del envío. Solo las opiniones pertinentes con análisis válido se guardan.
-
-Las rutas relativas parten del proyecto. Leer un archivo ausente devuelve una lista vacía sin crearlo; el primer guardado crea la estructura con su registro. Si existe, se valida versión, estructura, campos, UUID, fecha UTC, longitudes, categoría e IDs únicos antes de escribir. Los archivos ilegibles, dañados o con esquema inesperado se conservan y producen un error visible.
-
-La escritura UTF-8 mantiene los acentos y utiliza un temporal en el mismo directorio, `flush`, `fsync` y reemplazo final. Un fallo intenta limpiar el temporal y mantiene la opinión disponible en sesión. El alcance es un único escritor local: el reemplazo atómico no resuelve actualizaciones concurrentes.
-
-La interfaz confirma «Opinión guardada en el Archivo Omnitrix» solo después de un guardado exitoso o de comprobar que el mismo registro ya existe. Si falla, «Reintentar guardado» reutiliza UUID, fecha y análisis, sin consumir API. Un ID existente con datos distintos se rechaza; dos envíos independientes con el mismo texto conservan IDs distintos. Cambiar de alien o sección no dispara escrituras. Limpiar el chat no modifica el JSON. El chat no se reconstruye desde disco; los registros persistentes se consultan en Consultar archivo.
-
-Verificación: siete pruebas nuevas de almacenamiento con archivos temporales y una nueva de interfaz para fallo/reintento; las pruebas de interfaz aíslan la ruta para no modificar el archivo real. Cubren lectura posterior, duplicados, conflictos, JSON/UTF-8 inválidos, fallos de escritura y reemplazo, limpieza y rechazos. No ejecutadas por ausencia de Python y `.venv`. `git diff --check` correcto. Para comprobar solo la persistencia basta Python estándar: `python -m unittest discover -s tests -p test_opiniones.py -v`; la suite completa requiere instalar `requirements.txt`. La prueba de reinicio real de la aplicación sigue pendiente.
-
-## Consulta y exportación (paso 10)
-
-En **Consultar archivo**, seleccionar un alien y/o un sentimiento, o dejar «Todos». El selector de aliens se construye a partir de los registros guardados e incluye el ID para distinguir nombres repetidos. Se puede consultar el archivo aunque el catálogo de aliens falle o cambie. Los nombres y textos de la tabla son los conservados al guardar cada envío.
-
-`consultar_opiniones` combina ambos filtros con AND, conserva el orden del archivo y devuelve copias de los registros sin modificar los originales. La interfaz usa exactamente esa lista para el total, los cuatro recuentos, la tabla y la descarga. La tabla muestra fecha UTC, alien/ID, opinión original, sentimiento y razón; los recuentos solo describen los registros de esta aplicación.
-
-«Descargar resultados filtrados (JSON)» genera UTF-8 con `version: 1` y los registros completos de la selección, incluyendo UUID y metadatos. El botón usa `on_click="ignore"` para no provocar una reejecución al descargar. Si el archivo está vacío o los filtros no encuentran coincidencias, se muestra un aviso, total y categorías en cero y se permite descargar una lista vacía. Un archivo dañado produce un error y no muestra tabla, métricas ni descarga de datos incompletos.
-
-Consultar, filtrar y descargar no llaman al modelo ni escriben el archivo. Las opiniones se leen de nuevo en cada ejecución, sin caché. Si el ID filtrado desaparece del archivo, el selector vuelve a «Todos».
-
-Verificación: tres pruebas nuevas de filtros puros y cuatro de interfaz para coherencia entre tabla/recuentos/exportación, lectura sin escritura ni IA, estado vacío, archivo dañado y actualización de opciones. No se ejecutaron por ausencia de Python y `.venv`; `git diff --check` correcto. Para ejecutar los filtros basta Python estándar: `python -m unittest discover -s tests -p test_consultas.py -v`. La revisión visual y descarga desde el navegador quedan pendientes junto a la suite completa. Referencias de los componentes: [tabla de Streamlit](https://docs.streamlit.io/develop/concepts/design/dataframes) y [botón de descarga](https://docs.streamlit.io/1.57.0/develop/api-reference/widgets/st.download_button).
-
-## Inicio gráfico en Windows (paso 11)
-
-Con el entorno preparado, abrir **Iniciar Archivo Omnitrix.vbs** con doble clic. Aparece una ventana de control que comprueba las dependencias, inicia Streamlit en una dirección local `127.0.0.1` con puerto disponible y abre el navegador al responder el servidor. No es necesario escribir comandos para utilizar la aplicación.
-
-- **Abrir en navegador** permite volver a la aplicación si se cierra su pestaña.
-- **Detener y cerrar**, o cerrar la ventana de control, detiene el proceso creado por el lanzador. Cerrar solo el navegador deja el servidor activo.
-- Una segunda apertura de la misma carpeta, en la misma sesión de Windows, muestra un aviso en lugar de crear otro servidor.
-- Las rutas y el directorio de trabajo se resuelven desde el proyecto; así se carga también `.streamlit/config.toml`. No se utiliza un Python global como alternativa silenciosa.
-
-El VBS requiere Windows Script Host habilitado; `iniciar.py` requiere el Python de Windows en `.venv\Scripts\python.exe`, con Tkinter y las dependencias de `requirements.txt`. El servidor y su comprobación de dependencias se ejecutan sin consola visible. Los errores se informan con ventanas y el servidor escribe su diagnóstico en `inicio.log`, que está excluido de Git y se renueva en cada inicio. Las esperas máximas son 30 segundos para importar dependencias y 45 segundos para que responda el servidor.
-
-**Preparación técnica del equipo, una sola vez:** disponer de Python para Windows 3.10 o superior con Tkinter, crear un entorno nuevo e instalar las dependencias. No copiar el `.venv` de Linux. Desde PowerShell en la raíz del proyecto:
+1. Obtener el repositorio completo con `datos/`, `assets/` y `.streamlit/`.
+2. Disponer de Python para Windows con Tkinter. La versión comprobada es **3.14.4**. El código requiere Python 3.10 o superior; las otras combinaciones no se volvieron a verificar en esta entrega.
+3. Crear un entorno nuevo e instalar dependencias desde PowerShell en la raíz:
 
 ```powershell
 py -3 -m venv .venv
@@ -69,144 +38,113 @@ py -3 -m venv .venv
 .\.venv\Scripts\python.exe -m pip check
 ```
 
-Estos comandos son para preparar el entorno de desarrollo/entrega; el usuario abre después el archivo VBS. No se instalan paquetes automáticamente al abrir la aplicación. Para analizar opiniones también hace falta configurar `.env`; el catálogo y la consulta no necesitan credenciales de IA. El lanzador es específico de Windows; no se afirma compatibilidad con Linux o macOS.
+Si `py` no está disponible, usar la ruta al `python.exe` instalado en el primer comando. En este equipo se puede reconstruir el entorno con `.\.python-runtime\python.exe -m venv .venv`. El runtime local y `.venv` están excluidos de Git: no copiarlos como sustituto de una instalación en otro equipo. Si se mueve el proyecto, reconstruir el entorno.
 
-**Verificación realizada:** `cscript.exe //nologo "Iniciar Archivo Omnitrix.vbs" /comprobar`, desde otra carpeta, detectó correctamente que falta `.venv\Scripts\python.exe`. Además, `tests/comprobar_inicio_windows.ps1` comprobó con éxito los casos de archivos ausentes y presentes en una carpeta temporal con espacios. Los archivos presentes de esa prueba eran simulados: no se ejecutó Python ni se abrieron ventanas. Para repetir esa prueba: `powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\comprobar_inicio_windows.ps1` (la política se aplica solo a ese proceso de prueba).
+`requirements.txt` fija las dependencias directas y selecciona Streamlit según Python. La [instantánea de versiones de Windows](evidencias/dependencias-windows.txt) incluye las transitivas utilizadas. Para reproducir exactamente esa combinación con Python 3.14.4 en Windows, puede instalarse esa instantánea dentro de un entorno nuevo en lugar del archivo inicial:
 
-Cinco pruebas Python del comando, salud del servidor y cierre del proceso están en `tests/test_inicio.py`; siguen sin ejecutar por ausencia de intérprete. `git diff --check` correcto. Quedan pendientes la apertura real de Streamlit y navegador, la exclusión de una segunda instancia y la detención desde la ventana con un entorno preparado.
-
-## Objetivo y experiencia prevista
-
-El usuario seleccionará un alien, verá su imagen y una ficha breve, escribirá una opinión y recibirá una clasificación de sentimiento con una explicación. La opinión y su análisis se guardarán para consultarlos después de reiniciar.
-
-La entrega tendrá una interfaz visual en navegador y un mecanismo de inicio gráfico. Las secciones serán **Analizar opinión** y **Consultar archivo**, con una estética verde y oscura inspirada en el Omnitrix.
-
-## Alcance de la primera versión
-
-- Catálogo de al menos 20 aliens con identificadores estables y únicos.
-- Ficha e imagen local del alien, con un recurso alternativo si falta la imagen.
-- Opiniones independientes de 5 a 1000 caracteres después de eliminar espacios exteriores.
-- Clasificación: positivo, negativo, neutro o mixto; validación de pertinencia y justificación breve.
-- Historial visual de sesión asociado al alien seleccionado en cada envío. Nueva conversación limpia solo el chat.
-- Persistencia JSON con identificador, fecha UTC, alien, texto original, análisis y metadatos.
-- Consulta por alien y sentimiento, tabla, recuentos y descarga JSON con filtros coherentes.
-- Errores visibles, sin clasificaciones inventadas ni confirmaciones falsas de guardado.
-
-La IA analizará solo la opinión actual. Los comentarios ajenos no se guardarán. La clasificación representa el sentimiento del comentario, no una valoración objetiva del alien; los recuentos reflejarán únicamente los datos de esta aplicación.
-
-## Diseño técnico propuesto
-
-Python y Streamlit para lógica e interfaz; LangChain para la clasificación; Pydantic para validar resultados; JSON para almacenamiento local de un único escritor. Las credenciales se configurarán fuera del código y del repositorio.
-
-Los módulos son `app.py`, `analisis.py` y `almacenamiento.py`. La interfaz presenta catálogo, fichas y chat; análisis configura el modelo y valida resultados; almacenamiento valida el catálogo y persiste opiniones en `datos/opiniones.json`. El tema visual se configura en `.streamlit/config.toml` y los estilos en `assets/estilos.css`. Las imágenes y su procedencia están en `assets/aliens/`.
-
-La base no incluye combate, mecánicas de videojuego, un chatbot general, cuentas de usuario, escritura concurrente, RAG ni agentes. Galerías avanzadas, gráficos y animaciones son ampliaciones opcionales.
-
-## Criterios de entrega
-
-Además de la aplicación, se requieren al menos 12 opiniones ficticias entre 4 aliens y las 4 categorías, versiones utilizadas, instrucciones reproducibles, evidencias reales de persistencia y consulta filtrada, registro de pruebas y reflexión sobre dos ambigüedades o errores del análisis.
-
-Se comprobarán también entradas inválidas, ironía, mensajes ajenos, instrucciones embebidas, cambios de alien, limpieza del chat, fallos de API y escritura, archivos dañados y ausencia de duplicados al interactuar con la interfaz.
-
-## Documentación y continuidad
-
-- [Contexto y especificación](CONTEXTO_PROYECTO.md): requisitos completos, fuentes de clase y decisiones del usuario.
-- [Plan de desarrollo](PLAN_DESARROLLO.md): etapas, verificaciones y Conventional Commits.
-
-Para retomar en otro equipo, abrir el repositorio y compartir ambos documentos con la nueva sesión. El entorno y las credenciales se configurarán de nuevo cuando se implemente esa etapa.
-
-## Decisiones pendientes
-
-- Catálogo definido: nombres latinos y cinco aliens de cada una de las cuatro series, sin versiones supremas. Ver [catálogo y fuentes](datos/README.md).
-- Imágenes definidas: personajes de la serie con diseños de Omniverse, descargados localmente y con [procedencia documentada](assets/aliens/README.md).
-- Paso 8: modelo compatible, credenciales y evaluación real.
-- Paso 11: sistema operativo de entrega y mecanismo de inicio gráfico.
-
-La configuración de IA pendiente no impide continuar con la captura de opiniones del paso 7. Si surge una duda que afecte al alcance o a las preferencias del usuario, consultarla antes de implementar lo que dependa de ella.
-
-## Entorno de desarrollo (paso 2)
-
-En el equipo anterior se comprobó Linux con Python 3.14.4. En esta copia se reconstruyó `.venv` con Python 3.10.12 y se instaló `requirements.txt`. Streamlit 1.67.0 exige Python 3.11 o superior; por eso requirements selecciona Streamlit 1.65.0 para Python 3.10 y conserva 1.67.0 para Python 3.11+. Las dependencias transitivas son resueltas por pip; este archivo no es un bloqueo completo de todas ellas. El código requiere Python 3.10 o superior.
-
-| Dependencia | Versión verificada aquí (Python 3.10.12) | Versión documentada del equipo anterior |
-| --- | --- | --- |
-| streamlit | 1.65.0 | 1.67.0 |
-| langchain-core | 1.7.6 | 1.7.6 |
-| langchain-openai | 1.7.4 | 1.7.4 |
-| python-dotenv | 1.2.4 | 1.2.4 |
-| pydantic | 2.14.3 | 2.14.3 |
-| pillow | 12.3.0 | No documentada como dependencia directa |
-
-En VS Code, abrir la paleta y elegir **Python: Select Interpreter**, seleccionando `.venv/bin/python` en Linux. En otro equipo se debe crear un entorno nuevo e instalar `requirements.txt`; no copiar `.venv`.
-
-Referencia técnica para reconstruir el entorno (preparación de desarrollo):
-
-```bash
-python3 -m venv .venv
-.venv/bin/python -m pip install -r requirements.txt
+```powershell
+.\.venv\Scripts\python.exe -m pip install -r evidencias\dependencias-windows.txt
 ```
 
-Si `venv` falla por ausencia de `ensurepip`, hace falta disponer del paquete de entornos virtuales de la distribución. En esta sesión se completó el entorno instalando pip dentro de `.venv` con el pip del sistema, sin modificar los paquetes globales.
+No se instalan programas ni paquetes automáticamente al abrir el lanzador. El catálogo y la consulta funcionan sin credenciales de IA.
 
-Estos comandos documentan la preparación técnica. El uso de la entrega será visual; el acceso gráfico se construirá en el paso 11. La interfaz de desarrollo se abre siguiendo las instrucciones del paso 5 que aparecen más abajo.
+## Configurar el análisis con IA
 
-`datos/` y `assets/aliens/` se conservan con `.gitkeep`. El catálogo ya está en datos/aliens.json; las opiniones JSON se crearán en su etapa. `.env.example` tiene valores vacíos; al configurar el análisis se copiará a `.env` y se completará localmente. No se ha creado ninguna clave ni realizado llamadas al modelo.
+Copiar `.env.example` a `.env` en la raíz y completar localmente:
 
-Verificación realizada aquí: instalación de dependencias, `.venv/bin/python -m pip check` sin incompatibilidades e importación de las bibliotecas, incluido Pillow para las imágenes. Se comprobaron también las pruebas del catálogo y de la interfaz; no se realizaron llamadas al modelo. El aislamiento con venv sigue la [guía oficial de Streamlit](https://docs.streamlit.io/get-started/installation/command-line).
+| Variable | Configuración |
+| --- | --- |
+| `GOOGLE_API_KEY` | Clave de Google AI Studio de un proyecto Free Tier sin facturación. El archivo está excluido de Git. |
+| `GEMINI_MODEL` | `gemini-3.5-flash-lite`, modelo preparado para esta entrega. No hay cambio automático de modelo. |
+| `GEMINI_TEMPERATURE` | Vacío: utiliza la configuración recomendada por la integración para Gemini 3.x. |
 
-## Catálogo (paso 3)
+No incluir claves reales en código, capturas, documentación o commits. Las variables del sistema tienen prioridad sobre `.env`. Reiniciar el controlador después de cambiar configuración. No se ha confirmado el acceso o cuota gratuita de tu cuenta. Las variables antiguas de OpenAI se ignoran. Si AI Studio solicita pagos, no activarlos; consultar la guía gratuita antes de continuar.
 
-Se añadieron 20 aliens con IDs estables, nombres latinos y alias originales. La selección incluye cinco de la serie original, cinco de Fuerza Alienígena, cinco de Supremacía Alienígena y cinco de Omniverse, sin versiones supremas. En el paso 6 se completaron las rutas de las 20 imágenes locales, manteniendo los IDs y las series de introducción. `null` sigue siendo válido si falta una imagen. Ver [contrato de datos y fuentes](datos/README.md).
+El prompt `omnitrix-v1` recibe solo los datos del alien y la opinión actual, sin historial. Pydantic valida pertinencia, categoría y razón de 1 a 300 caracteres. Una opinión pertinente exige categoría; una ajena exige sentimiento `null` y no se guarda. Las instrucciones incrustadas se tratan como datos. Estos mecanismos necesitan evaluación real y no garantizan que toda clasificación sea correcta.
 
-## Carga y validación del catálogo (paso 4)
+## Uso
 
-`almacenamiento.cargar_aliens()` devuelve la lista de aliens validada. Comprueba la versión entera 1, un mínimo de 20 registros, campos obligatorios, textos no vacíos, IDs únicos sin espacios exteriores e imágenes `null` o rutas locales relativas con `/` y sin `..`. No exige todavía que las imágenes existan. Las rutas relativas del catálogo parten de la raíz del proyecto, independientemente del directorio de inicio.
+### Analizar opinión
 
-Si falta el archivo, no puede leerse, no usa UTF-8, contiene JSON dañado o incumple el esquema, lanza `ErrorCatalogo` con un mensaje en español. La lectura no crea ni modifica archivos. La interfaz muestra estos errores y no presenta el selector cuando falla el catálogo.
+1. Elegir un alien y revisar su ficha e imagen local. Si la imagen falla, se muestra una alternativa.
+2. Enviar una opinión de **5 a 1000 caracteres** después de quitar espacios exteriores. Se conserva el texto original, sin truncarlo.
+3. Consultar sentimiento y justificación, o el aviso de falta de pertinencia o error.
+4. Buscar «Opinión guardada en el Archivo Omnitrix»: aparece únicamente tras guardar o comprobar que ese mismo envío ya existe.
 
-Comprobación técnica, desde la raíz del repositorio y sin dependencias externas:
+Categorías: `positivo` (favorable), `negativo` (desfavorable), `neutro` (descripción sin valoración clara) y `mixto` (elogios y críticas relevantes). El resultado describe el comentario; no determina objetivamente qué alien es mejor.
 
-```bash
-python3 -m unittest discover -s tests -p 'test_catalogo.py' -v
+Cada envío captura el alien seleccionado. Cambiarlo no modifica opiniones anteriores. **Nueva conversación** limpia el chat temporal y los rechazos, conservando selección y archivo persistente. No hay borrado del archivo desde la interfaz.
+
+Si falla el análisis, el comentario queda visible y no se inventa una categoría. Reenviar cuenta como un envío nuevo. Si falla la escritura, **Reintentar guardado** conserva UUID, fecha y análisis, sin llamar nuevamente a la IA. Navegar o cambiar filtros no repite el análisis ni el guardado.
+
+### Consultar archivo
+
+Elegir alien y/o sentimiento, o dejar «Todos». Los aliens disponibles son los presentes en los registros guardados y se identifican por ID. La tabla muestra fecha UTC, alien/ID, texto original, sentimiento y razón. Total, cuatro recuentos y descarga usan exactamente los mismos resultados filtrados.
+
+**Descargar resultados filtrados (JSON)** exporta registros completos, con UUID y metadatos, en UTF-8. Los estados vacíos son informativos y permiten descargar una lista vacía. Consultar funciona aunque falle el catálogo, sin llamar al modelo ni escribir. Un JSON dañado muestra un error sin sustituirlo por datos vacíos.
+
+## Datos, respaldo y alcance
+
+`datos/opiniones.json` usa `{"version": 1, "opiniones": []}`. Cada registro contiene UUID, fecha UTC, alien/ID capturado, opinión original, sentimiento, razón, modelo y versión del prompt. La aplicación genera identidad y fecha; no las elige el modelo.
+
+La escritura valida los registros y usa temporal en el mismo directorio, sincronización y reemplazo final. Un ID repetido con los mismos datos no se duplica; con datos distintos se rechaza. Dos envíos independientes con texto idéntico pueden ser dos registros válidos.
+
+Para respaldar o trasladar opiniones, detener el servidor y copiar `datos/opiniones.json`. Conservar catálogo e imágenes al trasladar el proyecto. Si el archivo está dañado, preservarlo y revisar una copia; no reemplazarlo por ejemplos. Las pruebas y el generador de evidencias usan carpetas temporales.
+
+La versión base admite **un único escritor local**. El reemplazo atómico y el mutex del lanzador no constituyen soporte multiusuario. No incluye cuentas, RAG, agentes, combate ni chatbot general. Las imágenes son material de terceros para el proyecto académico; ver [créditos y límites de procedencia](assets/aliens/README.md).
+
+## Archivos principales
+
+| Archivo o carpeta | Responsabilidad |
+| --- | --- |
+| `app.py` | Navegación, fichas, chat, resultados, filtros y descarga. |
+| `analisis.py` | Configuración, prompt, esquema y análisis estructurado. |
+| `almacenamiento.py` | Validación de catálogo/registros, escritura y consultas. |
+| `iniciar.py` y el VBS | Controlador gráfico y ciclo de vida del servidor Windows. |
+| `datos/aliens.json` | 20 aliens con IDs estables y nombres latinos; cinco por serie, sin formas supremas. |
+| `datos/opiniones.json` | Opiniones de uso persistentes. |
+| `datos/ejemplos/` | 16 registros y seis casos con expectativas manuales. |
+| `assets/` y `.streamlit/` | Estilos, imágenes locales, fuentes y tema. |
+| `tests/` | Pruebas de contrato, interfaz, persistencia, consultas, inicio y aceptación. |
+| `scripts/generar_evidencias.py` | Evidencia de persistencia y filtro con datos manuales aislados. |
+
+## Pruebas y evidencias
+
+Con `.venv` preparado, desde la raíz:
+
+```powershell
+.\.venv\Scripts\python.exe -m unittest discover -s tests -v
+.\.venv\Scripts\python.exe -m pip check
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File tests\comprobar_inicio_windows.ps1
+.\.venv\Scripts\python.exe scripts\generar_evidencias.py
 ```
 
-Resultado observado con Python 3.10.12: 19 pruebas correctas, incluyendo el catálogo real, los errores previstos, la conservación de archivos inválidos y las rutas desde otro directorio. El error de permisos se simula con `unittest.mock`. Estas pruebas no verifican todavía la interfaz ni la API.
+La política indicada afecta solo al proceso PowerShell de la prueba. La suite usa archivos temporales y dobles del modelo, sin consumir API. Incluye servidor local real y otro proceso Python para demostrar persistencia. El generador tampoco consume API ni modifica opiniones de uso.
 
-## Navegación y selección visual (paso 5)
+- [Registro de pruebas, límites y dos ambigüedades](VERIFICACION.md).
+- [Salida de las 68 pruebas aprobadas con Gemini](evidencias/pruebas-gemini-windows.txt).
+- [Registro histórico de 65 pruebas anterior a Gemini](evidencias/pruebas-windows.txt).
+- [Versiones instaladas](evidencias/dependencias-windows.txt).
+- [Evidencia de persistencia y filtrado](evidencias/persistencia-y-filtro.json).
+- [JSON filtrado: XLR8, mixto](evidencias/consulta-xlr8-mixto.json), con análisis manual explícito.
+- [Guía de sustentación y cierre de aceptación](ENTREGA.md).
 
-La interfaz tiene dos secciones: **Analizar opinión** permite seleccionar cualquiera de los 20 aliens y muestra su ficha; **Consultar archivo** informa que la consulta de opiniones sigue pendiente. La selección se conserva al cambiar de sección. No hay todavía envío de opiniones ni análisis o guardado.
+La persistencia y los filtros se ejecutaron realmente sobre datos ficticios; las categorías siguen siendo manuales. No equivalen a evaluar un modelo.
 
-El tema nativo de Streamlit usa fondo oscuro, texto claro y acento verde. La portada tiene un emblema decorativo hecho con CSS y una distribución adaptable a pantallas pequeñas. La presentación usa imágenes locales, sin descargar recursos durante su uso.
+## Problemas frecuentes
 
-La identidad visual se refinó por petición del usuario: negro predominante (`#050705`), verde neón (`#8CFF38`) y blanco para texto y detalles. La portada incluye degradado, cuadrícula y un núcleo Omnitrix con una órbita decorativa de movimiento lento. La navegación resalta la sección activa y las fichas enmarcan la imagen con iluminación verde. Los avisos informativos siguen la paleta; los errores conservan su color semántico. La animación se desactiva cuando el dispositivo solicita movimiento reducido. Todo se dibuja con CSS local.
+| Situación | Acción |
+| --- | --- |
+| Falta `.venv\Scripts\python.exe` | Preparar un entorno de Windows en esta carpeta. |
+| Faltan dependencias o el servidor no inicia | Revisar `inicio.log`, requisitos y `pip check`. |
+| Ya hay un controlador abierto | Usar Abrir en navegador y detenerlo antes de iniciar otra instancia. |
+| Configuración incompleta o API rechazada | Revisar `.env`, acceso al modelo, compatibilidad y cuota; no publicar claves. |
+| Error de guardado | Revisar permisos/espacio y reintentar el mismo registro desde el chat. |
+| Archivo inválido | Preservarlo y revisar estructura o respaldo; no se repara automáticamente. |
+| Consulta vacía | Comprobar que hubo guardado exitoso y revisar los filtros. |
 
-Verificación del rediseño: 28 pruebas existentes correctas y revisión en Chrome a 1440 y 390 píxeles, con navegación, imagen local, ausencia de desbordamiento horizontal y movimiento reducido comprobados. No se añadieron funciones de opiniones. Si Streamlit ya estaba ejecutándose al cambiar el tema, reiniciarlo y recargar el navegador para comprobar la nueva configuración.
+## Continuidad
 
-Inicio técnico para desarrollo, desde la raíz del repositorio:
+[CONTEXTO_PROYECTO.md](CONTEXTO_PROYECTO.md) conserva decisiones y contratos; [PLAN_DESARROLLO.md](PLAN_DESARROLLO.md) registra etapas y pendientes. El [historial anterior](docs/HISTORIAL_DESARROLLO.md) es referencia, no guía vigente de uso.
 
-```bash
-.venv/bin/python -m streamlit run app.py
-```
-
-Abrir la dirección local que muestre Streamlit, normalmente `http://localhost:8501`. Ejecutar desde la raíz permite cargar `.streamlit/config.toml`. El inicio mediante acceso gráfico de la entrega corresponde al paso 11.
-
-Pruebas completas, con las dependencias instaladas:
-
-```bash
-.venv/bin/python -m unittest discover -s tests -v
-.venv/bin/python -m pip check
-```
-
-Resultado del paso 5: 24 pruebas correctas (19 del catálogo y 5 de interfaz con `streamlit.testing.v1.AppTest`), sin incompatibilidades de dependencias. Se verificaron todos los aliens, conservación de selección y errores visibles. También se comprobó el servidor con HTTP 200 y se revisó la interfaz en Chrome sin ventana a 1440 y 390 píxeles, con navegación entre secciones. La compatibilidad de esta interfaz con Streamlit 1.67.0 no se volvió a ejecutar aquí.
-
-Referencias técnicas: [tema de Streamlit](https://docs.streamlit.io/develop/api-reference/configuration/config.toml) y [pruebas de aplicaciones](https://docs.streamlit.io/develop/api-reference/app-testing).
-
-## Fichas e imágenes locales (paso 6)
-
-Cada selección actualiza nombre latino, nombre original, serie de introducción, habilidades e imagen. Los textos se leen del catálogo; no se generan con IA. Los 20 PNG son diseños de Omniverse de los personajes de la continuidad clásica, según la preferencia confirmada del usuario. La ficha distingue el diseño mostrado de la serie en la que debutó el alien.
-
-Las imágenes proceden de la [galería comunitaria Ben 10 DB](https://ben10db.weebly.com/omniverse.html). Ver [créditos, correspondencia y límites](assets/aliens/README.md) y [manifiesto de fuentes](assets/aliens/fuentes.json), con URL exacta, fecha, dimensiones y hash de cada archivo. No se generaron imágenes con IA ni se modificaron los PNG descargados; algunas fuentes tienen resolución pequeña.
-
-`cargar_imagen_local` lee y comprueba las imágenes mediante Pillow. Si la ruta es `null`, el archivo falta, está dañado o no se puede leer, la ficha usa `assets/aliens/sin_imagen.svg` con la etiqueta «Imagen no disponible». Si tampoco puede leerse ese recurso, muestra un aviso de texto y conserva los datos y el selector. Las imágenes se ajustan visualmente conservando su proporción.
-
-Verificación del paso 6: 28 pruebas correctas, incluidos los 20 cambios de ficha e imagen, fallos de imagen y su alternativa, integridad y procedencia de los recursos y funcionamiento sin peticiones HTTP externas. `pip check` correcto. En Chrome se comprobó la carga del PNG desde el servidor local, HTTP 200 y navegación a 1440/390 píxeles sin desbordamiento horizontal. El envío, clasificación y guardado de opiniones corresponden a las siguientes etapas.
+La documentación del paso 13 está preparada. Antes de declarar la entrega completamente aceptada, completar la evaluación del modelo y las observaciones manuales pendientes en `VERIFICACION.md`. No se ejecutaron commits ni push automáticamente.

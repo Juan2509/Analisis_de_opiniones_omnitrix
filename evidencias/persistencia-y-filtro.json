@@ -1,0 +1,26 @@
+{
+  "fecha_ejecucion_utc": "2026-11-07T13:26:01.707568+00:00",
+  "python": "3.14.4",
+  "origen": "Datos y análisis preparados manualmente; persistencia y filtros ejecutados realmente. Sin llamadas a API.",
+  "fuente": "datos/ejemplos/opiniones_demo.json",
+  "registros_guardados": 16,
+  "registros_recuperados_en_otro_proceso": 16,
+  "lectura_identica": true,
+  "registros_nuevos_al_reintentar": 0,
+  "archivo_uso_sin_cambios": true,
+  "filtros": {
+    "alien_id": "a003",
+    "sentimiento": "mixto"
+  },
+  "total_filtrado": 1,
+  "recuentos_filtrados": {
+    "positivo": 0,
+    "negativo": 0,
+    "neutro": 0,
+    "mixto": 1
+  },
+  "ids_filtrados": [
+    "00000000-0000-4000-8000-000000000012"
+  ],
+  "exportacion": "evidencias/consulta-xlr8-mixto.json"
+}

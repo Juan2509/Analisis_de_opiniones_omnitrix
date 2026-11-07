@@ -7,13 +7,19 @@ from typing import Literal
 
 from dotenv import dotenv_values
 from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-from openai import AuthenticationError, RateLimitError, APITimeoutError
+from langchain_core.exceptions import (
+    ModelAuthenticationError, ModelPermissionDeniedError, ModelRateLimitError,
+    ModelNotFoundError,
+)
+from langchain_google_genai import ChatGoogleGenerativeAI
+from google.genai.errors import APIError
+from httpx import TimeoutException
 from pydantic import BaseModel, ConfigDict, field_validator, model_validator
 
 
 VERSION_PROMPT = "omnitrix-v1"
 RUTA_ENV = Path(__file__).resolve().parent / ".env"
+MODELO_GEMINI = "gemini-3.5-flash-lite"
 
 
 class ErrorAnalisis(ValueError):
@@ -71,12 +77,18 @@ def analizar_opinion(alien: dict, texto: str) -> dict:
         config = {**dotenv_values(RUTA_ENV), **os.environ}
     except (OSError, UnicodeError):
         raise ErrorAnalisis("No se pudo leer el archivo .env local. Revisa sus permisos y codificación UTF-8.") from None
-    clave = (config.get("OPENAI_API_KEY") or "").strip()
-    modelo = (config.get("OPENAI_MODEL") or "").strip()
-    if not clave or not modelo:
-        raise ErrorAnalisis("Configura OPENAI_API_KEY y OPENAI_MODEL en el archivo .env local.")
+    # No se usan las antiguas credenciales de OpenAI ni se cambia de proveedor.
+    clave = (config.get("GOOGLE_API_KEY") or config.get("GEMINI_API_KEY") or "").strip()
+    modelo = (config.get("GEMINI_MODEL") or MODELO_GEMINI).strip()
+    if not clave:
+        raise ErrorAnalisis(
+            "Configura GOOGLE_API_KEY en .env con una clave de Google AI Studio "
+            "de un proyecto Free Tier. Consulta GEMINI_GRATIS.md; no actives facturación."
+        )
+    if modelo != MODELO_GEMINI:
+        raise ErrorAnalisis(f"Esta entrega está preparada para GEMINI_MODEL={MODELO_GEMINI}. No se cambia automáticamente a otro modelo.")
     parametros = {}
-    temperatura = config.get("OPENAI_TEMPERATURE", "0")
+    temperatura = config.get("GEMINI_TEMPERATURE", "")
     if temperatura is not None and temperatura.strip():
         try:
             valor = float(temperatura)
@@ -84,28 +96,42 @@ def analizar_opinion(alien: dict, texto: str) -> dict:
                 raise ValueError
             parametros["temperature"] = valor
         except ValueError:
-            raise ErrorAnalisis("OPENAI_TEMPERATURE debe estar vacía o ser un número entre 0 y 2.") from None
+            raise ErrorAnalisis("GEMINI_TEMPERATURE debe estar vacía o ser un número entre 0 y 2.") from None
     datos = json.dumps({
         "alien": {campo: alien[campo] for campo in ("id", "nombre", "nombre_original", "descripcion")},
         "opinion": texto,
     }, ensure_ascii=False)
     try:
-        llm = ChatOpenAI(
-            model=modelo, api_key=clave, timeout=30, max_retries=0, **parametros,
+        llm = ChatGoogleGenerativeAI(
+            model=modelo, api_key=clave, vertexai=False,
+            # En esta integración 1 significa un intento total, sin reintentos.
+            timeout=30, max_retries=1, **parametros,
         )
         estructurado = llm.with_structured_output(
-            AnalisisOpinion, method="json_schema", strict=True,
+            AnalisisOpinion, method="json_schema",
         )
         resultado = (PROMPT | estructurado).invoke({"datos": datos})
         if not isinstance(resultado, AnalisisOpinion):
             raise ValueError("Respuesta estructurada ausente.")
         analisis = AnalisisOpinion.model_validate(resultado.model_dump())
-    except AuthenticationError:
-        raise ErrorAnalisis("La API rechazó las credenciales. Revisa la clave configurada.") from None
-    except RateLimitError:
-        raise ErrorAnalisis("La API alcanzó un límite de uso o cuota. Revisa tu cuenta e inténtalo después.") from None
-    except APITimeoutError:
+    except (ModelAuthenticationError, ModelPermissionDeniedError):
+        raise ErrorAnalisis("Google rechazó las credenciales o el acceso. Revisa la clave y el proyecto Free Tier en AI Studio; si solicita pagos, no continúes.") from None
+    except ModelRateLimitError:
+        raise ErrorAnalisis("Gemini alcanzó un límite de uso o cuota. Revisa los límites Free Tier en AI Studio y espera su restablecimiento; no actives facturación.") from None
+    except ModelNotFoundError:
+        raise ErrorAnalisis("El modelo Gemini configurado no está disponible para tu proyecto. Revisa GEMINI_GRATIS.md antes de cambiarlo.") from None
+    except (TimeoutError, TimeoutException):
         raise ErrorAnalisis("El análisis excedió el tiempo de espera. Puedes enviar de nuevo la opinión.") from None
+    except APIError as error:
+        if error.code == 429:
+            mensaje = "Gemini alcanzó un límite de uso o cuota. Revisa los límites Free Tier en AI Studio; no actives facturación."
+        elif error.code in (400, 401, 403):
+            mensaje = "Google rechazó la solicitud o las credenciales. Revisa la clave y el acceso Free Tier en AI Studio; si solicita pagos, no continúes."
+        elif error.code == 404:
+            mensaje = "El modelo Gemini no está disponible en tu proyecto. Consulta GEMINI_GRATIS.md."
+        else:
+            mensaje = "El servicio Gemini no pudo completar el análisis. Inténtalo después."
+        raise ErrorAnalisis(mensaje) from None
     except Exception:
         # No mostrar excepciones del proveedor: podrían contener información privada.
         raise ErrorAnalisis(

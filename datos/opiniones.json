@@ -1,4 +1,16 @@
 {
   "version": 1,
-  "opiniones": []
+  "opiniones": [
+    {
+      "id": "b1113710-9471-41da-9c25-c6aaa12a3f83",
+      "fecha_utc": "2026-11-07T14:18:36.719820+00:00",
+      "alien_id": "a001",
+      "alien_nombre": "Fuego",
+      "opinion_original": "Fuego es el mejor alien",
+      "sentimiento": "positivo",
+      "razon": "La opinion elogia directamente al alien considerando que es el mejor.",
+      "modelo": "gemini-3.5-flash-lite",
+      "version_prompt": "omnitrix-v1"
+    }
+  ]
 }

@@ -80,7 +80,9 @@ class PruebasInterfaz(unittest.TestCase):
                 self.assertTrue(app.error)
                 self.assertEqual(app.session_state["opiniones_sesion"], [])
                 self.analizar.assert_not_called()
-                self.assertIn(texto, [elemento.value for elemento in app.text])
+                self.assertEqual(app.session_state["opinion_rechazada"]["texto"], texto)
+                # st.text normaliza espacios exteriores al presentar el contenido.
+                self.assertIn(texto.strip(), [elemento.value for elemento in app.text])
         for texto in ("  abcde  ", "x" * 1000):
             app.chat_input[0].set_value(texto).run()
             self.assertFalse(app.error)

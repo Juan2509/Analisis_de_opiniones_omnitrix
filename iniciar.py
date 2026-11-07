@@ -110,7 +110,7 @@ def main() -> int:
         registro_log = RUTA_LOG.open("w", encoding="utf-8")
         # Son las bibliotecas que importa la app; no se crea ningún cliente de IA.
         proceso = subprocess.Popen(
-            [sys.executable, "-c", "import streamlit, PIL, dotenv, pydantic, langchain_core, langchain_openai; import tkinter"],
+            [sys.executable, "-c", "import streamlit, PIL, dotenv, pydantic, langchain_core, langchain_google_genai; import tkinter"],
             cwd=RAIZ, stdout=registro_log, stderr=subprocess.STDOUT,
             creationflags=subprocess.CREATE_NO_WINDOW,
         )
